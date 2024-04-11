@@ -60,5 +60,11 @@ public class PlayerMovement : MonoBehaviour
     {
         moving = false;
     }
-
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Obstacle"))
+        {
+            speed = 0;
+        }
+    }
 }
