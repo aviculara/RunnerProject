@@ -874,14 +874,14 @@ RectTransform:
   m_GameObject: {fileID: 530174878}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 37}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1155494908}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 10.3, y: 98.33}
+  m_AnchoredPosition: {x: 58.2, y: 408.06}
   m_SizeDelta: {x: 912, y: 512}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &530174880
@@ -1365,6 +1365,32 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6127019219090359848, guid: 2adb2e22202106844acc66e52119d1bf, type: 3}
   m_PrefabInstance: {fileID: 2094963676}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &766380888 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: a1311fa49759e0d4b90895425b6ae60a, type: 3}
+  m_PrefabInstance: {fileID: 1372519602}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &766380889
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 766380888}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f74ab748e66073d4fa1f1aac8316b4be, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &910584883
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1489,7 +1515,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bd567c9586c870409bafb95bb4dca4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 6
+  speed: 5
   position: 0
   playerGroup: {fileID: 1921734284}
 --- !u!54 &932183971
@@ -2118,7 +2144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -2379,6 +2405,90 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6231590973442985486, guid: 55f155f7c45e1a44abf603bf94daf887, type: 3}
   m_PrefabInstance: {fileID: 1154188085}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1372519602
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: a1311fa49759e0d4b90895425b6ae60a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.05
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a1311fa49759e0d4b90895425b6ae60a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a1311fa49759e0d4b90895425b6ae60a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -19.081753
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a1311fa49759e0d4b90895425b6ae60a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.26807928
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a1311fa49759e0d4b90895425b6ae60a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a1311fa49759e0d4b90895425b6ae60a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.96339685
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a1311fa49759e0d4b90895425b6ae60a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a1311fa49759e0d4b90895425b6ae60a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a1311fa49759e0d4b90895425b6ae60a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 148.9
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a1311fa49759e0d4b90895425b6ae60a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -5076484507258936684, guid: a1311fa49759e0d4b90895425b6ae60a, type: 3}
+      propertyPath: m_Lightmapping
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 65702495048144492, guid: a1311fa49759e0d4b90895425b6ae60a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a1311fa49759e0d4b90895425b6ae60a, type: 3}
+      propertyPath: m_Name
+      value: ImageToStl.com_cartoon+character@Dying
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a1311fa49759e0d4b90895425b6ae60a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5392398322951045289, guid: a1311fa49759e0d4b90895425b6ae60a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8603541622604761643, guid: a1311fa49759e0d4b90895425b6ae60a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8904447968811972288, guid: a1311fa49759e0d4b90895425b6ae60a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a1311fa49759e0d4b90895425b6ae60a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 766380889}
+  m_SourcePrefab: {fileID: 100100000, guid: a1311fa49759e0d4b90895425b6ae60a, type: 3}
 --- !u!4 &1462442583 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6231590973442985486, guid: 55f155f7c45e1a44abf603bf94daf887, type: 3}
@@ -2916,7 +3026,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a26118b5aa25c2a43942a41c84d7a967, type: 3}
       propertyPath: m_Name
-      value: ImageToStl.com_cartoon+character@Jog Forward
+      value: Fox
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a26118b5aa25c2a43942a41c84d7a967, type: 3}
       propertyPath: m_TagString
@@ -3049,3 +3159,4 @@ SceneRoots:
   - {fileID: 1904782981}
   - {fileID: 523768602}
   - {fileID: 507068970}
+  - {fileID: 1372519602}

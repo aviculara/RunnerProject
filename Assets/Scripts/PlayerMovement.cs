@@ -10,11 +10,12 @@ public class PlayerMovement : MonoBehaviour
     public GameObject playerGroup;
 
     private bool moving = false;
+    private Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        animator = gameObject.GetComponent<Animator>();
     }
 
     public enum Positions
@@ -64,7 +65,14 @@ public class PlayerMovement : MonoBehaviour
     {
         if(other.CompareTag("Obstacle"))
         {
-            speed = 0;
+            Death();
         }
+    }
+
+    private void Death()
+    {
+        animator.SetTrigger("Death");
+        speed = 0;
+        //open Lose screen etc
     }
 }
