@@ -4,10 +4,13 @@ using UnityEngine;
 using DG.Tweening;
 public class PlayerMovement : MonoBehaviour
 {
-    public int speed = 10;
+    
     public Positions position;
-
     public GameObject playerGroup;
+
+    [Header("Editor Params")]
+    public int speed = 10;
+    public float side = 3;
 
     private bool moving = false;
     private Animator animator;
@@ -39,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 position = Positions.onMid;
             }
-            playerGroup.transform.DOMoveX(transform.position.x - 4, 0.25f).OnComplete(stopMove);
+            transform.DOMoveX(transform.position.x - side, 0.25f).OnComplete(stopMove);
             moving = true;
         }
         else if ((Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)) && position != Positions.onRight && !moving)
@@ -52,7 +55,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 position = Positions.onMid;
             }
-            playerGroup.transform.DOMoveX(transform.position.x + 4, 0.25f).OnComplete(stopMove);
+            transform.DOMoveX(transform.position.x + side, 0.25f).OnComplete(stopMove);
             moving = true;
         }
     }
