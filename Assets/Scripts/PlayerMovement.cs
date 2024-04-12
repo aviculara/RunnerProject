@@ -70,6 +70,10 @@ public class PlayerMovement : MonoBehaviour
         {
             Death();
         }
+        else if (other.CompareTag("Finish"))
+        {
+            Win();
+        }
     }
 
     private void Death()
@@ -77,5 +81,12 @@ public class PlayerMovement : MonoBehaviour
         animator.SetTrigger("Death");
         speed = 0;
         //open Lose screen etc
+    }
+
+    private void Win()
+    {
+        animator.SetTrigger("Win");
+        speed = 0;
+        //UI etc
     }
 }
