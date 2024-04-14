@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Fox Level 1.unity
+    guid: 62284c7cc1ef4184ba1ff4f5ab9fde18
   m_configObjects: {}
