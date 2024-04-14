@@ -13,12 +13,16 @@ public class PlayerMovement : MonoBehaviour
     public float side = 3;
 
     private bool moving = false;
-    private Animator animator;
+    public Animator animator;
 
     // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         animator = gameObject.GetComponent<Animator>();
+    }
+    void Start()
+    {
+        
     }
 
     public enum Positions
