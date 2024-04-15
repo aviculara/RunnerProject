@@ -137,6 +137,10 @@ public class UIManager : MonoBehaviour
             yield return new WaitForSeconds(0.6f);
         }
         int finalScore = (int)(scoreManager.levelScore * mult);
+        if(mult > 1)
+        {
+            finalScoreText.color = new Color(1, 0.812f, 0.224f, 1);
+        }
         finalScoreText.text = "Score: " + finalScore.ToString();
     }
 }
