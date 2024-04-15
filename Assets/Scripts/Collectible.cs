@@ -23,6 +23,7 @@ public class Collectible : MonoBehaviour
         watermelon,
         cherry,
         banana,
-        orange
+        orange,
+        star
     }
 }

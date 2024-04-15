@@ -86,6 +86,10 @@ public class PlayerManager : MonoBehaviour
                     other.gameObject.SetActive(false);
                     shield.SetActive(true);
                     break;
+                case Collectible.CollectibleType.star:
+                    PowerUp pwrStr = other.gameObject.GetComponent<PowerUp>();
+                    pwrStr.SeeknDestroy();
+                    break;
             }
             /*
             if(other.GetComponent<Collectible>().ctype == Collectible.CollectibleType.strawberry)
