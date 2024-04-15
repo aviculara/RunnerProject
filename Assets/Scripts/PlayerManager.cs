@@ -62,6 +62,7 @@ public class PlayerManager : MonoBehaviour
         }
         else if (other.CompareTag("Collectible"))
         {
+            
             Collectible.CollectibleType collectibleType = other.GetComponent<Collectible>().ctype;
             switch (collectibleType)
             {

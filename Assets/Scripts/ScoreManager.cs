@@ -6,6 +6,8 @@ public class ScoreManager : MonoBehaviour
 {
     public int points;
     UIManager uiManager;
+    GameObject player;
+    
     public float timeSpeed = 0.25f;
     public int levelScore, increaseScoreAmount = 1;
     int strawbScore = 10;
@@ -13,14 +15,18 @@ public class ScoreManager : MonoBehaviour
     public bool banana = false;
     public bool orange = false;
     private GameManager gameManager;
+
     //private int speed;
     public PlayerMovement move;
+    public PlayerManager playerManager;
     //int multipliersCollected = 0;
     // Start is called before the first frame update
     private void Awake()
     {
         uiManager = gameObject.GetComponent<UIManager>();
-        move = GameObject.Find("Fox").GetComponent<PlayerMovement>();
+        player = GameObject.Find("Fox");
+        move = player.GetComponent<PlayerMovement>();
+        playerManager = player.GetComponent<PlayerManager>();
         gameManager = gameObject.GetComponent<GameManager>();
     }
     void Start()
@@ -55,4 +61,46 @@ public class ScoreManager : MonoBehaviour
     {
         //multipliersCollected += 1;
     }
+
+    /*
+    public void getMultiplier(GameObject collidedObject)
+    {
+        Collectible.CollectibleType collectibleType = collidedObject.GetComponent<Collectible>().ctype;
+        switch (collectibleType)
+        {
+            case Collectible.CollectibleType.strawberry:
+                getStrawb();
+                Destroy(collidedObject.gameObject);
+
+                break;
+            case Collectible.CollectibleType.cherry:
+                cherry = true;
+                collidedObject.gameObject.SetActive(false);
+                uiManager.igUIcherry.SetActive(true);
+                break;
+            case Collectible.CollectibleType.banana:
+                banana = true;
+                collidedObject.gameObject.SetActive(false);
+                uiManager.igUIbanana.SetActive(true);
+                break;
+            case Collectible.CollectibleType.orange:
+                orange = true;
+                collidedObject.gameObject.SetActive(false);
+                uiManager.igUIorange.SetActive(true);
+                break;
+            case Collectible.CollectibleType.watermelon:
+                playerManager.watermelond = true;
+                collidedObject.gameObject.SetActive(false);
+                playerManager.shield.SetActive(true);
+                break;
+            case Collectible.CollectibleType.star:
+                PowerUp pwrStr = collidedObject.gameObject.GetComponent<PowerUp>();
+                pwrStr.SeeknDestroy();
+                collidedObject.gameObject.GetComponent<MeshRenderer>().enabled = false;
+
+                break;
+        }
+   
+    }
+    */
 }
