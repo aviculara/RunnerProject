@@ -18,6 +18,8 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI multiplierText;
     public TextMeshProUGUI finalScoreText;
 
+    public GameObject igUIcherry, igUIbanana, igUIorange;
+
     private GameManager gameManager;
     private ScoreManager scoreManager;
     private float multiplierBonus=0.5f;
@@ -34,6 +36,11 @@ public class UIManager : MonoBehaviour
         pScript = player.GetComponent<PlayerManager>();
         gameManager = gameObject.GetComponent<GameManager>();
         scoreManager = gameObject.GetComponent<ScoreManager>();
+
+        igUIcherry.SetActive(false);
+        igUIbanana.SetActive(false);
+        igUIorange.SetActive(false);
+
     }
     void Start()
     {

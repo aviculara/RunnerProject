@@ -8,12 +8,16 @@ public class PowerUp : MonoBehaviour
     public GameObject sampleStrawb;
     public GameObject[] obstacles;
     public GameObject destroyParent;
+    public GameObject starIcon;
 
     public float powerDuration = 1f;
+
+    private float remainingDuration;
     // Start is called before the first frame update
     void Start()
     {
         obstacles = GameObject.FindGameObjectsWithTag("Obstacle");
+        starIcon.SetActive(false);
 
     }
 
@@ -25,6 +29,8 @@ public class PowerUp : MonoBehaviour
 
     public void SeeknDestroy()
     {
+        remainingDuration = powerDuration;
+        starIcon.SetActive(true);
         //obstacleParent.SetActive(false);
         foreach (GameObject obs in obstacles)
         {
@@ -36,6 +42,7 @@ public class PowerUp : MonoBehaviour
         }
 
         StartCoroutine(LaterDestroy(destroyParent));
+        StartCoroutine(StarFlash());
     }
 
     IEnumerator LaterDestroy(GameObject obj)
@@ -49,5 +56,30 @@ public class PowerUp : MonoBehaviour
     {
         yield return new WaitForSeconds(powerDuration);
         obj.SetActive(true);
+    }
+
+    IEnumerator StarFlash()
+    {
+        if (remainingDuration <= 0.6f)
+        {
+            starIcon.SetActive(false); 
+        }
+        else if(remainingDuration <= 1.8f)
+        {
+
+            starIcon.SetActive(false);
+            yield return new WaitForSeconds(0.3f);
+            starIcon.SetActive(true);
+            yield return new WaitForSeconds(0.3f);
+            remainingDuration -= 0.6f;
+            StartCoroutine(StarFlash());
+        }
+        else
+        {
+            yield return new WaitForSeconds(0.6f);
+            remainingDuration -= 0.6f;
+            StartCoroutine(StarFlash());
+        }
+        
     }
 }

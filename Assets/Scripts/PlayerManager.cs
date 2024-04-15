@@ -68,18 +68,22 @@ public class PlayerManager : MonoBehaviour
                 case Collectible.CollectibleType.strawberry:
                     scoreManager.getStrawb();
                     Destroy(other.gameObject);
+                    
                     break;
                 case Collectible.CollectibleType.cherry:
                     scoreManager.cherry = true;
                     other.gameObject.SetActive(false);
+                    uiManager.igUIcherry.SetActive(true);
                     break;
                 case Collectible.CollectibleType.banana:
                     scoreManager.banana = true;
                     other.gameObject.SetActive(false);
+                    uiManager.igUIbanana.SetActive(true);
                     break;
                 case Collectible.CollectibleType.orange:
                     scoreManager.orange = true;
                     other.gameObject.SetActive(false);
+                    uiManager.igUIorange.SetActive(true);
                     break;
                 case Collectible.CollectibleType.watermelon:
                     watermelond = true;
@@ -89,6 +93,8 @@ public class PlayerManager : MonoBehaviour
                 case Collectible.CollectibleType.star:
                     PowerUp pwrStr = other.gameObject.GetComponent<PowerUp>();
                     pwrStr.SeeknDestroy();
+                    other.gameObject.GetComponent<MeshRenderer>().enabled = false;
+
                     break;
             }
             /*
