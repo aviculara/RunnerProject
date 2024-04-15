@@ -12,7 +12,8 @@ public class PlayerManager : MonoBehaviour
     public GameObject managerObject;
     private GameManager gameManager;
     private ScoreManager scoreManager;
-
+    public bool watermelond = false;
+    public GameObject shield;
     
     // Start is called before the first frame update
     private void Awake()
@@ -40,7 +41,17 @@ public class PlayerManager : MonoBehaviour
     {
         if (other.CompareTag("Obstacle"))
         {
-            Death();
+            if(watermelond)
+            {
+                watermelond = false;
+                shield.SetActive(false);
+                other.gameObject.SetActive(false);
+            }
+            else
+            {
+                Death();
+            }
+            
         }
         else if (other.CompareTag("Finish"))
         {
@@ -67,6 +78,12 @@ public class PlayerManager : MonoBehaviour
             {
                 scoreManager.orange = true;
                 other.gameObject.SetActive(false);
+            }
+            else if (other.GetComponent<Collectible>().ctype == Collectible.CollectibleType.watermelon)
+            {
+                watermelond = true;
+                other.gameObject.SetActive(false);
+                shield.SetActive(true);
             }
 
         }
