@@ -61,10 +61,12 @@ public class PlayerManager : MonoBehaviour
             else if (other.GetComponent<Collectible>().ctype == Collectible.CollectibleType.banana)
             {
                 scoreManager.banana = true;
+                other.gameObject.SetActive(false);
             }
             else if (other.GetComponent<Collectible>().ctype == Collectible.CollectibleType.orange)
             {
                 scoreManager.orange = true;
+                other.gameObject.SetActive(false);
             }
 
         }
