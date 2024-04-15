@@ -3,15 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
     public GameObject startPanel;
     public GameObject losePanel;
+    public GameObject winPanel;
     public TextMeshProUGUI scoreText;
+
+    public GameObject cherrySprite;
+    public GameObject bananaSprite;
+    public GameObject orangeSprite;
+    public TextMeshProUGUI multiplierText;
+    public TextMeshProUGUI finalScoreText;
 
     private GameManager gameManager;
     private ScoreManager scoreManager;
+    private float multiplierBonus=0.5f;
     GameObject player;
     PlayerMovement move;
     PlayerManager pScript;
@@ -63,6 +72,7 @@ public class UIManager : MonoBehaviour
     {
         startPanel.SetActive(false);
         losePanel.SetActive(false);
+        winPanel.SetActive(false);
         if(panelObject != null)
         {
             panelObject.SetActive(true);
@@ -74,6 +84,53 @@ public class UIManager : MonoBehaviour
     public void LosePanel()
     {
         OpenPanel(losePanel);
+    }
+
+    public void WinPanel()
+    {
+        OpenPanel(winPanel);
+        /*
+        if(scoreManager.cherry || scoreManager.banana || scoreManager.orange)
+        {
+
+        }
+        */
+        multiplierText.text = "x 1";
+        StartCoroutine(WriteFruitBonus());
+        //multiplierText.gameObject.SetActive(false);
+    }
+
+    IEnumerator WriteFruitBonus()
+    {
+        yield return new WaitForSeconds(0.7f);
+        float mult = 1;
+        if (scoreManager.cherry)
+        {
+            mult = 1 + multiplierBonus;
+            multiplierText.text = "x " + mult.ToString();
+            multiplierBonus *= 2;
+            cherrySprite.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+            yield return new WaitForSeconds(0.7f);
+        }
+
+        if (scoreManager.banana)
+        {
+            mult = 1 + multiplierBonus;
+            multiplierText.text = "x " + mult.ToString();
+            multiplierBonus *= 2;
+            bananaSprite.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+            yield return new WaitForSeconds(0.7f);
+        }
+        if (scoreManager.orange)
+        {
+            mult = 1 + multiplierBonus;
+            multiplierText.text = "x " + mult.ToString();
+            orangeSprite.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+            //multiplierBonus *= 2;
+            yield return new WaitForSeconds(0.6f);
+        }
+        int finalScore = (int)(scoreManager.levelScore * mult);
+        finalScoreText.text = finalScore.ToString();
     }
 }
 

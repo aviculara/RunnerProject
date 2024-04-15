@@ -11,7 +11,7 @@ public class PlayerManager : MonoBehaviour
     public Transform camFinalPos;
     public GameObject managerObject;
     private GameManager gameManager;
-
+    private ScoreManager scoreManager;
 
     
     // Start is called before the first frame update
@@ -20,12 +20,10 @@ public class PlayerManager : MonoBehaviour
         managerObject = GameObject.Find("GameManager");
         uiManager = managerObject.GetComponent<UIManager>();
         gameManager = managerObject.GetComponent<GameManager>();
+        scoreManager = managerObject.GetComponent<ScoreManager>();
         //move = gameObject.GetComponent<PlayerMovement>();
         animator = gameObject.GetComponent<Animator>();
-        if(animator != null)
-        {
-            print("found it");
-        }
+        
     }
     void Start()
     {
@@ -48,6 +46,28 @@ public class PlayerManager : MonoBehaviour
         {
             Win();
         }
+        else if (other.CompareTag("Collectible"))
+        {
+            if(other.GetComponent<Collectible>().ctype == Collectible.CollectibleType.strawberry)
+            {
+                scoreManager.getStrawb();
+                Destroy(other.gameObject);
+            }
+            else if(other.GetComponent<Collectible>().ctype == Collectible.CollectibleType.cherry)
+            {
+                scoreManager.cherry = true;
+                other.gameObject.SetActive(false);
+            }
+            else if (other.GetComponent<Collectible>().ctype == Collectible.CollectibleType.banana)
+            {
+                scoreManager.banana = true;
+            }
+            else if (other.GetComponent<Collectible>().ctype == Collectible.CollectibleType.orange)
+            {
+                scoreManager.orange = true;
+            }
+
+        }
     }
 
     private void Death()
@@ -64,10 +84,18 @@ public class PlayerManager : MonoBehaviour
         //Camera.main.transform.DOLocalRotate(camFinalPos.localEulerAngles, 1);
         //Camera.main.transform.DOLocalMove(camFinalPos.localPosition, 1);
         Camera.main.GetComponent<Animator>().SetBool("Win", true);
+        StartCoroutine(WinPanel());
+
     }
 
     private void LosePanel()
     {
         uiManager.LosePanel();
+    }
+
+    IEnumerator WinPanel()
+    {
+        yield return new WaitForSeconds(3f);
+        uiManager.WinPanel();
     }
 }
