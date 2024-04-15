@@ -39,7 +39,7 @@ public class ScoreManager : MonoBehaviour
         yield return new WaitForSeconds(timeSpeed);
         levelScore += increaseScoreAmount;
         uiManager.scoreText.text = levelScore.ToString();
-        uiManager.finalScoreText.text = levelScore.ToString();
+        uiManager.finalScoreText.text = "Score: " + levelScore.ToString();
         if(!gameManager.gameInactive)
         {
             StartCoroutine(ScoreUpdate());

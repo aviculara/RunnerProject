@@ -130,7 +130,7 @@ public class UIManager : MonoBehaviour
             yield return new WaitForSeconds(0.6f);
         }
         int finalScore = (int)(scoreManager.levelScore * mult);
-        finalScoreText.text = finalScore.ToString();
+        finalScoreText.text = "Score: " + finalScore.ToString();
     }
 }
 

@@ -62,6 +62,32 @@ public class PlayerManager : MonoBehaviour
         }
         else if (other.CompareTag("Collectible"))
         {
+            Collectible.CollectibleType collectibleType = other.GetComponent<Collectible>().ctype;
+            switch (collectibleType)
+            {
+                case Collectible.CollectibleType.strawberry:
+                    scoreManager.getStrawb();
+                    Destroy(other.gameObject);
+                    break;
+                case Collectible.CollectibleType.cherry:
+                    scoreManager.cherry = true;
+                    other.gameObject.SetActive(false);
+                    break;
+                case Collectible.CollectibleType.banana:
+                    scoreManager.banana = true;
+                    other.gameObject.SetActive(false);
+                    break;
+                case Collectible.CollectibleType.orange:
+                    scoreManager.orange = true;
+                    other.gameObject.SetActive(false);
+                    break;
+                case Collectible.CollectibleType.watermelon:
+                    watermelond = true;
+                    other.gameObject.SetActive(false);
+                    shield.SetActive(true);
+                    break;
+            }
+            /*
             if(other.GetComponent<Collectible>().ctype == Collectible.CollectibleType.strawberry)
             {
                 scoreManager.getStrawb();
@@ -88,7 +114,7 @@ public class PlayerManager : MonoBehaviour
                 other.gameObject.SetActive(false);
                 shield.SetActive(true);
             }
-
+            */
         }
     }
 
