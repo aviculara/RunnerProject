@@ -14,6 +14,7 @@ public class PlayerManager : MonoBehaviour
     private ScoreManager scoreManager;
     public bool watermelond = false;
     public GameObject shield;
+    public GameObject explosionFX;
     
     // Start is called before the first frame update
     private void Awake()
@@ -44,8 +45,10 @@ public class PlayerManager : MonoBehaviour
             if(watermelond)
             {
                 watermelond = false;
-                shield.SetActive(false);
-                other.gameObject.SetActive(false);
+                explosionFX.SetActive(true);
+                //shield.SetActive(false);
+                //other.gameObject.SetActive(false);
+                StartCoroutine(ShieldOff(other.gameObject));
             }
             else
             {
@@ -116,5 +119,12 @@ public class PlayerManager : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
         uiManager.WinPanel();
+    }
+
+    IEnumerator ShieldOff(GameObject collidedObject)
+    {
+        yield return new WaitForSeconds(0.2f);
+        shield.SetActive(false);
+        collidedObject.SetActive(false);
     }
 }
