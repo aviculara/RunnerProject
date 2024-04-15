@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PowerUp : MonoBehaviour
 {
-    public GameObject obstacleParent;
+    //public GameObject obstacleParent;
     public GameObject sampleStrawb;
     public GameObject[] obstacles;
     public GameObject destroyParent;
@@ -25,23 +25,29 @@ public class PowerUp : MonoBehaviour
 
     public void SeeknDestroy()
     {
-        obstacleParent.SetActive(false);
+        //obstacleParent.SetActive(false);
         foreach (GameObject obs in obstacles)
         {
-            print("doin it");
             Vector3 v3 = new Vector3(obs.transform.position.x, sampleStrawb.transform.position.y,
                 obs.transform.position.z);
-
+            obs.SetActive(false);
             Instantiate(sampleStrawb, v3, sampleStrawb.transform.rotation, destroyParent.transform);
+            StartCoroutine(LaterActivate(obs));
         }
 
-        LaterDestroy(destroyParent);
+        StartCoroutine(LaterDestroy(destroyParent));
     }
 
     IEnumerator LaterDestroy(GameObject obj)
     {
         yield return new WaitForSeconds(powerDuration);
         Destroy(destroyParent);
-        obstacleParent.SetActive(true);
+        //obstacleParent.SetActive(true);
+    }
+
+    IEnumerator LaterActivate(GameObject obj)
+    {
+        yield return new WaitForSeconds(powerDuration);
+        obj.SetActive(true);
     }
 }
