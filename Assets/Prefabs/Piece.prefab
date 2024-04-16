@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 7cd83235869945942b7f7f6284f3def2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -959,6 +959,10 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7876686116469539411, guid: 1b3b8b2304daa854d873f5dbdcd08c43, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2f7ac34b80241f4408cda3b5c4173a84, type: 2}
     - target: {fileID: 8525138423701611398, guid: 1b3b8b2304daa854d873f5dbdcd08c43, type: 3}
       propertyPath: m_Name
       value: TreeFallen
@@ -1428,7 +1432,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 48bb5daa3b208384eaa97c404e6a6f1d, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 7cd83235869945942b7f7f6284f3def2, type: 2}
+      objectReference: {fileID: 2100000, guid: 8a7f0d0a9ce7f724fb3bb48191b1a4da, type: 2}
     - target: {fileID: 919132149155446097, guid: 48bb5daa3b208384eaa97c404e6a6f1d, type: 3}
       propertyPath: m_Name
       value: Terrain_2 (2)
@@ -2000,7 +2004,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 48bb5daa3b208384eaa97c404e6a6f1d, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 7cd83235869945942b7f7f6284f3def2, type: 2}
+      objectReference: {fileID: 2100000, guid: 8a7f0d0a9ce7f724fb3bb48191b1a4da, type: 2}
     - target: {fileID: 919132149155446097, guid: 48bb5daa3b208384eaa97c404e6a6f1d, type: 3}
       propertyPath: m_Name
       value: Terrain_2 (1)

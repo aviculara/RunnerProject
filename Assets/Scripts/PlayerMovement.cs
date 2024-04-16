@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Editor Params")]
     public int speed = 10;
     public float side = 3;
-
+    public Animator animator;
     private bool moving = false;
     
 
@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     {
 
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        animator = gameObject.GetComponent<Animator>();
     }
     void Start()
     {
@@ -50,6 +51,7 @@ public class PlayerMovement : MonoBehaviour
                     position = Positions.onMid;
                 }
                 transform.DOMoveX(transform.position.x - side, 0.25f).OnComplete(stopMove);
+                animator.SetTrigger("Left");
                 moving = true;
             }
             else if ((Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)) && position != Positions.onRight && !moving)
@@ -63,6 +65,7 @@ public class PlayerMovement : MonoBehaviour
                     position = Positions.onMid;
                 }
                 transform.DOMoveX(transform.position.x + side, 0.25f).OnComplete(stopMove);
+                animator.SetTrigger("Right");
                 moving = true;
             }
         }
