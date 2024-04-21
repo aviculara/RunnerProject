@@ -2789,9 +2789,11 @@ MonoBehaviour:
   position: 0
   playerGroup: {fileID: 1921734284}
   gameManager: {fileID: 0}
-  speed: 5
+  speed: 6
   side: 3
   animator: {fileID: 0}
+  jumpPower: 2.5
+  jumpDur: 1
 --- !u!54 &932183971
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6134,7 +6136,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a26118b5aa25c2a43942a41c84d7a967, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -18
+      value: -17.78
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a26118b5aa25c2a43942a41c84d7a967, type: 3}
       propertyPath: m_LocalRotation.w

@@ -12,6 +12,8 @@ public class PlayerMovement : MonoBehaviour
     public int speed = 10;
     public float side = 3;
     public Animator animator;
+    public float jumpPower=2.2f;
+    public float jumpDur=0.9f;
     private bool moving = false;
     
 
@@ -51,7 +53,7 @@ public class PlayerMovement : MonoBehaviour
                     position = Positions.onMid;
                 }
                 transform.DOMoveX(transform.position.x - side, 0.25f).OnComplete(stopMove);
-                animator.SetTrigger("Left");
+                animator.SetBool("Left",true);
                 moving = true;
             }
             else if ((Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)) && position != Positions.onRight && !moving)
@@ -65,8 +67,17 @@ public class PlayerMovement : MonoBehaviour
                     position = Positions.onMid;
                 }
                 transform.DOMoveX(transform.position.x + side, 0.25f).OnComplete(stopMove);
-                animator.SetTrigger("Right");
+                animator.SetBool("Right",true);
                 moving = true;
+            }
+            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                animator.SetTrigger("Jump");
+                //Vector3 currentpos = new Vector3(transform.position);
+                //gameObject.transform.DOLocalJump(transform.localPosition,jumpPower,1,jumpDur);
+                //DOLocalJump(Vector3 endValue, float jumpPower, int numJumps, float duration, bool snapping)
+                gameObject.transform.DOLocalMoveY(transform.localPosition.y + jumpPower, 0.5f).SetEase(Ease.OutFlash);
+                gameObject.transform.DOLocalMoveY(transform.localPosition.y, 0.75f).SetDelay(0.5f).SetEase(Ease.InFlash);
             }
         }
     }
@@ -75,6 +86,8 @@ public class PlayerMovement : MonoBehaviour
     private void stopMove()
     {
         moving = false;
+        animator.SetBool("Right", false);
+        animator.SetBool("Left", false);
     }
     
 
