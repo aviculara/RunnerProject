@@ -13,8 +13,12 @@ public class PlayerManager : MonoBehaviour
     private GameManager gameManager;
     private ScoreManager scoreManager;
     public bool watermelond = false;
+    public bool magnetOn = false;
     public GameObject shield;
     public GameObject explosionFX;
+
+    public float magnetTime = 5f;
+   
     
     // Start is called before the first frame update
     private void Awake()
@@ -95,6 +99,15 @@ public class PlayerManager : MonoBehaviour
                     PowerUp pwrStr = other.gameObject.GetComponent<PowerUp>();
                     pwrStr.SeeknDestroy();
                     other.gameObject.GetComponent<MeshRenderer>().enabled = false;
+
+                    break;
+                case Collectible.CollectibleType.magnet:
+                    //destroy magnet
+                    if(!magnetOn)
+                    {
+                        //turn on big collider
+                        //start coroutine
+                    }
 
                     break;
             }

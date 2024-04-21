@@ -10,7 +10,7 @@ public class PowerUp : MonoBehaviour
     public GameObject destroyParent;
     public GameObject starIcon;
 
-    public float powerDuration = 1f;
+    public float powerDuration = 5f;
 
     private float remainingDuration;
     // Start is called before the first frame update

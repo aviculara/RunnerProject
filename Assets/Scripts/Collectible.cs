@@ -24,6 +24,7 @@ public class Collectible : MonoBehaviour
         cherry,
         banana,
         orange,
-        star
+        star,
+        magnet
     }
 }
