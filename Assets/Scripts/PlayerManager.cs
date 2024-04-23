@@ -10,16 +10,17 @@ public class PlayerManager : MonoBehaviour
     public Animator animator;
     public Transform camFinalPos;
     public GameObject managerObject;
-    private GameManager gameManager;
-    private ScoreManager scoreManager;
     public bool watermelond = false;
     public bool magnetOn = false;
     public GameObject shield;
     public GameObject explosionFX;
 
     public float magnetTime = 5f;
-   
-    
+
+    private GameManager gameManager;
+    private ScoreManager scoreManager;
+    public GameObject magnetRange;
+
     // Start is called before the first frame update
     private void Awake()
     {
@@ -102,43 +103,19 @@ public class PlayerManager : MonoBehaviour
 
                     break;
                 case Collectible.CollectibleType.magnet:
-                    //destroy magnet
+                    print("picked up magnet");
                     if(!magnetOn)
                     {
-                        //turn on big collider
-                        //start coroutine
+                        magnetRange.SetActive(true);
+                        StartCoroutine(MagnetOff());
+                        print("turned on speher");
                     }
+                    //destroy magnet
+                    Destroy(other.gameObject);
 
                     break;
             }
-            /*
-            if(other.GetComponent<Collectible>().ctype == Collectible.CollectibleType.strawberry)
-            {
-                scoreManager.getStrawb();
-                Destroy(other.gameObject);
-            }
-            else if(other.GetComponent<Collectible>().ctype == Collectible.CollectibleType.cherry)
-            {
-                scoreManager.cherry = true;
-                other.gameObject.SetActive(false);
-            }
-            else if (other.GetComponent<Collectible>().ctype == Collectible.CollectibleType.banana)
-            {
-                scoreManager.banana = true;
-                other.gameObject.SetActive(false);
-            }
-            else if (other.GetComponent<Collectible>().ctype == Collectible.CollectibleType.orange)
-            {
-                scoreManager.orange = true;
-                other.gameObject.SetActive(false);
-            }
-            else if (other.GetComponent<Collectible>().ctype == Collectible.CollectibleType.watermelon)
-            {
-                watermelond = true;
-                other.gameObject.SetActive(false);
-                shield.SetActive(true);
-            }
-            */
+            
         }
     }
 
@@ -176,5 +153,13 @@ public class PlayerManager : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         shield.SetActive(false);
         collidedObject.SetActive(false);
+    }
+
+    IEnumerator MagnetOff()
+    {
+        yield return new WaitForSeconds(magnetTime);
+        magnetOn = false;
+        magnetRange.SetActive(false);
+        print("its off");
     }
 }

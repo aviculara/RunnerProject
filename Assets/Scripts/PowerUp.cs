@@ -27,6 +27,7 @@ public class PowerUp : MonoBehaviour
         
     }
 
+    #region Star
     public void SeeknDestroy()
     {
         remainingDuration = powerDuration;
@@ -82,4 +83,7 @@ public class PowerUp : MonoBehaviour
         }
         
     }
+    #endregion
+
+
 }
