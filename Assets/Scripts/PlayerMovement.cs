@@ -13,8 +13,9 @@ public class PlayerMovement : MonoBehaviour
     public float side = 3;
     public Animator animator;
     public float jumpPower=2.2f;
-    public float jumpDur=0.9f;
+    //public float jumpDur=0.9f;
     private bool moving = false;
+    public bool jumping = false;
     
 
     // Start is called before the first frame update
@@ -70,9 +71,10 @@ public class PlayerMovement : MonoBehaviour
                 animator.SetBool("Right",true);
                 moving = true;
             }
-            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+            if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && !jumping)
             {
                 animator.SetTrigger("Jump");
+                jumping = true;
                 //Vector3 currentpos = new Vector3(transform.position);
                 //gameObject.transform.DOLocalJump(transform.localPosition,jumpPower,1,jumpDur);
                 //DOLocalJump(Vector3 endValue, float jumpPower, int numJumps, float duration, bool snapping)

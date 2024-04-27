@@ -19,6 +19,7 @@ public class PlayerManager : MonoBehaviour
 
     private GameManager gameManager;
     private ScoreManager scoreManager;
+    private PlayerMovement playerMove;
     public GameObject magnetRange;
 
     // Start is called before the first frame update
@@ -28,6 +29,7 @@ public class PlayerManager : MonoBehaviour
         uiManager = managerObject.GetComponent<UIManager>();
         gameManager = managerObject.GetComponent<GameManager>();
         scoreManager = managerObject.GetComponent<ScoreManager>();
+        playerMove = GetComponent<PlayerMovement>();
         //move = gameObject.GetComponent<PlayerMovement>();
         animator = gameObject.GetComponent<Animator>();
         
@@ -118,7 +120,15 @@ public class PlayerManager : MonoBehaviour
             
         }
     }
-
+    
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.collider.CompareTag("Ground"))
+        {
+            playerMove.jumping = false;
+        }
+    }
+    
     private void Death()
     {
         animator.SetTrigger("Death");
