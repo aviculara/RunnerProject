@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.UI;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -81,17 +82,18 @@ public class PlayerManager : MonoBehaviour
                 case Collectible.CollectibleType.cherry:
                     scoreManager.cherry = true;
                     other.gameObject.SetActive(false);
-                    uiManager.igUIcherry.SetActive(true);
+                    uiManager.igUIcherry.GetComponent<Image>().color = Color.white;
                     break;
                 case Collectible.CollectibleType.banana:
                     scoreManager.banana = true;
                     other.gameObject.SetActive(false);
-                    uiManager.igUIbanana.SetActive(true);
+                    uiManager.igUIbanana.GetComponent<Image>().color = Color.white;
                     break;
                 case Collectible.CollectibleType.orange:
                     scoreManager.orange = true;
                     other.gameObject.SetActive(false);
-                    uiManager.igUIorange.SetActive(true);
+                    uiManager.igUIorange.GetComponent<Image>().color = Color.white ;
+                    
                     break;
                 case Collectible.CollectibleType.watermelon:
                     watermelond = true;

@@ -37,9 +37,9 @@ public class UIManager : MonoBehaviour
         gameManager = gameObject.GetComponent<GameManager>();
         scoreManager = gameObject.GetComponent<ScoreManager>();
 
-        igUIcherry.SetActive(false);
-        igUIbanana.SetActive(false);
-        igUIorange.SetActive(false);
+        igUIcherry.GetComponent<Image>().color = Color.black; 
+        igUIbanana.GetComponent<Image>().color = Color.black;
+        igUIorange.GetComponent<Image>().color = Color.black;
 
     }
     void Start()
