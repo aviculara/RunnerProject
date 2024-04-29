@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public Positions position;
     public GameObject playerGroup;
     public GameManager gameManager;
+    public GameObject all;
     [Header("Editor Params")]
     public int speed = 10;
     public float side = 3;
@@ -42,7 +43,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!gameManager.gameInactive)
         {
-            playerGroup.transform.Translate(new Vector3(0, 0, 1) * Time.deltaTime * speed);
+            //playerGroup.transform.Translate(new Vector3(0, 0, 1) * Time.deltaTime * speed);
+            all.transform.Translate(-speed * Time.deltaTime * new Vector3(0, 0, 1));
             if ((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)) && position != Positions.onLeft && !moving)
             {
                 if (position == Positions.onMid)

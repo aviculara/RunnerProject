@@ -112,7 +112,7 @@ public class PlayerManager : MonoBehaviour
                     {
                         magnetRange.SetActive(true);
                         StartCoroutine(MagnetOff());
-                        print("turned on speher");
+                        
                     }
                     //destroy magnet
                     Destroy(other.gameObject);
@@ -125,6 +125,7 @@ public class PlayerManager : MonoBehaviour
     
     private void OnCollisionEnter(Collision collision)
     {
+        print(collision.gameObject.name);
         if(collision.collider.CompareTag("Ground"))
         {
             playerMove.jumping = false;
