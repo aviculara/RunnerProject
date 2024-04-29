@@ -9,11 +9,12 @@ TagManager:
   - Collectible
   - Ground
   - Elevation
+  - Piece
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - System
   - Water
   - UI
   - 

@@ -138,10 +138,8 @@ public class PlayerManager : MonoBehaviour
         }
         else if(collision.collider.CompareTag("Elevation"))
         {
-            //print("moving up");
-            print(mainCamera.name);
             //move camera up            
-            mainCamera.transform.DOLocalMoveY(mainCamera.transform.localPosition.y + elevationDist, 1f);
+            mainCamera.transform.DOLocalMoveY(mainCamera.transform.localPosition.y + elevationDist, 0.7f);
         }
     }
     
@@ -149,7 +147,8 @@ public class PlayerManager : MonoBehaviour
     {
         animator.SetTrigger("Death");
         gameManager.gameInactive = true;
-        Invoke("LosePanel", 2);
+        //Invoke("LosePanel", 2);
+        StartCoroutine(WinPanel());
     }
 
     private void Win()

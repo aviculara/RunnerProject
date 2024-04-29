@@ -56,7 +56,11 @@ public class PowerUp : MonoBehaviour
     IEnumerator LaterActivate(GameObject obj)
     {
         yield return new WaitForSeconds(powerDuration);
-        obj.SetActive(true);
+        if(obj != null)
+        {
+            obj.SetActive(true);
+        }
+        
     }
 
     IEnumerator StarFlash()
