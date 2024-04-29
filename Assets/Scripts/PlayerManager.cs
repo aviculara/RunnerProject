@@ -15,13 +15,17 @@ public class PlayerManager : MonoBehaviour
     public bool magnetOn = false;
     public GameObject shield;
     public GameObject explosionFX;
+    public GameObject mainCamera;
 
     public float magnetTime = 5f;
+    public float elevationDist = 5f;
 
     private GameManager gameManager;
     private ScoreManager scoreManager;
     private PlayerMovement playerMove;
+    private Transform camDefaultPos;
     public GameObject magnetRange;
+    
 
     // Start is called before the first frame update
     private void Awake()
@@ -33,6 +37,7 @@ public class PlayerManager : MonoBehaviour
         playerMove = GetComponent<PlayerMovement>();
         //move = gameObject.GetComponent<PlayerMovement>();
         animator = gameObject.GetComponent<Animator>();
+        camDefaultPos = mainCamera.transform;
         
     }
     void Start()
@@ -125,10 +130,18 @@ public class PlayerManager : MonoBehaviour
     
     private void OnCollisionEnter(Collision collision)
     {
-        print(collision.gameObject.name);
+        //print(collision.gameObject.name);
         if(collision.collider.CompareTag("Ground"))
         {
             playerMove.jumping = false;
+            //if camera was up, move it down
+        }
+        else if(collision.collider.CompareTag("Elevation"))
+        {
+            //print("moving up");
+            print(mainCamera.name);
+            //move camera up            
+            mainCamera.transform.DOLocalMoveY(mainCamera.transform.localPosition.y + elevationDist, 1f);
         }
     }
     

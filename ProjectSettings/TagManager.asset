@@ -8,6 +8,7 @@ TagManager:
   - Point
   - Collectible
   - Ground
+  - Elevation
   layers:
   - Default
   - TransparentFX
