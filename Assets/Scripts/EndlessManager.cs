@@ -47,7 +47,7 @@ public class EndlessManager : MonoBehaviour
             Transform posParent = newpiece.transform.Find("CollectiblePos");
             if (posParent != null)
             {
-                PlaceCollectibles(posParent,newParent);
+                //PlaceCollectibles(posParent,newParent);
             }
             
             Destroy(other.gameObject);
