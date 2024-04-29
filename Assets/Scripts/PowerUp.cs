@@ -17,6 +17,7 @@ public class PowerUp : MonoBehaviour
     void Start()
     {
         obstacles = GameObject.FindGameObjectsWithTag("Obstacle");
+        starIcon = GameObject.Find("StarParent");
         starIcon.SetActive(false);
 
     }

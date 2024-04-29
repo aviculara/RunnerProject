@@ -3568,6 +3568,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   piece: {fileID: 7936968033321871444, guid: 83c9bcd089f819d43bdbe96e49ab2709, type: 3}
   parent: {fileID: 365407044}
+  scoreManager: {fileID: 0}
+  strawb: {fileID: 0}
+  star: {fileID: 0}
+  magnet: {fileID: 0}
+  watermelon: {fileID: 0}
+  cherry: {fileID: 0}
+  banana: {fileID: 0}
+  orange: {fileID: 0}
 --- !u!65 &1119959511
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4128,7 +4136,7 @@ GameObject:
   - component: {fileID: 1200646733}
   - component: {fileID: 1200646732}
   m_Layer: 5
-  m_Name: Star back
+  m_Name: StarParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
