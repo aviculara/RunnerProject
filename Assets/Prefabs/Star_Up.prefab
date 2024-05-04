@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e1e61252fa8f6c49bc1ca51d8cebc69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sampleStrawb: {fileID: 0}
+  sampleStrawb: {fileID: 3503315835080002558, guid: 7e50acdff3d58b846ad78a88a784248c, type: 3}
   obstacles: []
   destroyParent: {fileID: 0}
   starIcon: {fileID: 0}
