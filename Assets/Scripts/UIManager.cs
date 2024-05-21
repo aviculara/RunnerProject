@@ -19,6 +19,7 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI finalScoreText;
 
     public GameObject igUIcherry, igUIbanana, igUIorange;
+    public GameObject mainCamera;
 
     private GameManager gameManager;
     private ScoreManager scoreManager;
@@ -26,7 +27,8 @@ public class UIManager : MonoBehaviour
     GameObject player;
     PlayerMovement move;
     PlayerManager pScript;
-    
+    Animator camAnimator;
+
     // Start is called before the first frame update
     private void Awake()
     {
@@ -36,6 +38,8 @@ public class UIManager : MonoBehaviour
         pScript = player.GetComponent<PlayerManager>();
         gameManager = gameObject.GetComponent<GameManager>();
         scoreManager = gameObject.GetComponent<ScoreManager>();
+
+        camAnimator = mainCamera.GetComponent<Animator>();
 
         igUIcherry.GetComponent<Image>().color = Color.black; 
         igUIbanana.GetComponent<Image>().color = Color.black;
@@ -47,7 +51,7 @@ public class UIManager : MonoBehaviour
         OpenPanel(startPanel);
         //Time.timeScale = 0; //animasyonlar da duruyor
         gameManager.gameInactive = true;
-        pScript.animator.SetBool("Idle", true);
+        //pScript.animator.SetBool("Idle", true);
         scoreText.text = 0.ToString();
         
         
@@ -65,7 +69,9 @@ public class UIManager : MonoBehaviour
         startPanel.SetActive(false);
         //Time.timeScale = 1;
         gameManager.gameInactive = false;
-        pScript.animator.SetBool("Idle", false);
+        //pScript.animator.SetBool("Idle", false);
+        pScript.animator.SetBool("GameStart", true);
+        camAnimator.SetBool("Start", true);
         StartCoroutine(scoreManager.ScoreUpdate());
     }
 

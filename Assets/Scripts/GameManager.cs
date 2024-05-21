@@ -21,4 +21,9 @@ public class GameManager : MonoBehaviour
             Application.Quit();
         }
     }
+
+    public void StartGame()
+    {
+        gameInactive = true;
+    }
 }

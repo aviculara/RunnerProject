@@ -41,7 +41,7 @@ public class EndlessManager : MonoBehaviour
         if(other.CompareTag("Piece"))
         {
             //print(other.transform.position);
-            Vector3 newpos = new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z + (3 * 40));
+            Vector3 newpos = new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z + (4 * 40));
             GameObject newpiece = Instantiate(piece, newpos, UnityEngine.Quaternion.identity, parent.transform);
             Transform newParent = newpiece.transform.Find("Collectibles");
             Transform posParent = newpiece.transform.Find("CollectiblePos");
