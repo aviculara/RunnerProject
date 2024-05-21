@@ -94,5 +94,9 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("Left", false);
     }
     
+    public void StartGame()
+    {
+        gameManager.StartGame();
+    }
 
 }

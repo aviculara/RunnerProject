@@ -20,6 +20,7 @@ public class UIManager : MonoBehaviour
 
     public GameObject igUIcherry, igUIbanana, igUIorange;
     public GameObject mainCamera;
+    public GameObject[] fruitsToEat;
 
     private GameManager gameManager;
     private ScoreManager scoreManager;
@@ -68,8 +69,9 @@ public class UIManager : MonoBehaviour
     {
         startPanel.SetActive(false);
         //Time.timeScale = 1;
-        gameManager.gameInactive = false;
+        //gameManager.gameInactive = false;
         //pScript.animator.SetBool("Idle", false);
+        StartCoroutine(EatFruit());
         pScript.animator.SetBool("GameStart", true);
         camAnimator.SetBool("Start", true);
         StartCoroutine(scoreManager.ScoreUpdate());
@@ -111,6 +113,17 @@ public class UIManager : MonoBehaviour
         multiplierText.text = "x 1";
         StartCoroutine(WriteFruitBonus());
         //multiplierText.gameObject.SetActive(false);
+    }
+
+    IEnumerator EatFruit()
+    {
+        yield return new WaitForSeconds(0.45f);
+        for (int i = 0; i< fruitsToEat.Length; i++)
+        {
+            fruitsToEat[i].SetActive(false);
+            yield return new WaitForSeconds(0.45f);
+        }
+        
     }
 
     IEnumerator WriteFruitBonus()
