@@ -97,6 +97,7 @@ public class PlayerMovement : MonoBehaviour
     public void StartGame()
     {
         gameManager.StartGame();
+        print("started");
     }
 
 }
