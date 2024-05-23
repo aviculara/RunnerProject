@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     public GameObject startPanel;
+    public GameObject inGamePanel;
     public GameObject losePanel;
     public GameObject winPanel;
     public TextMeshProUGUI scoreText;
@@ -50,6 +51,7 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         OpenPanel(startPanel);
+        inGamePanel.SetActive(false);
         //Time.timeScale = 0; //animasyonlar da duruyor
         gameManager.gameInactive = true;
         //pScript.animator.SetBool("Idle", true);
@@ -68,6 +70,7 @@ public class UIManager : MonoBehaviour
     public void TaptoStart()
     {
         startPanel.SetActive(false);
+        inGamePanel.SetActive(true);
         //Time.timeScale = 1;
         //gameManager.gameInactive = false;
         //pScript.animator.SetBool("Idle", false);
