@@ -5,12 +5,13 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public bool gameInactive = false;
+    private ScoreManager scoreManager;
 
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        scoreManager = gameObject.GetComponent<ScoreManager>();
     }
 
     // Update is called once per frame
@@ -25,5 +26,6 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         gameInactive = false;
+        StartCoroutine(scoreManager.ScoreUpdate());
     }
 }

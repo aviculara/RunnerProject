@@ -55,7 +55,7 @@ public class UIManager : MonoBehaviour
         //Time.timeScale = 0; //animasyonlar da duruyor
         gameManager.gameInactive = true;
         //pScript.animator.SetBool("Idle", true);
-        scoreText.text = 0.ToString();
+        scoreText.text = 0.ToString("00000");
         
         
     }
@@ -77,7 +77,7 @@ public class UIManager : MonoBehaviour
         StartCoroutine(EatFruit());
         pScript.animator.SetBool("GameStart", true);
         camAnimator.SetBool("Start", true);
-        StartCoroutine(scoreManager.ScoreUpdate());
+        
     }
 
     public void Restart()
