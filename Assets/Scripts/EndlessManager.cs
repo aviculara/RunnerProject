@@ -44,11 +44,12 @@ public class EndlessManager : MonoBehaviour
         if(other.CompareTag("Piece"))
         {
             int randomint = Random.Range(0, pieces.Length);
+            int randomRotation = Random.Range(0, 2);
             GameObject piece = pieces[randomint];
             //print(other.transform.position);
             Vector3 newpos = new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z + (5 * 40));
-            GameObject newpiece = Instantiate(piece, newpos, UnityEngine.Quaternion.identity, parent.transform);
-            print("instantiated " + piece.name + " at " + newpos);
+            Quaternion newRotation = Quaternion.Euler(0, 180 * randomRotation, 0);
+            GameObject newpiece = Instantiate(piece, newpos, newRotation, parent.transform);
             Transform newParent = newpiece.transform.Find("Collectibles");
             Transform posParent = newpiece.transform.Find("CollectiblePos");
             if (posParent != null)
