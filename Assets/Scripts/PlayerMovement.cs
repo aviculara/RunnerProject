@@ -10,14 +10,17 @@ public class PlayerMovement : MonoBehaviour
     public GameManager gameManager;
     public GameObject all;
     [Header("Editor Params")]
-    public int speed = 10;
-    public float side = 3;
-    public Animator animator;
-    public float jumpPower=2.2f;
+    [SerializeField] float speed = 5;
+    [SerializeField] float side = 3;    
+    [SerializeField] float jumpPower=2.2f;
+    [SerializeField] float acceleration;
+
     //public float jumpDur=0.9f;
     private bool moving = false;
     public bool jumping = false;
-    
+
+    Animator animator;
+
 
     // Start is called before the first frame update
     private void Awake()
@@ -97,7 +100,15 @@ public class PlayerMovement : MonoBehaviour
     public void StartGame()
     {
         gameManager.StartGame();
+        StartCoroutine(increaseSpeed());
         print("started");
+    }
+
+    IEnumerator increaseSpeed()
+    {
+        yield return new WaitForSeconds(1f);
+        speed += acceleration;
+        StartCoroutine(increaseSpeed());
     }
 
 }

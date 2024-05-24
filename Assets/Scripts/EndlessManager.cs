@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class EndlessManager : MonoBehaviour
 {
-    public GameObject piece;
+    //public GameObject piece;
     public GameObject parent;
     public ScoreManager scoreManager;
-    [Header("Collectibles")]
+
+    [SerializeField] GameObject[] pieces;
+
     public GameObject strawb; 
     public GameObject star, magnet, watermelon, cherry, banana, orange;
+
 
     // Start is called before the first frame update
     void Start()
@@ -40,9 +43,12 @@ public class EndlessManager : MonoBehaviour
         //print(other.gameObject.name);
         if(other.CompareTag("Piece"))
         {
+            int randomint = Random.Range(0, pieces.Length);
+            GameObject piece = pieces[randomint];
             //print(other.transform.position);
-            Vector3 newpos = new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z + (4 * 40));
+            Vector3 newpos = new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z + (5 * 40));
             GameObject newpiece = Instantiate(piece, newpos, UnityEngine.Quaternion.identity, parent.transform);
+            print("instantiated " + piece.name + " at " + newpos);
             Transform newParent = newpiece.transform.Find("Collectibles");
             Transform posParent = newpiece.transform.Find("CollectiblePos");
             if (posParent != null)
@@ -50,8 +56,9 @@ public class EndlessManager : MonoBehaviour
                 //PlaceCollectibles(posParent,newParent);
             }
             
-            Destroy(other.gameObject);
+            
         }
+        Destroy(other.gameObject);
     }
 
     private void PlaceCollectibles(Transform posParent, Transform newParent)
