@@ -45,6 +45,7 @@ public class ReadmeEditor : Editor {
 	[MenuItem("Help/Project Readme")]
 	static Readme SelectReadme() 
 	{
+		
 		var ids = AssetDatabase.FindAssets("Readme t:Readme");
 		if (ids.Length == 1)
 		{
@@ -56,7 +57,7 @@ public class ReadmeEditor : Editor {
 		}
 		else
 		{
-			Debug.Log("Couldn't find a readme");
+			//Debug.Log("Couldn't find a readme");
 			return null;
 		}
 	}

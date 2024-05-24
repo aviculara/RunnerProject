@@ -11,6 +11,8 @@ public class ScoreManager : MonoBehaviour
     public float timeSpeed = 0.25f;
     public int levelScore, increaseScoreAmount = 1;
     int strawbScore = 10;
+    public int levelStrawbs;
+
     public bool cherry = false;
     public bool banana = false;
     public bool orange = false;
@@ -54,7 +56,8 @@ public class ScoreManager : MonoBehaviour
 
     public void getStrawb()
     {
-        levelScore += strawbScore;
+        levelStrawbs++;
+        uiManager.strawbsText.text = levelStrawbs.ToString("000");
     }
 
     public void getMultiplier()

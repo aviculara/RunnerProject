@@ -112,12 +112,10 @@ public class PlayerManager : MonoBehaviour
 
                     break;
                 case Collectible.CollectibleType.magnet:
-                    print("picked up magnet");
                     if(!magnetOn)
                     {
                         magnetRange.SetActive(true);
                         StartCoroutine(MagnetOff());
-                        
                     }
                     //destroy magnet
                     Destroy(other.gameObject);

@@ -12,6 +12,7 @@ public class UIManager : MonoBehaviour
     public GameObject losePanel;
     public GameObject winPanel;
     public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI strawbsText;
 
     public GameObject cherrySprite;
     public GameObject bananaSprite;
@@ -56,6 +57,7 @@ public class UIManager : MonoBehaviour
         gameManager.gameInactive = true;
         //pScript.animator.SetBool("Idle", true);
         scoreText.text = 0.ToString("00000");
+        strawbsText.text = 0.ToString("000");
         
         
     }
