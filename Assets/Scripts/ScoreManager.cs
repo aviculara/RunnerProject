@@ -10,7 +10,7 @@ public class ScoreManager : MonoBehaviour
     
     public float timeSpeed = 0.25f;
     public int levelScore, increaseScoreAmount = 1;
-    int strawbScore = 10;
+    //int strawbScore = 10;
     public int levelStrawbs;
 
     public bool cherry = false;

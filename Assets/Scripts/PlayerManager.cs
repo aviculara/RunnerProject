@@ -25,6 +25,7 @@ public class PlayerManager : MonoBehaviour
     private PlayerMovement playerMove;
     private Transform camDefaultPos;
     public GameObject magnetRange;
+    public GameObject starRange;
     
 
     // Start is called before the first frame update
@@ -106,9 +107,12 @@ public class PlayerManager : MonoBehaviour
                     shield.SetActive(true);
                     break;
                 case Collectible.CollectibleType.star:
-                    PowerUp pwrStr = other.gameObject.GetComponent<PowerUp>();
-                    pwrStr.SeeknDestroy();
+                    //PowerUp pwrStr = other.gameObject.GetComponent<PowerUp>();
+                    //pwrStr.SeeknDestroy();
+                    starRange.SetActive(true);
+                    starRange.GetComponent<PowerUp>().StarCollected();
                     other.gameObject.GetComponent<MeshRenderer>().enabled = false;
+                    Destroy(other.gameObject);
 
                     break;
                 case Collectible.CollectibleType.magnet:

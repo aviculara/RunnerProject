@@ -6,6 +6,8 @@ public class Magnet : MonoBehaviour
 {
     public float coinSpeed = 5f;
     public GameObject sampleStrawberry;
+    public PlayerMovement playerMovement;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,8 +41,8 @@ public class Magnet : MonoBehaviour
         //give transform to other
         
     }
- 
-    
+
+
     /*
     private void OnTriggerEnter(Collider other)
     {
@@ -49,4 +51,9 @@ public class Magnet : MonoBehaviour
         Instantiate(sampleStrawberry, transform.position, Quaternion.identity);
     }
     */
+
+    private void OnEnable()
+    {
+        coinSpeed = playerMovement.speed + 3;
+    }
 }

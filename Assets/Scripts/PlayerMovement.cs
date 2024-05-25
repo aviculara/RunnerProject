@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public GameManager gameManager;
     public GameObject all;
     [Header("Editor Params")]
-    [SerializeField] float speed = 5;
+    public float speed = 5;
     [SerializeField] float side = 3;    
     [SerializeField] float jumpPower=2.2f;
     [SerializeField] float acceleration;
