@@ -19,6 +19,9 @@ public class PlayerMovement : MonoBehaviour
     private bool moving = false;
     public bool jumping = false;
 
+    private Tween jumpUpTween;
+    private Tween jumpDownTween;
+
     Animator animator;
 
 
@@ -83,8 +86,21 @@ public class PlayerMovement : MonoBehaviour
                 //Vector3 currentpos = new Vector3(transform.position);
                 //gameObject.transform.DOLocalJump(transform.localPosition,jumpPower,1,jumpDur);
                 //DOLocalJump(Vector3 endValue, float jumpPower, int numJumps, float duration, bool snapping)
-                gameObject.transform.DOLocalMoveY(transform.localPosition.y + jumpPower, 0.5f).SetEase(Ease.OutFlash);
-                gameObject.transform.DOLocalMoveY(transform.localPosition.y, 0.75f).SetDelay(0.5f).SetEase(Ease.InFlash);
+                jumpUpTween = gameObject.transform.DOLocalMoveY(transform.localPosition.y + jumpPower, 0.5f).SetEase(Ease.OutFlash);
+                jumpDownTween = gameObject.transform.DOLocalMoveY(transform.localPosition.y, 0.75f).SetDelay(0.5f).SetEase(Ease.InFlash);
+            }
+            if((Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow)) && jumping)
+            {
+                if(jumpUpTween != null)
+                {
+                    jumpUpTween.Kill();
+                }
+                if(jumpDownTween != null)
+                {
+                    jumpDownTween.Kill();
+                }
+                transform.DOMoveY(0.5f,0.25f);
+                //jumping = false;
             }
         }
     }
@@ -110,5 +126,74 @@ public class PlayerMovement : MonoBehaviour
         speed += acceleration;
         StartCoroutine(increaseSpeed());
     }
+
+    #region Swipe Functions
+    public void Jump()
+    {
+        if(!jumping && !gameManager.gameInactive)
+        {
+            animator.SetTrigger("Jump");
+            jumping = true;
+            //Vector3 currentpos = new Vector3(transform.position);
+            //gameObject.transform.DOLocalJump(transform.localPosition,jumpPower,1,jumpDur);
+            //DOLocalJump(Vector3 endValue, float jumpPower, int numJumps, float duration, bool snapping)
+            jumpUpTween = gameObject.transform.DOLocalMoveY(transform.localPosition.y + jumpPower, 0.5f).SetEase(Ease.OutFlash);
+            jumpDownTween = gameObject.transform.DOLocalMoveY(transform.localPosition.y, 0.75f).SetDelay(0.5f).SetEase(Ease.InFlash);
+        }
+    }
+
+    public void RightStrafe()
+    {
+        if(position != Positions.onRight && !moving && !gameManager.gameInactive)
+        {
+            if (position == Positions.onMid)
+            {
+                position = Positions.onRight;
+            }
+            else if (position == Positions.onLeft)
+            {
+                position = Positions.onMid;
+            }
+            transform.DOMoveX(transform.position.x + side, 0.25f).OnComplete(stopMove);
+            animator.SetBool("Right", true);
+            moving = true;
+        }
+    }
+
+    public void LeftStrafe()
+    {
+        if(position != Positions.onLeft && !moving && !gameManager.gameInactive)
+        {
+            if (position == Positions.onMid)
+            {
+                position = Positions.onLeft;
+            }
+            else if (position == Positions.onRight)
+            {
+                position = Positions.onMid;
+            }
+            transform.DOMoveX(transform.position.x - side, 0.25f).OnComplete(stopMove);
+            animator.SetBool("Left", true);
+            moving = true;
+        }
+    }
+
+    public void StopJump()
+    {
+        if(jumping && !gameManager.gameInactive)
+        {
+            if (jumpUpTween != null)
+            {
+                jumpUpTween.Kill();
+            }
+            if (jumpDownTween != null)
+            {
+                jumpDownTween.Kill();
+            }
+            transform.DOMoveY(0.5f, 0.25f);
+        }
+    }
+
+    #endregion
 
 }
