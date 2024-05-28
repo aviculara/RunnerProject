@@ -1216,7 +1216,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 315320923}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1498104313}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: ToggleMusic
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &315320923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6896,11 +6908,17 @@ MonoBehaviour:
   pausePanel: {fileID: 2026781981}
   scoreText: {fileID: 1123094599}
   strawbsText: {fileID: 1535288722}
+  multiplierText: {fileID: 336069575}
+  finalScoreText: {fileID: 1413109374}
   cherrySprite: {fileID: 868648572}
   bananaSprite: {fileID: 1741941962}
   orangeSprite: {fileID: 1085685912}
-  multiplierText: {fileID: 336069575}
-  finalScoreText: {fileID: 1413109374}
+  soundOn: {fileID: 21300000, guid: 8f9190f1a5ee6214383cc402858ee8f3, type: 3}
+  soundOff: {fileID: 21300000, guid: 9e2dc28492c4b454186d1bbdff766143, type: 3}
+  musicOn: {fileID: 21300000, guid: a600d8c3279eee04bafaddc002389cb5, type: 3}
+  musicOff: {fileID: 21300000, guid: 9e11141dee64dc04891d91ad947267c3, type: 3}
+  soundButton: {fileID: 1779619400}
+  musicButton: {fileID: 1006413661}
   igUIcherry: {fileID: 490731571}
   igUIbanana: {fileID: 939247187}
   igUIorange: {fileID: 1303895401}
@@ -6939,6 +6957,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameInactive: 0
+  playerStrawberries: 0
+  sound: 0
+  music: 0
 --- !u!114 &1498104316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9332,7 +9353,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1981340762}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1498104313}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: ToggleSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1981340762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9388,7 +9421,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2026781982
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9411,8 +9444,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.73168945}
-  m_SizeDelta: {x: -60, y: -457.7114}
+  m_AnchoredPosition: {x: 0, y: -26.293823}
+  m_SizeDelta: {x: -40, y: -406.5877}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2026781983
 MonoBehaviour:
@@ -9427,15 +9460,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 0.5271226, g: 0.6704181, b: 0.7028302, a: 0.5568628}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: a11d40d288273f348828f4875c18f0a6, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4

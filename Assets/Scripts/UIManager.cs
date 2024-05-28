@@ -7,22 +7,34 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    [Header("Panels")]
     public GameObject startPanel;
     public GameObject inGamePanel;
     public GameObject losePanel;
     public GameObject winPanel;
     public GameObject pausePanel;
 
+    [Header("Score Texts")]
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI strawbsText;
-
-    public GameObject cherrySprite;
-    public GameObject bananaSprite;
-    public GameObject orangeSprite;
     public TextMeshProUGUI multiplierText;
     public TextMeshProUGUI finalScoreText;
 
+    [Header("Sprites")]
+    public GameObject cherrySprite;
+    public GameObject bananaSprite;
+    public GameObject orangeSprite;
+
+    public Sprite soundOn;
+    public Sprite soundOff;
+    public Sprite musicOn;
+    public Sprite musicOff;
+
+    public Image soundButton, musicButton;
+
     public GameObject igUIcherry, igUIbanana, igUIorange;
+
+    [Header("Other Functions")]
     public GameObject mainCamera;
     public GameObject[] fruitsToEat;
 
@@ -58,13 +70,14 @@ public class UIManager : MonoBehaviour
     {
         OpenPanel(startPanel);
         inGamePanel.SetActive(false);
+        pausePanel.SetActive(false);
         //Time.timeScale = 0; //animasyonlar da duruyor
         gameManager.gameInactive = true;
         //pScript.animator.SetBool("Idle", true);
         scoreText.text = 0.ToString("00000");
         strawbsText.text = 0.ToString("000");
-        
-        
+        SoundIcon();
+        MusicIcon();
     }
 
     // Update is called once per frame
@@ -143,14 +156,69 @@ public class UIManager : MonoBehaviour
 
     IEnumerator EatFruit()
     {
-        yield return new WaitForSeconds(0.45f);
+        yield return new WaitForSeconds(0.40f);
         for (int i = 0; i< fruitsToEat.Length; i++)
         {
             fruitsToEat[i].SetActive(false);
-            yield return new WaitForSeconds(0.45f);
+            yield return new WaitForSeconds(0.40f);
         }
         
     }
+
+    #region Sound Buttons
+    private void SoundIcon()
+    {
+        if(gameManager.sound == 0)
+        {
+            soundButton.sprite = soundOff;
+        }
+        else
+        {
+            soundButton.sprite = soundOn;
+        }
+    }
+
+    public void ToggleSound()
+    {
+        if(gameManager.sound == 0)
+        {
+            gameManager.sound = 1;
+        }
+        else
+        {
+            gameManager.sound = 0;
+        }
+        PlayerPrefs.SetInt("Sound", gameManager.sound);
+        SoundIcon();
+    }
+
+    private void MusicIcon()
+    {
+        if (gameManager.music == 0)
+        {
+            musicButton.sprite = musicOff;
+        }
+        else
+        {
+            musicButton.sprite = musicOn;
+        }
+    }
+
+    public void ToggleMusic()
+    {
+        if (gameManager.music == 0)
+        {
+            gameManager.music = 1;
+        }
+        else
+        {
+            gameManager.music = 0;
+        }
+        PlayerPrefs.SetInt("Music", gameManager.music);
+        MusicIcon();
+    }
+
+    #endregion
 
     IEnumerator WriteFruitBonus()
     {
@@ -189,4 +257,5 @@ public class UIManager : MonoBehaviour
         finalScoreText.text = "Score: " + finalScore.ToString();
     }
 }
+
 

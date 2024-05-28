@@ -82,6 +82,7 @@ public class PlayerManager : MonoBehaviour
             {
                 case Collectible.CollectibleType.strawberry:
                     scoreManager.getStrawb();
+                    gameManager.AddStrawberry();
                     Destroy(other.gameObject);
                     
                     break;
