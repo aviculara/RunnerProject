@@ -11,6 +11,8 @@ public class UIManager : MonoBehaviour
     public GameObject inGamePanel;
     public GameObject losePanel;
     public GameObject winPanel;
+    public GameObject pausePanel;
+
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI strawbsText;
 
@@ -27,6 +29,9 @@ public class UIManager : MonoBehaviour
     private GameManager gameManager;
     private ScoreManager scoreManager;
     private float multiplierBonus=0.5f;
+
+    
+
     GameObject player;
     PlayerMovement move;
     PlayerManager pScript;
@@ -118,6 +123,22 @@ public class UIManager : MonoBehaviour
         multiplierText.text = "x 1";
         StartCoroutine(WriteFruitBonus());
         //multiplierText.gameObject.SetActive(false);
+    }
+
+    public void PausePanel()
+    {
+        if(gameManager.gameInactive && pausePanel.activeSelf)
+        {
+            gameManager.ResumeGame();
+            pausePanel.SetActive(false);
+            Time.timeScale = 1;
+        }
+        else if(!gameManager.gameInactive)
+        {
+            gameManager.PauseGame();
+            pausePanel.SetActive(true);
+            Time.timeScale = 0;
+        }
     }
 
     IEnumerator EatFruit()

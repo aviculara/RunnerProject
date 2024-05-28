@@ -28,4 +28,14 @@ public class GameManager : MonoBehaviour
         gameInactive = false;
         StartCoroutine(scoreManager.ScoreUpdate());
     }
+
+    public void PauseGame()
+    {
+        gameInactive = true; 
+    }
+
+    public void ResumeGame()
+    {
+        gameInactive = false;
+    }
 }
