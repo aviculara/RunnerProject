@@ -13,6 +13,7 @@ public class UIManager : MonoBehaviour
     public GameObject losePanel;
     public GameObject winPanel;
     public GameObject pausePanel;
+    public GameObject warningPanel;
 
     [Header("Score Texts")]
     public TextMeshProUGUI scoreText;
@@ -71,6 +72,7 @@ public class UIManager : MonoBehaviour
         OpenPanel(startPanel);
         inGamePanel.SetActive(false);
         pausePanel.SetActive(false);
+        warningPanel.SetActive(false);
         //Time.timeScale = 0; //animasyonlar da duruyor
         gameManager.gameInactive = true;
         //pScript.animator.SetBool("Idle", true);
@@ -103,6 +105,37 @@ public class UIManager : MonoBehaviour
     public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void PausePanel()
+    {
+        if (gameManager.gameInactive && pausePanel.activeSelf)
+        {
+            gameManager.ResumeGame();
+            pausePanel.SetActive(false);
+            Time.timeScale = 1;
+        }
+        else if (!gameManager.gameInactive)
+        {
+            gameManager.PauseGame();
+            pausePanel.SetActive(true);
+            Time.timeScale = 0;
+        }
+    }
+
+    public void HomeWarningPanel()
+    {
+        warningPanel.SetActive(true);
+    }
+
+    public void WarningYes()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void WarningNo()
+    {
+        warningPanel.SetActive(false);
     }
     #endregion
 
@@ -138,21 +171,6 @@ public class UIManager : MonoBehaviour
         //multiplierText.gameObject.SetActive(false);
     }
 
-    public void PausePanel()
-    {
-        if(gameManager.gameInactive && pausePanel.activeSelf)
-        {
-            gameManager.ResumeGame();
-            pausePanel.SetActive(false);
-            Time.timeScale = 1;
-        }
-        else if(!gameManager.gameInactive)
-        {
-            gameManager.PauseGame();
-            pausePanel.SetActive(true);
-            Time.timeScale = 0;
-        }
-    }
 
     IEnumerator EatFruit()
     {
