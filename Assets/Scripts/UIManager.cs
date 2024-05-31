@@ -69,6 +69,7 @@ public class UIManager : MonoBehaviour
     }
     void Start()
     {
+        Time.timeScale = 1;
         OpenPanel(startPanel);
         inGamePanel.SetActive(false);
         pausePanel.SetActive(false);
