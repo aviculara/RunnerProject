@@ -13,6 +13,7 @@ public class PlayerManager : MonoBehaviour
     public GameObject managerObject;
     public bool watermelond = false;
     public bool magnetOn = false;
+    public bool bananaOn = false;
     public GameObject shield;
     public GameObject explosionFX;
     public GameObject mainCamera;
@@ -26,7 +27,7 @@ public class PlayerManager : MonoBehaviour
     private Transform camDefaultPos;
     public GameObject magnetRange;
     public GameObject starRange;
-    
+    public GameObject bananaObject;
 
     // Start is called before the first frame update
     private void Awake()
@@ -39,6 +40,7 @@ public class PlayerManager : MonoBehaviour
         //move = gameObject.GetComponent<PlayerMovement>();
         animator = gameObject.GetComponent<Animator>();
         camDefaultPos = mainCamera.transform;
+        bananaObject.SetActive(false);
         
     }
     void Start()
@@ -54,7 +56,7 @@ public class PlayerManager : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Obstacle"))
+        if (other.CompareTag("Obstacle") && !bananaOn)
         {
             if(watermelond)
             {
@@ -84,14 +86,13 @@ public class PlayerManager : MonoBehaviour
                     scoreManager.getStrawb();
                     gameManager.AddStrawberry();
                     Destroy(other.gameObject);
-                    
                     break;
                 case Collectible.CollectibleType.cherry:
                     scoreManager.cherry = true;
                     other.gameObject.SetActive(false);
                     uiManager.igUIcherry.GetComponent<Image>().color = Color.white;
                     break;
-                case Collectible.CollectibleType.banana:
+                case Collectible.CollectibleType.pear:
                     scoreManager.banana = true;
                     other.gameObject.SetActive(false);
                     uiManager.igUIbanana.GetComponent<Image>().color = Color.white;
@@ -123,6 +124,13 @@ public class PlayerManager : MonoBehaviour
                         StartCoroutine(MagnetOff());
                     }
                     //destroy magnet
+                    Destroy(other.gameObject);
+
+                    break;
+                case Collectible.CollectibleType.banana:
+                    bananaObject.SetActive(true);
+                    bananaObject.GetComponent<HeadStart>().BananaCollected();
+                    bananaOn = true;
                     Destroy(other.gameObject);
 
                     break;

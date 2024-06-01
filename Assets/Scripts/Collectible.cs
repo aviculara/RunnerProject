@@ -22,9 +22,10 @@ public class Collectible : MonoBehaviour
         strawberry,
         watermelon,
         cherry,
-        banana,
+        pear,
         orange,
         star,
-        magnet
+        magnet,
+        banana
     }
 }
