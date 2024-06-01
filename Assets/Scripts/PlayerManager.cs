@@ -187,8 +187,11 @@ public class PlayerManager : MonoBehaviour
     IEnumerator ShieldOff(GameObject collidedObject)
     {
         yield return new WaitForSeconds(0.2f);
+        
         shield.SetActive(false);
         collidedObject.SetActive(false);
+        yield return new WaitForSeconds(0.5f);
+        explosionFX.SetActive(false);
     }
 
     IEnumerator MagnetOff()
