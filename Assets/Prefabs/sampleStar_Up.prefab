@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5856949338853368761}
   - component: {fileID: 3624115267645890566}
   m_Layer: 0
-  m_Name: Star_Up
+  m_Name: sampleStar_Up
   m_TagString: Collectible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

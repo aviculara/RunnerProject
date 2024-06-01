@@ -9,9 +9,9 @@ public class EndlessManager : MonoBehaviour
     public ScoreManager scoreManager;
 
     [SerializeField] GameObject[] pieces;
-
+    [SerializeField] List<GameObject> collectibles = new List<GameObject>();
     public GameObject strawb; 
-    public GameObject star, magnet, watermelon, cherry, banana, orange;
+    public GameObject star, magnet, watermelon, banana, cherry, pear, orange;
 
 
     // Start is called before the first frame update
@@ -54,7 +54,7 @@ public class EndlessManager : MonoBehaviour
             Transform posParent = newpiece.transform.Find("CollectiblePos");
             if (posParent != null)
             {
-                //PlaceCollectibles(posParent,newParent);
+                PlaceCollectibles(posParent,newParent);
             }
             
             
@@ -66,56 +66,68 @@ public class EndlessManager : MonoBehaviour
     {
         foreach (Transform childTransform in posParent)
         {
-            int rand = Random.Range(1, 100);
-            if(rand <=55)
-            {
-                Instantiate(strawb, childTransform.position, strawb.transform.rotation, newParent);
-            }
-            else if(rand <= 60)
-            {
-                if(scoreManager.cherry)
+            
+                int rand = Random.Range(1, 101);
+                if (rand <= 80)
+                {
+
+                }
+                else if (rand <= 90)
                 {
                     Instantiate(strawb, childTransform.position, strawb.transform.rotation, newParent);
                 }
+
+                //else if (rand <= 75)
+                //{
+                //    if (scoreManager.cherry)
+                //    {
+                //        Instantiate(strawb, childTransform.position, strawb.transform.rotation, newParent);
+                //    }
+                //    else
+                //    {
+                //        Instantiate(cherry, childTransform.position, cherry.transform.rotation, newParent);
+                //    }
+                //}
+                //else if (rand <= 80)
+                //{
+                //    if (scoreManager.banana)
+                //    {
+                //        Instantiate(strawb, childTransform.position, strawb.transform.rotation, newParent);
+                //    }
+                //    else
+                //    {
+                //        Instantiate(banana, childTransform.position, banana.transform.rotation, newParent);
+                //    }
+                //}
+                //else if (rand <= 85)
+                //{
+                //    if (scoreManager.orange)
+                //    {
+                //        Instantiate(strawb, childTransform.position, strawb.transform.rotation, newParent);
+                //    }
+                //    else
+                //    {
+                //        Instantiate(orange, childTransform.position, orange.transform.rotation, newParent);
+                //    }
+                //}
+                else if (rand <= 92)
+                {
+                    Instantiate(star, childTransform.position, star.transform.rotation, newParent);
+                }
+                else if (rand <= 95)
+                {
+                    Instantiate(magnet, childTransform.position, magnet.transform.rotation, newParent);
+                }
+                else if (rand <= 98)
+            {
+                Instantiate(banana, childTransform.position, banana.transform.rotation, newParent);
+            }
                 else
                 {
-                    Instantiate(cherry, childTransform.position, cherry.transform.rotation, newParent);
+                    Instantiate(watermelon, childTransform.position, watermelon.transform.rotation, newParent);
                 }
-            }
-            else if (rand <= 65)
-            {
-                if (scoreManager.banana)
-                {
-                    Instantiate(strawb, childTransform.position, strawb.transform.rotation, newParent);
-                }
-                else
-                {
-                    Instantiate(banana, childTransform.position, banana.transform.rotation, newParent);
-                }
-            }
-            else if (rand <= 70)
-            {
-                if (scoreManager.orange)
-                {
-                    Instantiate(strawb, childTransform.position, strawb.transform.rotation, newParent);
-                }
-                else
-                {
-                    Instantiate(orange, childTransform.position, orange.transform.rotation, newParent);
-                }
-            }
-            else if(rand <= 75)
-            {
-                Instantiate(star, childTransform.position, star.transform.rotation, newParent);
-            }
-            else if(rand <= 90)
-            {
-                Instantiate(magnet, childTransform.position, magnet.transform.rotation, newParent);
-            }
-            else
-            {
-                Instantiate(watermelon, childTransform.position, watermelon.transform.rotation, newParent);
-            }
+            
+            
         }
     }
     
