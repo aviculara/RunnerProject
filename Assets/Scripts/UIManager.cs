@@ -43,6 +43,7 @@ public class UIManager : MonoBehaviour
     private ScoreManager scoreManager;
     private float multiplierBonus=0.5f;
 
+    private bool firstStart = false;
     
 
     GameObject player;
@@ -81,19 +82,44 @@ public class UIManager : MonoBehaviour
         strawbsText.text = 0.ToString("000");
         SoundIcon();
         MusicIcon();
+        firstStart = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if(startPanel.activeSelf)
+            {
+                Application.Quit();
+            }
+            //else if(shoppanel)
+            else if(warningPanel.activeSelf)
+            {
+                WarningNo();                                                                                                        
+            }
+            else if (pausePanel.activeSelf)
+            {
+                HomeWarningPanel();
+            }
+            else
+            {
+                PausePanel();
+            }
+        }
+        if(firstStart && !gameManager.gameInactive)
+        {
+            inGamePanel.SetActive(true);
+            firstStart = false;
+        }
     }
 
     #region Button Functions
     public void TaptoStart()
     {
         startPanel.SetActive(false);
-        inGamePanel.SetActive(true);
+        //inGamePanel.SetActive(true);
         //Time.timeScale = 1;
         //gameManager.gameInactive = false;
         //pScript.animator.SetBool("Idle", false);
