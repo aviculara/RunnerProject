@@ -5,6 +5,7 @@ using UnityEngine;
 public class Magnet : MonoBehaviour
 {
     public float coinSpeed = 5f;
+    public float magnetTime = 5f;
     public GameObject sampleStrawberry;
     public PlayerMovement playerMovement;
 
@@ -52,8 +53,20 @@ public class Magnet : MonoBehaviour
     }
     */
 
+    public void MagnetPickup()
+    {
+        coinSpeed = playerMovement.speed + 10;
+    }
+
     private void OnEnable()
     {
-        coinSpeed = playerMovement.speed + 3;
+        //coinSpeed = playerMovement.speed + 10;
+    }
+    IEnumerator MagnetOff()
+    {
+        yield return new WaitForSeconds(magnetTime);
+        //magnetOn = false;
+        gameObject.SetActive(false);
+        print("its off");
     }
 }

@@ -14,6 +14,8 @@ public class UIManager : MonoBehaviour
     public GameObject winPanel;
     public GameObject pausePanel;
     public GameObject warningPanel;
+    public GameObject settingsPanel;
+    public GameObject shopPanel;
 
     [Header("Score Texts")]
     public TextMeshProUGUI scoreText;
@@ -31,7 +33,8 @@ public class UIManager : MonoBehaviour
     public Sprite musicOn;
     public Sprite musicOff;
 
-    public Image soundButton, musicButton;
+    //public Image soundButton, musicButton;
+    public Image[] soundButtons, musicButtons;
 
     public GameObject igUIcherry, igUIbanana, igUIorange;
 
@@ -164,19 +167,106 @@ public class UIManager : MonoBehaviour
     {
         warningPanel.SetActive(false);
     }
+
+    public void SettingsOpen()
+    {
+        OpenPanel(settingsPanel);
+    }
+
+    public void BackToMainMenu()
+    {
+        OpenPanel(startPanel);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
+    public void ShopOpen()
+    {
+        OpenPanel(shopPanel);
+    }
+
     #endregion
 
+    #region Sound Buttons
+    private void SoundIcon()
+    {
+        if (gameManager.sound == 0)
+        {
+            foreach (Image soundButton in soundButtons)
+            {
+                soundButton.sprite = soundOff;
+            }
+        }
+        else
+        {
+            foreach (Image soundButton in soundButtons)
+            {
+                soundButton.sprite = soundOn;
+            }
+        }
+    }
+
+    public void ToggleSound()
+    {
+        if (gameManager.sound == 0)
+        {
+            gameManager.sound = 1;
+        }
+        else
+        {
+            gameManager.sound = 0;
+        }
+        PlayerPrefs.SetInt("Sound", gameManager.sound);
+        SoundIcon();
+    }
+
+    private void MusicIcon()
+    {
+        if (gameManager.music == 0)
+        {
+            foreach (Image musicButton in musicButtons)
+            {
+                musicButton.sprite = musicOff;
+            }
+        }
+        else
+        {
+            foreach (Image musicButton in musicButtons)
+            {
+                musicButton.sprite = musicOn;
+            }
+        }
+    }
+
+    public void ToggleMusic()
+    {
+        if (gameManager.music == 0)
+        {
+            gameManager.music = 1;
+        }
+        else
+        {
+            gameManager.music = 0;
+        }
+        PlayerPrefs.SetInt("Music", gameManager.music);
+        MusicIcon();
+    }
+
+    #endregion
     void OpenPanel(GameObject panelObject)
     {
         startPanel.SetActive(false);
         losePanel.SetActive(false);
         winPanel.SetActive(false);
+        shopPanel.SetActive(false);
+        settingsPanel.SetActive(false);
         if(panelObject != null)
         {
             panelObject.SetActive(true);
         }
-            
-
     }
 
     public void LosePanel()
@@ -198,7 +288,6 @@ public class UIManager : MonoBehaviour
         //multiplierText.gameObject.SetActive(false);
     }
 
-
     IEnumerator EatFruit()
     {
         yield return new WaitForSeconds(0.40f);
@@ -209,61 +298,6 @@ public class UIManager : MonoBehaviour
         }
         
     }
-
-    #region Sound Buttons
-    private void SoundIcon()
-    {
-        if(gameManager.sound == 0)
-        {
-            soundButton.sprite = soundOff;
-        }
-        else
-        {
-            soundButton.sprite = soundOn;
-        }
-    }
-
-    public void ToggleSound()
-    {
-        if(gameManager.sound == 0)
-        {
-            gameManager.sound = 1;
-        }
-        else
-        {
-            gameManager.sound = 0;
-        }
-        PlayerPrefs.SetInt("Sound", gameManager.sound);
-        SoundIcon();
-    }
-
-    private void MusicIcon()
-    {
-        if (gameManager.music == 0)
-        {
-            musicButton.sprite = musicOff;
-        }
-        else
-        {
-            musicButton.sprite = musicOn;
-        }
-    }
-
-    public void ToggleMusic()
-    {
-        if (gameManager.music == 0)
-        {
-            gameManager.music = 1;
-        }
-        else
-        {
-            gameManager.music = 0;
-        }
-        PlayerPrefs.SetInt("Music", gameManager.music);
-        MusicIcon();
-    }
-
-    #endregion
 
     IEnumerator WriteFruitBonus()
     {
