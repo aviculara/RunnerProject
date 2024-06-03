@@ -5,9 +5,6 @@ using UnityEngine;
 public class Magnet : MonoBehaviour
 {
     public float coinSpeed = 5f;
-    public float magnetTime = 5f;
-    public GameObject sampleStrawberry;
-    public PlayerMovement playerMovement;
 
     // Start is called before the first frame update
     void Start()
@@ -29,9 +26,7 @@ public class Magnet : MonoBehaviour
         //print(other.tag);
         if (other.CompareTag("Collectible"))
         {
-            //print("we got em boys");
             Vector3 playerDirection =  - other.transform.position + transform.position;
-            //print(transform.position);
             
             other.transform.Translate(playerDirection.normalized * coinSpeed * Time.deltaTime , Space.World);
         }
@@ -53,20 +48,20 @@ public class Magnet : MonoBehaviour
     }
     */
 
-    public void MagnetPickup()
-    {
-        coinSpeed = playerMovement.speed + 10;
-    }
+    //public void MagnetPickup()
+    //{
+    //    coinSpeed = playerMovement.speed + 10;
+    //}
 
     private void OnEnable()
     {
         //coinSpeed = playerMovement.speed + 10;
     }
-    IEnumerator MagnetOff()
-    {
-        yield return new WaitForSeconds(magnetTime);
-        //magnetOn = false;
-        gameObject.SetActive(false);
-        print("its off");
-    }
+    //IEnumerator MagnetOff()
+    //{
+    //    yield return new WaitForSeconds(magnetTime);
+    //    //magnetOn = false;
+    //    gameObject.SetActive(false);
+    //    print("its off");
+    //}
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Collectible : MonoBehaviour
 {
     public CollectibleType ctype;
+
     // Start is called before the first frame update
     void Start()
     {

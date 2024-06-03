@@ -4504,9 +4504,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinSpeed: 5
-  magnetTime: 5
-  sampleStrawberry: {fileID: 5986095555794780789}
-  playerMovement: {fileID: 932183970}
 --- !u!135 &635658689
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -18462,6 +18459,10 @@ PrefabInstance:
     - target: {fileID: 7526848748880234146, guid: 04fda335f258c134389339a0479450d4, type: 3}
       propertyPath: m_Name
       value: Pickups
+      objectReference: {fileID: 0}
+    - target: {fileID: 8294367758972245116, guid: 04fda335f258c134389339a0479450d4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8344094535489787019, guid: 04fda335f258c134389339a0479450d4, type: 3}
       propertyPath: m_LocalPosition.x
