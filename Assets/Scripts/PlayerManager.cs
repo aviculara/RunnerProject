@@ -109,9 +109,7 @@ public class PlayerManager : MonoBehaviour
                     shield.SetActive(true);
                     break;
                 case Collectible.CollectibleType.star:
-                    starRange.SetActive(true);
-                    starRange.GetComponent<PowerUp>().StarCollected();
-                    other.gameObject.GetComponent<MeshRenderer>().enabled = false;
+                    powerManager.StarCollected();
                     Destroy(other.gameObject);
                     break;
                 case Collectible.CollectibleType.magnet:

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PowerUp : MonoBehaviour
+public class Star : MonoBehaviour
 {
     //public GameObject obstacleParent;
     public GameObject sampleStrawb;
@@ -33,7 +33,7 @@ public class PowerUp : MonoBehaviour
         
     }
 
-    #region Star
+    #region Old Star
     public void SeeknDestroy()
     {
         remainingDuration = powerDuration;
@@ -93,6 +93,38 @@ public class PowerUp : MonoBehaviour
         }
         
     }
+    IEnumerator LaterDestroyList()
+    {
+        yield return new WaitForSeconds(powerDuration);
+        foreach (GameObject strawb in createdStrawbs)
+        {
+            if (strawb != null)
+            {
+                Destroy(strawb);
+            }
+        }
+        createdStrawbs.Clear();
+    }
+
+    IEnumerator LaterActivateList()
+    {
+        yield return new WaitForSeconds(powerDuration);
+        foreach (GameObject obs in inactiveObstacles)
+        {
+            if (obs != null)
+            {
+                obs.SetActive(true);
+            }
+
+        }
+        inactiveObstacles.Clear();
+    }
+
+    IEnumerator LaterInactivateSelf()
+    {
+        yield return new WaitForSeconds(powerDuration);
+        gameObject.SetActive(false);
+    }
     #endregion
 
     private void OnTriggerEnter(Collider other)
@@ -107,8 +139,6 @@ public class PowerUp : MonoBehaviour
             inactiveObstacles.Add(obs);
             GameObject newStrawb = Instantiate(sampleStrawb, v3, sampleStrawb.transform.rotation, allParent);
             createdStrawbs.Add(newStrawb);
-            
-
         }
     }
 
@@ -116,39 +146,6 @@ public class PowerUp : MonoBehaviour
     {
         
         //powerup sure gostergeleri degisecek
-    }
-
-    IEnumerator LaterDestroyList()
-    {
-        yield return new WaitForSeconds(powerDuration);
-        foreach (GameObject strawb in createdStrawbs)
-        {
-            if(strawb != null)
-            {
-                Destroy(strawb);
-            }
-        }
-        createdStrawbs.Clear();
-    }
-
-    IEnumerator LaterActivateList()
-    {
-        yield return new WaitForSeconds(powerDuration);
-        foreach(GameObject obs in inactiveObstacles)
-        {
-            if(obs != null)
-            {
-                obs.SetActive(true);
-            }
-            
-        }
-        inactiveObstacles.Clear();
-    }
-
-    IEnumerator LaterInactivateSelf()
-    {
-        yield return new WaitForSeconds(powerDuration);
-        gameObject.SetActive(false);
     }
 
     public void StarCollected()

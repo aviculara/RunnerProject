@@ -28,6 +28,11 @@ public class PowerupManager : MonoBehaviour
     private Magnet magnetScript;
     private PlayerMovement playerMovement;
 
+    [Header("Star")]
+    public GameObject starObject;
+    private Star starScript;
+
+
     [Header("Icons")]
     public GameObject[] powerIcons;
     public Sprite magnetSprite;
@@ -43,6 +48,7 @@ public class PowerupManager : MonoBehaviour
         playerManager = mainFox.GetComponent<PlayerManager>();
         magnetScript = magnetObject.GetComponent<Magnet>();
         playerMovement = mainFox.GetComponent<PlayerMovement>();
+        starScript = starObject.GetComponent<Star>();
     }
 
     // Update is called once per frame
@@ -51,7 +57,7 @@ public class PowerupManager : MonoBehaviour
         
         for(int i = 0; i < activePowerups.Count; i++)
         {
-            //check if still active and subtract time
+            //set icons in order
             Collectible.CollectibleType activePowerup = activePowerups[i];
             GameObject powerIcon = powerIcons[i];
             
@@ -59,48 +65,97 @@ public class PowerupManager : MonoBehaviour
             switch (activePowerup)
             {
                 case Collectible.CollectibleType.banana:
-                    iconImage.sprite = bananaSprite;
-                    bananaTimeLeft -= Time.unscaledDeltaTime;
-                    if(bananaTimeLeft > 0)
+                    if(bananaTimeLeft>=0)
                     {
+                        iconImage.sprite = bananaSprite;
+                        powerIcon.GetComponent<Image>().fillAmount = bananaTimeLeft / bananaDuration;
                         powerIcon.SetActive(true);
+                        bananaActive = true;
                     }
-                    //fill
                     break;
                 case Collectible.CollectibleType.magnet:
-                    iconImage.sprite = magnetSprite;
-                    magnetTimeLeft -= Time.unscaledDeltaTime;
+                    if(magnetTimeLeft>=0)
+                    {
+                        iconImage.sprite = magnetSprite;
+                        powerIcon.GetComponent<Image>().fillAmount = magnetTimeLeft / magnetDuration;
+                        powerIcon.SetActive(true);
+                        magnetActive = true;
+                    }
                     break;
                 case Collectible.CollectibleType.star:
-                    iconImage.sprite = starSprite;
-                    starTimeLeft -= Time.unscaledDeltaTime;
+                    if(starTimeLeft>=0)
+                    {
+                        iconImage.sprite = starSprite;
+                        powerIcon.GetComponent<Image>().fillAmount = starTimeLeft / starDuration;
+                        powerIcon.SetActive(true);
+                        starActive = true;
+                    }
                     break;
             }
         }
         //subtract times after iterating through list
+        for (int i = activePowerups.Count - 1; i >=0  ; i--)
+        {
+            //check if still active and subtract time
+            Collectible.CollectibleType activePowerup = activePowerups[i];
+            GameObject powerIcon = powerIcons[i];
+
+            switch (activePowerup)
+            {
+                case Collectible.CollectibleType.banana:
+                    if (bananaTimeLeft < 0)
+                    {
+                        powerIcon.SetActive(false);
+                        activePowerups.RemoveAt(i);
+                        BananaEnd();
+                    }
+                    bananaTimeLeft -= Time.unscaledDeltaTime;
+                    break;
+                case Collectible.CollectibleType.magnet:
+                    if(magnetTimeLeft<0)
+                    {
+                        powerIcon.SetActive(false);
+                        activePowerups.RemoveAt(i);
+                        MagnetEnd();
+                    }
+                    magnetTimeLeft -= Time.unscaledDeltaTime;
+                    break;
+                case Collectible.CollectibleType.star:
+                    if(starTimeLeft<0)
+                    {
+                        powerIcon.SetActive(false);
+                        activePowerups.RemoveAt(i);
+                        //star end
+                    }
+                    starTimeLeft -= Time.unscaledDeltaTime;
+                    break;
+            }
+        }
 
     }
 
     public void BananaCollected()
     {
-
         print("banana start");
-        bananaObject.SetActive(true);
-        foxRenderer.SetActive(false);
-        bananaActive = true;
         bananaTimeLeft = bananaDuration;
-        playerManager.bananaOn = true;
-
-        Time.timeScale = 2.5f;
+        if (!bananaActive)
+        {
+            bananaObject.SetActive(true);
+            foxRenderer.SetActive(false);
+            Time.timeScale = 2.5f;
+            playerManager.bananaOn = true;
+            activePowerups.Add(Collectible.CollectibleType.banana);
+        }
+        bananaActive = true;
         //StartCoroutine(BananaTimer());
     }
 
-    private IEnumerator BananaTimer()
+    private void BananaEnd()
     {
-        yield return new WaitForSeconds(bananaDuration * 2.5f);
         foxRenderer.SetActive(true);
         bananaActive = false;
         playerManager.bananaOn = false;
+        bananaActive = false;
         Time.timeScale = 1;
         //mainFox.transform.Translate(mainFox.transform.position.x,            mainFox.transform.position.y + 4f, mainFox.transform.position.z);
         foxRB = mainFox.GetComponent<Rigidbody>();
@@ -109,19 +164,52 @@ public class PowerupManager : MonoBehaviour
         bananaObject.SetActive(false);
     }
 
+    private IEnumerator BananaTimer()
+    {
+        yield return new WaitForSeconds(bananaDuration * 2.5f);
+        
+    }
+
     public void MagnetCollected()
     {
-        magnetObject.SetActive(true);
+        print("magnet collected");
+        magnetTimeLeft = magnetDuration;
+        if (!magnetActive)
+        {
+            magnetObject.SetActive(true);
+            
+        }
         magnetScript.coinSpeed = playerMovement.speed + 10f;
-        StartCoroutine(MagnetTimer());
+        magnetActive = true;
+        //StartCoroutine(MagnetTimer());
+    }
+
+    private void MagnetEnd()
+    {
+        magnetObject.SetActive(false);
+        magnetActive = false;
+        print("magnet end");
     }
 
     IEnumerator MagnetTimer()
     {
         yield return new WaitForSeconds(magnetDuration);
         //magnetOn = false;
-        magnetObject.SetActive(false);
+        
         print("its off");
+    }
+
+    public void StarCollected()
+    {
+        print("star collected");
+        starTimeLeft = starDuration;
+        if(!starActive)
+        {
+            starObject.SetActive(true);
+        }
+        //StartCoroutine(LaterDestroyList());
+        //StartCoroutine(LaterActivateList());
+        //StartCoroutine(LaterInactivateSelf());
     }
 
 }
