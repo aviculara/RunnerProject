@@ -160,4 +160,28 @@ public class Star : MonoBehaviour
         StartCoroutine(LaterActivateList());
         StartCoroutine(LaterInactivateSelf());
     }
+
+    public void StarEnd()
+    {
+        //destroy the strawbs in the lists and clear list
+        foreach (GameObject strawb in createdStrawbs)
+        {
+            if (strawb != null)
+            {
+                Destroy(strawb);
+            }
+        }
+        createdStrawbs.Clear();
+        //set the obstacles back to active and clear list
+        foreach (GameObject obs in inactiveObstacles)
+        {
+            if (obs != null)
+            {
+                obs.SetActive(true);
+            }
+
+        }
+        inactiveObstacles.Clear();
+        //inactivated by powerup manager
+    }
 }

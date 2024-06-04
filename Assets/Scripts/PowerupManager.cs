@@ -49,6 +49,10 @@ public class PowerupManager : MonoBehaviour
         magnetScript = magnetObject.GetComponent<Magnet>();
         playerMovement = mainFox.GetComponent<PlayerMovement>();
         starScript = starObject.GetComponent<Star>();
+        foreach(GameObject powericon in powerIcons)
+        {
+            powericon.SetActive(false);
+        }
     }
 
     // Update is called once per frame
@@ -125,7 +129,7 @@ public class PowerupManager : MonoBehaviour
                     {
                         powerIcon.SetActive(false);
                         activePowerups.RemoveAt(i);
-                        //star end
+                        StarEnd();
                     }
                     starTimeLeft -= Time.unscaledDeltaTime;
                     break;
@@ -164,12 +168,6 @@ public class PowerupManager : MonoBehaviour
         bananaObject.SetActive(false);
     }
 
-    private IEnumerator BananaTimer()
-    {
-        yield return new WaitForSeconds(bananaDuration * 2.5f);
-        
-    }
-
     public void MagnetCollected()
     {
         print("magnet collected");
@@ -177,6 +175,7 @@ public class PowerupManager : MonoBehaviour
         if (!magnetActive)
         {
             magnetObject.SetActive(true);
+            activePowerups.Add(Collectible.CollectibleType.magnet);
             
         }
         magnetScript.coinSpeed = playerMovement.speed + 10f;
@@ -191,14 +190,6 @@ public class PowerupManager : MonoBehaviour
         print("magnet end");
     }
 
-    IEnumerator MagnetTimer()
-    {
-        yield return new WaitForSeconds(magnetDuration);
-        //magnetOn = false;
-        
-        print("its off");
-    }
-
     public void StarCollected()
     {
         print("star collected");
@@ -206,10 +197,16 @@ public class PowerupManager : MonoBehaviour
         if(!starActive)
         {
             starObject.SetActive(true);
+            activePowerups.Add(Collectible.CollectibleType.star);
         }
-        //StartCoroutine(LaterDestroyList());
-        //StartCoroutine(LaterActivateList());
-        //StartCoroutine(LaterInactivateSelf());
+    }
+
+    private void StarEnd()
+    {
+        starActive = false;
+        starScript.StarEnd();
+        starObject.SetActive(false);
+        print("star end");
     }
 
 }

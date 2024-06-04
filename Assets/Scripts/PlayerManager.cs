@@ -38,6 +38,7 @@ public class PlayerManager : MonoBehaviour
         gameManager = managerObject.GetComponent<GameManager>();
         scoreManager = managerObject.GetComponent<ScoreManager>();
         playerMove = GetComponent<PlayerMovement>();
+        powerManager = managerObject.GetComponent<PowerupManager>();
         //move = gameObject.GetComponent<PlayerMovement>();
         animator = gameObject.GetComponent<Animator>();
         camDefaultPos = mainCamera.transform;
