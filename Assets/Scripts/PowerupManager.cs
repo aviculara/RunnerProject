@@ -49,10 +49,7 @@ public class PowerupManager : MonoBehaviour
         magnetScript = magnetObject.GetComponent<Magnet>();
         playerMovement = mainFox.GetComponent<PlayerMovement>();
         starScript = starObject.GetComponent<Star>();
-        foreach(GameObject powericon in powerIcons)
-        {
-            powericon.SetActive(false);
-        }
+        ResetIcons();
     }
 
     // Update is called once per frame
@@ -111,6 +108,7 @@ public class PowerupManager : MonoBehaviour
                     {
                         powerIcon.SetActive(false);
                         activePowerups.RemoveAt(i);
+                        ResetIcons();
                         BananaEnd();
                     }
                     bananaTimeLeft -= Time.unscaledDeltaTime;
@@ -120,6 +118,7 @@ public class PowerupManager : MonoBehaviour
                     {
                         powerIcon.SetActive(false);
                         activePowerups.RemoveAt(i);
+                        ResetIcons();
                         MagnetEnd();
                     }
                     magnetTimeLeft -= Time.unscaledDeltaTime;
@@ -129,6 +128,7 @@ public class PowerupManager : MonoBehaviour
                     {
                         powerIcon.SetActive(false);
                         activePowerups.RemoveAt(i);
+                        ResetIcons();
                         StarEnd();
                     }
                     starTimeLeft -= Time.unscaledDeltaTime;
@@ -208,5 +208,13 @@ public class PowerupManager : MonoBehaviour
         starObject.SetActive(false);
         print("star end");
     }
+
+    private void ResetIcons()
+    {
+        foreach (GameObject powericon in powerIcons)
+        {
+            powericon.SetActive(false);
+        }
+    }    
 
 }
