@@ -49,11 +49,11 @@ public class GameManager : MonoBehaviour
         gameInactive = false;
     }
 
-    public void AddStrawberry(int amount=1)
-    {
-        playerStrawberries += amount;
-        PlayerPrefs.SetInt("Strawberries", playerStrawberries);
-    }
+    //public void AddStrawberry(int amount=1)
+    //{
+    //    playerStrawberries += amount;
+    //    PlayerPrefs.SetInt("Strawberries", playerStrawberries);
+    //}
 
     public void SetSound(int value)
     {

@@ -25,6 +25,7 @@ public class PlayerManager : MonoBehaviour
     private ScoreManager scoreManager;
     private PlayerMovement playerMove;
     private PowerupManager powerManager;
+    private ShopManager shopManager;
     private Transform camDefaultPos;
     public GameObject magnetRange;
     public GameObject starRange;
@@ -39,6 +40,7 @@ public class PlayerManager : MonoBehaviour
         scoreManager = managerObject.GetComponent<ScoreManager>();
         playerMove = GetComponent<PlayerMovement>();
         powerManager = managerObject.GetComponent<PowerupManager>();
+        shopManager = managerObject.GetComponent<ShopManager>();
         //move = gameObject.GetComponent<PlayerMovement>();
         animator = gameObject.GetComponent<Animator>();
         camDefaultPos = mainCamera.transform;
@@ -86,7 +88,7 @@ public class PlayerManager : MonoBehaviour
             {
                 case Collectible.CollectibleType.strawberry:
                     scoreManager.getStrawb();
-                    gameManager.AddStrawberry();
+                    shopManager.AddStrawberry();
                     Destroy(other.gameObject);
                     break;
                 case Collectible.CollectibleType.cherry:

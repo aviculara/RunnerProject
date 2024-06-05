@@ -18,10 +18,12 @@ public class ScoreManager : MonoBehaviour
     public bool banana = false;
     public bool orange = false;
     private GameManager gameManager;
+    private ShopManager shopManager;
 
     //private int speed;
     public PlayerMovement move;
     public PlayerManager playerManager;
+    
     //int multipliersCollected = 0;
     // Start is called before the first frame update
     private void Awake()
@@ -31,6 +33,7 @@ public class ScoreManager : MonoBehaviour
         move = player.GetComponent<PlayerMovement>();
         playerManager = player.GetComponent<PlayerManager>();
         gameManager = gameObject.GetComponent<GameManager>();
+        shopManager = GetComponent<ShopManager>();
         highscore = PlayerPrefs.GetInt("Highscore", 0);
     }
     void Start()
@@ -64,6 +67,7 @@ public class ScoreManager : MonoBehaviour
     public void getStrawb()
     {
         levelStrawbs++;
+        shopManager.AddStrawberry();
         uiManager.strawbsText.text = levelStrawbs.ToString("000");
     }
 
