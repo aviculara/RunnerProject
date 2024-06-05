@@ -17,6 +17,8 @@ public class ShopManager : MonoBehaviour
     [SerializeField] Image[] magnetBars;
     [SerializeField] Image[] starBars;
 
+
+    [SerializeField] Button bananaButton, magnetButton, starButton;
     [SerializeField] TextMeshProUGUI bananaSecondsText, magnetSecondsText, starSecondsText;
     [SerializeField] TextMeshProUGUI bananaPriceText, magnetPriceText, starPriceText;
 
@@ -69,30 +71,38 @@ public class ShopManager : MonoBehaviour
         }
     }
 
-    private void WritePrices(TextMeshProUGUI priceText = null, int level = -1)
+    private void WritePrices(TextMeshProUGUI priceText = null, Button button = null, int level = -1)
     {
-        if(priceText == null || level <0)
+        if( level <0)
         {
-            WritePrices(starPriceText, starLevel);
-            WritePrices(magnetPriceText, magnetLevel);
-            WritePrices(bananaPriceText, bananaLevel);
+            WritePrices(starPriceText, starButton, starLevel);
+            WritePrices(magnetPriceText, magnetButton, magnetLevel);
+            WritePrices(bananaPriceText, bananaButton, bananaLevel);
+        }
+        else if(priceText == null || button == null)
+        {
+            print("null object reference");
         }
         else
         {
             int price = prices[level];
             priceText.text = price.ToString();
-            ShowButtons(priceText.gameObject.GetComponentInParent<Button>(), level);          
+            ShowButtons(button, level);          
         }
     }
 
     private void ShowButtons(Button button = null, int level = -1)
     {
-        if (level < 0 || button == null)
+        if (level < 0)
         {
             //show all
-            ShowButtons(bananaPriceText.gameObject.GetComponentInParent<Button>(), bananaLevel);
-            ShowButtons(magnetPriceText.gameObject.GetComponentInParent<Button>(), magnetLevel);
-            ShowButtons(starPriceText.gameObject.GetComponentInParent<Button>(), starLevel);
+            ShowButtons(bananaButton, bananaLevel);
+            ShowButtons(magnetButton, magnetLevel);
+            ShowButtons(starButton, starLevel);
+        }
+        else if(button == null)
+        {
+            print("null object reference");
         }
         else
         {
@@ -110,11 +120,15 @@ public class ShopManager : MonoBehaviour
 
     private void WriteSeconds(TextMeshProUGUI secondsText = null, int level = -1)
     {
-        if (secondsText == null || level < 0)
+        if ( level < 0)
         {
             WriteSeconds(starSecondsText, starLevel);
             WriteSeconds(magnetSecondsText, magnetLevel);
             WriteSeconds(bananaSecondsText, bananaLevel);
+        }
+        else if(secondsText == null)
+        {
+            print("null object reference");
         }
         else
         {
@@ -141,7 +155,7 @@ public class ShopManager : MonoBehaviour
         SubtractStrawberry(prices[bananaLevel]);
         bananaLevel++;
         ShowBars(bananaBars, bananaLevel);
-        WritePrices(bananaPriceText, bananaLevel);
+        WritePrices(bananaPriceText, bananaButton, bananaLevel);
         WriteSeconds(bananaSecondsText, bananaLevel);
         ShowButtons();
     }
@@ -150,7 +164,7 @@ public class ShopManager : MonoBehaviour
         SubtractStrawberry(prices[magnetLevel]);
         magnetLevel++;
         ShowBars(magnetBars, magnetLevel);
-        WritePrices(magnetPriceText, magnetLevel);
+        WritePrices(magnetPriceText, magnetButton, magnetLevel);
         WriteSeconds(magnetSecondsText, magnetLevel);
         ShowButtons();
     }
@@ -159,7 +173,7 @@ public class ShopManager : MonoBehaviour
         SubtractStrawberry(prices[starLevel]);
         starLevel++;
         ShowBars(starBars, starLevel);
-        WritePrices(starPriceText, starLevel);
+        WritePrices(starPriceText, starButton, starLevel);
         WriteSeconds(starSecondsText, starLevel);
         ShowButtons();
     }
