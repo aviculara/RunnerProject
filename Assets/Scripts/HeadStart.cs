@@ -39,7 +39,7 @@ public class HeadStart : MonoBehaviour
         Time.timeScale = 1;
         //mainFox.transform.Translate(mainFox.transform.position.x,            mainFox.transform.position.y + 4f, mainFox.transform.position.z);
         foxRB = mainFox.GetComponent<Rigidbody>();
-        foxRB.AddForce(Vector3.up * 5, ForceMode.Impulse);
+        foxRB.AddForce(Vector3.up * 9, ForceMode.Impulse);
         print("banana end");
         gameObject.SetActive(false);
     }

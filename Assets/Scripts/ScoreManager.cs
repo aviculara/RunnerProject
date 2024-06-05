@@ -12,6 +12,7 @@ public class ScoreManager : MonoBehaviour
     public int levelScore, increaseScoreAmount = 1;
     //int strawbScore = 10;
     public int levelStrawbs;
+    public int highscore;
 
     public bool cherry = false;
     public bool banana = false;
@@ -30,10 +31,11 @@ public class ScoreManager : MonoBehaviour
         move = player.GetComponent<PlayerMovement>();
         playerManager = player.GetComponent<PlayerManager>();
         gameManager = gameObject.GetComponent<GameManager>();
+        highscore = PlayerPrefs.GetInt("Highscore", 0);
     }
     void Start()
     {
-        
+        uiManager.WriteHighscore(highscore);
     }
 
     // Update is called once per frame
@@ -48,6 +50,11 @@ public class ScoreManager : MonoBehaviour
         levelScore += increaseScoreAmount;
         uiManager.scoreText.text = levelScore.ToString("00000");
         uiManager.finalScoreText.text = "Score: " + levelScore.ToString();
+        if(levelScore > highscore)
+        {
+            highscore = levelScore;
+            PlayerPrefs.SetInt("Highscore", highscore);
+        }
         if(!gameManager.gameInactive)
         {
             StartCoroutine(ScoreUpdate());

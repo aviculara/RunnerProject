@@ -156,6 +156,7 @@ public class PlayerManager : MonoBehaviour
         //Camera.main.transform.DOLocalRotate(camFinalPos.localEulerAngles, 1);
         //Camera.main.transform.DOLocalMove(camFinalPos.localPosition, 1);
         Camera.main.GetComponent<Animator>().SetBool("Win", true);
+        uiManager.WriteHighscore(scoreManager.highscore);
         StartCoroutine(WinPanel());
 
     }

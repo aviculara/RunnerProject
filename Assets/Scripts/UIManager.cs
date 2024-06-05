@@ -22,6 +22,7 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI strawbsText;
     public TextMeshProUGUI multiplierText;
     public TextMeshProUGUI finalScoreText;
+    public TextMeshProUGUI highscoreText;
 
     [Header("Sprites")]
     public GameObject cherrySprite;
@@ -37,6 +38,7 @@ public class UIManager : MonoBehaviour
     public Image[] soundButtons, musicButtons;
 
     public GameObject igUIcherry, igUIbanana, igUIorange;
+    public GameObject newHighscoreText;
 
     [Header("Other Functions")]
     public GameObject mainCamera;
@@ -78,6 +80,7 @@ public class UIManager : MonoBehaviour
         inGamePanel.SetActive(false);
         pausePanel.SetActive(false);
         warningPanel.SetActive(false);
+        newHighscoreText.SetActive(false);
         //Time.timeScale = 0; //animasyonlar da duruyor
         gameManager.gameInactive = true;
         //pScript.animator.SetBool("Idle", true);
@@ -277,14 +280,8 @@ public class UIManager : MonoBehaviour
     public void WinPanel()
     {
         OpenPanel(winPanel);
-        /*
-        if(scoreManager.cherry || scoreManager.banana || scoreManager.orange)
-        {
-
-        }
-        */
         multiplierText.text = "x 1";
-        StartCoroutine(WriteFruitBonus());
+        //StartCoroutine(WriteFruitBonus());
         //multiplierText.gameObject.SetActive(false);
     }
 
@@ -297,6 +294,17 @@ public class UIManager : MonoBehaviour
             yield return new WaitForSeconds(0.40f);
         }
         
+    }
+
+    public void WriteHighscore(int score)
+    {
+        highscoreText.text = score.ToString("00000");
+        NewHighscore();
+    }
+
+    private void NewHighscore()
+    {
+        newHighscoreText.SetActive(true);
     }
 
     IEnumerator WriteFruitBonus()
