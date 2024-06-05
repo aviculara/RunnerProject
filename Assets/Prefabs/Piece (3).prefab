@@ -29,9 +29,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3875361284608877277}
-  - {fileID: 6397493684148118368}
-  - {fileID: 1415446243659908155}
   - {fileID: 5810971908774676711}
   - {fileID: 2122892955326239475}
   - {fileID: 1316770628519905507}
@@ -1223,6 +1220,9 @@ Transform:
   - {fileID: 5388119037136248511}
   - {fileID: 7401779628610617936}
   - {fileID: 1276936918703202651}
+  - {fileID: 3875361284608877277}
+  - {fileID: 6397493684148118368}
+  - {fileID: 1415446243659908155}
   m_Father: {fileID: 6849467310628510983}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1052341638102730832
@@ -1231,7 +1231,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 7632802429906952967}
+    m_TransformParent: {fileID: 670626016486494079}
     m_Modifications:
     - target: {fileID: 3465932256473706551, guid: 4578470b8a6cb23428251f1de3862b7f, type: 3}
       propertyPath: m_Name
@@ -1239,7 +1239,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3465932256473706551, guid: 4578470b8a6cb23428251f1de3862b7f, type: 3}
       propertyPath: m_TagString
-      value: Obstacle
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 3900101445257651606, guid: 4578470b8a6cb23428251f1de3862b7f, type: 3}
       propertyPath: m_IsTrigger
@@ -2177,7 +2177,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 7632802429906952967}
+    m_TransformParent: {fileID: 670626016486494079}
     m_Modifications:
     - target: {fileID: -7583405665013290831, guid: 2adb2e22202106844acc66e52119d1bf, type: 3}
       propertyPath: m_IsTrigger
@@ -2205,7 +2205,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6127019219090359848, guid: 2adb2e22202106844acc66e52119d1bf, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -17.9
+      value: -17.900002
       objectReference: {fileID: 0}
     - target: {fileID: 6127019219090359848, guid: 2adb2e22202106844acc66e52119d1bf, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2245,7 +2245,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6794906169169091730, guid: 2adb2e22202106844acc66e52119d1bf, type: 3}
       propertyPath: m_TagString
-      value: Obstacle
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2785,7 +2785,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 7632802429906952967}
+    m_TransformParent: {fileID: 670626016486494079}
     m_Modifications:
     - target: {fileID: 2651522690164226983, guid: 6b4d2aba0a6fb4f448d7c37f6991653e, type: 3}
       propertyPath: m_LocalScale.x
@@ -2849,7 +2849,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3424927567588630813, guid: 6b4d2aba0a6fb4f448d7c37f6991653e, type: 3}
       propertyPath: m_TagString
-      value: Obstacle
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 5480644433765630819, guid: 6b4d2aba0a6fb4f448d7c37f6991653e, type: 3}
       propertyPath: m_IsTrigger
