@@ -93,8 +93,11 @@ public class ShopManager : MonoBehaviour
         }
         else
         {
-            int price = prices[level];
-            priceText.text = price.ToString();
+            if(level<prices.Length)
+            {
+                int price = prices[level];
+                priceText.text = price.ToString();
+            }
             ShowButtons(button, level);          
         }
     }

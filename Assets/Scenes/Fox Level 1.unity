@@ -208,7 +208,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1498104313}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: WarningNo
+        m_MethodName: DeleteNo
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2008,7 +2008,7 @@ GameObject:
   - component: {fileID: 272937547}
   - component: {fileID: 272937546}
   m_Layer: 5
-  m_Name: Quit Button
+  m_Name: Delete Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2081,7 +2081,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1498104313}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: QuitGame
+        m_MethodName: DeleteWarning
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5887,7 +5887,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1498104313}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: WarningYes
+        m_MethodName: DeleteYes
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9146,6 +9146,7 @@ MonoBehaviour:
   pear: {fileID: 6573417987737368096}
   orange: {fileID: 8228728315519993458}
   powerupPercent: 9
+  strawbPercent: 60
   magnetPercent: 15
   starPercent: 15
   bananaPercent: 35
@@ -10874,7 +10875,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1315620606
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11934,7 +11935,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1411073544
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12669,6 +12670,7 @@ MonoBehaviour:
   warningPanel: {fileID: 2077451132}
   settingsPanel: {fileID: 1315620605}
   shopPanel: {fileID: 1411073543}
+  deleteWarningPanel: {fileID: 2023432095}
   scoreText: {fileID: 1123094599}
   strawbsText: {fileID: 1535288722}
   multiplierText: {fileID: 336069575}
@@ -12698,6 +12700,7 @@ MonoBehaviour:
   - {fileID: 2356379976325049687}
   - {fileID: 573624344978475886}
   - {fileID: 6020775702740978394}
+  getNewHighscore: 0
 --- !u!4 &1498104314
 Transform:
   m_ObjectHideFlags: 0

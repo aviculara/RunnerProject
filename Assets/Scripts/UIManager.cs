@@ -16,6 +16,7 @@ public class UIManager : MonoBehaviour
     public GameObject warningPanel;
     public GameObject settingsPanel;
     public GameObject shopPanel;
+    public GameObject deleteWarningPanel;
 
     [Header("Score Texts")]
     public TextMeshProUGUI scoreText;
@@ -49,7 +50,7 @@ public class UIManager : MonoBehaviour
     private float multiplierBonus=0.5f;
 
     private bool firstStart = false;
-    
+    public bool getNewHighscore = false;
 
     GameObject player;
     PlayerMovement move;
@@ -68,9 +69,9 @@ public class UIManager : MonoBehaviour
 
         camAnimator = mainCamera.GetComponent<Animator>();
 
-        igUIcherry.GetComponent<Image>().color = Color.black; 
-        igUIbanana.GetComponent<Image>().color = Color.black;
-        igUIorange.GetComponent<Image>().color = Color.black;
+        //igUIcherry.GetComponent<Image>().color = Color.black; 
+        //igUIbanana.GetComponent<Image>().color = Color.black;
+        //igUIorange.GetComponent<Image>().color = Color.black;
 
     }
     void Start()
@@ -80,6 +81,7 @@ public class UIManager : MonoBehaviour
         inGamePanel.SetActive(false);
         pausePanel.SetActive(false);
         warningPanel.SetActive(false);
+        getNewHighscore = false;
         newHighscoreText.SetActive(false);
         //Time.timeScale = 0; //animasyonlar da duruyor
         gameManager.gameInactive = true;
@@ -191,6 +193,23 @@ public class UIManager : MonoBehaviour
         OpenPanel(shopPanel);
     }
 
+    public void DeleteWarning()
+    {
+        deleteWarningPanel.SetActive(true);
+    }
+
+    public void DeleteYes()
+    {
+        PlayerPrefs.DeleteAll();
+        //BackToMainMenu();
+        //deleteWarningPanel.SetActive(false);
+        Restart();
+    }
+    public void DeleteNo()
+    {
+        deleteWarningPanel.SetActive(false);
+    }
+
     #endregion
 
     #region Sound Buttons
@@ -266,6 +285,7 @@ public class UIManager : MonoBehaviour
         winPanel.SetActive(false);
         shopPanel.SetActive(false);
         settingsPanel.SetActive(false);
+        deleteWarningPanel.SetActive(false);
         if(panelObject != null)
         {
             panelObject.SetActive(true);
@@ -281,6 +301,12 @@ public class UIManager : MonoBehaviour
     {
         OpenPanel(winPanel);
         multiplierText.text = "x 1";
+        if(getNewHighscore)
+        {
+            WriteHighscore(scoreManager.highscore);
+            newHighscoreText.SetActive(true);
+        }
+        
         //StartCoroutine(WriteFruitBonus());
         //multiplierText.gameObject.SetActive(false);
     }
@@ -299,12 +325,7 @@ public class UIManager : MonoBehaviour
     public void WriteHighscore(int score)
     {
         highscoreText.text = score.ToString("00000");
-        NewHighscore();
-    }
-
-    private void NewHighscore()
-    {
-        newHighscoreText.SetActive(true);
+        //NewHighscore();
     }
 
     IEnumerator WriteFruitBonus()

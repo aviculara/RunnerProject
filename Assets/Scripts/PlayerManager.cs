@@ -151,14 +151,13 @@ public class PlayerManager : MonoBehaviour
         StartCoroutine(WinPanel());
     }
 
-    private void Win()
+    private void Win() //unused
     {
         animator.SetTrigger("Win");
         gameManager.gameInactive = true;
         //Camera.main.transform.DOLocalRotate(camFinalPos.localEulerAngles, 1);
         //Camera.main.transform.DOLocalMove(camFinalPos.localPosition, 1);
         Camera.main.GetComponent<Animator>().SetBool("Win", true);
-        uiManager.WriteHighscore(scoreManager.highscore);
         StartCoroutine(WinPanel());
 
     }

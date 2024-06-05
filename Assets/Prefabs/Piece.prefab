@@ -2124,6 +2124,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pickups (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7526848748880234146, guid: 04fda335f258c134389339a0479450d4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8344094535489787019, guid: 04fda335f258c134389339a0479450d4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3
@@ -3101,6 +3105,10 @@ PrefabInstance:
     - target: {fileID: 7526848748880234146, guid: 04fda335f258c134389339a0479450d4, type: 3}
       propertyPath: m_Name
       value: Pickups
+      objectReference: {fileID: 0}
+    - target: {fileID: 7526848748880234146, guid: 04fda335f258c134389339a0479450d4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8344094535489787019, guid: 04fda335f258c134389339a0479450d4, type: 3}
       propertyPath: m_LocalPosition.x

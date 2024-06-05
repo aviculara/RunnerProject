@@ -57,6 +57,7 @@ public class ScoreManager : MonoBehaviour
         {
             highscore = levelScore;
             PlayerPrefs.SetInt("Highscore", highscore);
+            uiManager.getNewHighscore = true;
         }
         if(!gameManager.gameInactive)
         {

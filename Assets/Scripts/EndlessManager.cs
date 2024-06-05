@@ -15,6 +15,7 @@ public class EndlessManager : MonoBehaviour
 
     [Header("Chances")]
     public int powerupPercent;
+    public int strawbPercent;
     public int magnetPercent;
     public int starPercent;
     public int bananaPercent;
@@ -105,7 +106,7 @@ public class EndlessManager : MonoBehaviour
 
                 }
             }
-            else
+            else if(powerChance < strawbPercent + powerupPercent)
             {
                 Instantiate(strawb, childTransform.position, strawb.transform.rotation, newParent);
             }
