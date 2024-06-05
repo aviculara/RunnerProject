@@ -25,12 +25,18 @@ public class ShopManager : MonoBehaviour
     public float[] seconds = { 2.5f, 3f, 4f, 6f, 10f };
     public int[] prices = { 30, 50, 150, 400 };
 
+    PowerupManager powerupManager;
+
     // Start is called before the first frame update
     void Start()
     {
+        powerupManager = gameObject.GetComponent<PowerupManager>();
         bananaLevel = PlayerPrefs.GetInt("BananaLevel", 0);
+        powerupManager.bananaDuration = seconds[bananaLevel];
         magnetLevel = PlayerPrefs.GetInt("MagnetLevel", 0);
+        powerupManager.magnetDuration = seconds[magnetLevel];
         starLevel = PlayerPrefs.GetInt("StarLevel", 0);
+        powerupManager.magnetDuration = seconds[starLevel];
         totalStrawberries = PlayerPrefs.GetInt("TotalStrawberries", 0);
         strawberriesText.text = totalStrawberries.ToString();
         ShowBars();
@@ -47,7 +53,7 @@ public class ShopManager : MonoBehaviour
 
     private void ShowBars(Image[] barsList = null,int level = -1)
     {
-        if (barsList == null || level == -1)
+        if (level < 0)
         {
             ShowBars(bananaBars,bananaLevel);
             ShowBars(magnetBars,magnetLevel);
@@ -81,7 +87,9 @@ public class ShopManager : MonoBehaviour
         }
         else if(priceText == null || button == null)
         {
+#if UNITY_EDITOR
             print("null object reference");
+#endif
         }
         else
         {
@@ -102,7 +110,9 @@ public class ShopManager : MonoBehaviour
         }
         else if(button == null)
         {
+            #if UNITY_EDITOR
             print("null object reference");
+            #endif
         }
         else
         {
@@ -128,7 +138,9 @@ public class ShopManager : MonoBehaviour
         }
         else if(secondsText == null)
         {
+#if UNITY_EDITOR
             print("null object reference");
+#endif
         }
         else
         {
@@ -154,6 +166,8 @@ public class ShopManager : MonoBehaviour
     {
         SubtractStrawberry(prices[bananaLevel]);
         bananaLevel++;
+        PlayerPrefs.SetInt("BananaLevel", bananaLevel);
+        powerupManager.bananaDuration = seconds[bananaLevel];
         ShowBars(bananaBars, bananaLevel);
         WritePrices(bananaPriceText, bananaButton, bananaLevel);
         WriteSeconds(bananaSecondsText, bananaLevel);
@@ -163,6 +177,8 @@ public class ShopManager : MonoBehaviour
     {
         SubtractStrawberry(prices[magnetLevel]);
         magnetLevel++;
+        PlayerPrefs.SetInt("MagnetLevel", magnetLevel);
+        powerupManager.magnetDuration = seconds[magnetLevel];
         ShowBars(magnetBars, magnetLevel);
         WritePrices(magnetPriceText, magnetButton, magnetLevel);
         WriteSeconds(magnetSecondsText, magnetLevel);
@@ -172,6 +188,8 @@ public class ShopManager : MonoBehaviour
     {
         SubtractStrawberry(prices[starLevel]);
         starLevel++;
+        PlayerPrefs.SetInt("StarLevel", starLevel);
+        powerupManager.starDuration = seconds[starLevel];
         ShowBars(starBars, starLevel);
         WritePrices(starPriceText, starButton, starLevel);
         WriteSeconds(starSecondsText, starLevel);
