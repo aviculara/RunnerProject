@@ -20,7 +20,6 @@ public class AspectRatio : MonoBehaviour
 
             rect.x = 0;
             rect.y = (1f - scaleHeight) / 2f;
-
             camera.rect = rect;
         }
         else
@@ -33,7 +32,6 @@ public class AspectRatio : MonoBehaviour
             rect.height = 1f;
             rect.x = (1f - scaleWidth) / 2f;
             rect.y = 0;
-
             camera.rect = rect;
         }
     }
