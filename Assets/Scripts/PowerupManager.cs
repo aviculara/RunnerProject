@@ -15,6 +15,7 @@ public class PowerupManager : MonoBehaviour
     public bool bananaActive;
     public bool starActive;
 
+    public GameObject ghostFox;
     private PlayerManager playerManager;
 
     [Header("Banana Head Start")]
@@ -49,6 +50,7 @@ public class PowerupManager : MonoBehaviour
         magnetScript = magnetObject.GetComponent<Magnet>();
         playerMovement = mainFox.GetComponent<PlayerMovement>();
         starScript = starObject.GetComponent<Star>();
+        ghostFox.SetActive(false);
         ResetIcons();
     }
 
@@ -166,6 +168,7 @@ public class PowerupManager : MonoBehaviour
         foxRB.AddForce(Vector3.up * 5, ForceMode.Impulse);
         print("banana end");
         bananaObject.SetActive(false);
+        StartCoroutine(playerManager.InvulnerableFor(1.5f));
     }
 
     public void MagnetCollected()
@@ -207,6 +210,7 @@ public class PowerupManager : MonoBehaviour
         starScript.StarEnd();
         starObject.SetActive(false);
         print("star end");
+        StartCoroutine(playerManager.InvulnerableFor(1.5f));
     }
 
     private void ResetIcons()

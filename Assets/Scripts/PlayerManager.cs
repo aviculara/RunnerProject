@@ -14,6 +14,7 @@ public class PlayerManager : MonoBehaviour
     public bool watermelond = false;
     public bool magnetOn = false;
     public bool bananaOn = false;
+    public bool invulnerable = false;
     public GameObject shield;
     public GameObject explosionFX;
     public GameObject mainCamera;
@@ -60,7 +61,7 @@ public class PlayerManager : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Obstacle") && !bananaOn)
+        if (other.CompareTag("Obstacle") && !bananaOn && !invulnerable)
         {
             if(watermelond)
             {
@@ -183,4 +184,12 @@ public class PlayerManager : MonoBehaviour
         explosionFX.SetActive(false);
     }
 
+    public IEnumerator InvulnerableFor(float seconds)
+    {
+        invulnerable = true;
+        powerManager.ghostFox.SetActive(true);
+        yield return new WaitForSeconds(seconds);
+        invulnerable = false;
+        powerManager.ghostFox.SetActive(false);
+    }
 }
