@@ -22,7 +22,7 @@ public class ShopManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI bananaSecondsText, magnetSecondsText, starSecondsText;
     [SerializeField] TextMeshProUGUI bananaPriceText, magnetPriceText, starPriceText;
 
-    public float[] seconds = { 2.5f, 3f, 4f, 6f, 10f };
+    public float[] seconds = { 3f, 4f, 5f, 6f, 7f };
     public int[] prices = { 30, 50, 150, 400 };
 
     PowerupManager powerupManager;

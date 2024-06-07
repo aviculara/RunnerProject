@@ -168,7 +168,7 @@ public class PowerupManager : MonoBehaviour
         foxRB.AddForce(Vector3.up * 5, ForceMode.Impulse);
         print("banana end");
         bananaObject.SetActive(false);
-        StartCoroutine(playerManager.InvulnerableFor(1.5f));
+        playerManager.StartInvulnerableFor(1.5f);
     }
 
     public void MagnetCollected()
@@ -210,7 +210,7 @@ public class PowerupManager : MonoBehaviour
         starScript.StarEnd();
         starObject.SetActive(false);
         print("star end");
-        StartCoroutine(playerManager.InvulnerableFor(1.5f));
+        playerManager.StartInvulnerableFor(1.5f);
     }
 
     private void ResetIcons()

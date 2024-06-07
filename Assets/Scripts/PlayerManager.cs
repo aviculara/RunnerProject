@@ -32,6 +32,9 @@ public class PlayerManager : MonoBehaviour
     public GameObject starRange;
     public GameObject bananaObject;
 
+    private float invulnerableTimeLeft;
+
+
     // Start is called before the first frame update
     private void Awake()
     {
@@ -56,7 +59,15 @@ public class PlayerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(invulnerable == true)
+        {
+            if(invulnerableTimeLeft <=0)
+            {
+                invulnerable = false;
+                powerManager.ghostFox.SetActive(false);
+            }
+            invulnerableTimeLeft -= Time.unscaledDeltaTime;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -184,12 +195,13 @@ public class PlayerManager : MonoBehaviour
         explosionFX.SetActive(false);
     }
 
-    public IEnumerator InvulnerableFor(float seconds)
+    public void StartInvulnerableFor(float seconds)
     {
+        if(!bananaOn)
+        {
+            powerManager.ghostFox.SetActive(true);
+        }
+        invulnerableTimeLeft = seconds;
         invulnerable = true;
-        powerManager.ghostFox.SetActive(true);
-        yield return new WaitForSeconds(seconds);
-        invulnerable = false;
-        powerManager.ghostFox.SetActive(false);
     }
 }

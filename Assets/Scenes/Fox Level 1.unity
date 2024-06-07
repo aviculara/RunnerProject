@@ -12767,11 +12767,11 @@ MonoBehaviour:
   magnetPriceText: {fileID: 346040247}
   starPriceText: {fileID: 1191438935}
   seconds:
-  - 2.5
   - 3
   - 4
+  - 5
   - 6
-  - 10
+  - 7
   prices: 1e000000320000009600000090010000
 --- !u!1001 &1507723488
 PrefabInstance:

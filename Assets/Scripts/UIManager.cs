@@ -149,7 +149,7 @@ public class UIManager : MonoBehaviour
             gameManager.ResumeGame();
             pausePanel.SetActive(false);
             Time.timeScale = 1;
-            StartCoroutine(pScript.InvulnerableFor(1.5f));
+            pScript.StartInvulnerableFor(1.5f);
         }
         else if (!gameManager.gameInactive)
         {
