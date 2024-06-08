@@ -25,6 +25,8 @@ public class ShopManager : MonoBehaviour
     public float[] seconds = { 3f, 4f, 5f, 6f, 7f };
     public int[] prices = { 30, 50, 150, 400 };
 
+    public AudioSource powerupUpgradeSound;
+
     PowerupManager powerupManager;
 
     // Start is called before the first frame update
@@ -197,5 +199,10 @@ public class ShopManager : MonoBehaviour
         WritePrices(starPriceText, starButton, starLevel);
         WriteSeconds(starSecondsText, starLevel);
         ShowButtons();
+    }
+
+    public void PowerupUpgradeSound()
+    {
+        powerupUpgradeSound.Play();
     }
 }

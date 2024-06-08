@@ -19,7 +19,8 @@ public class PlayerManager : MonoBehaviour
     public GameObject explosionFX;
     public GameObject mainCamera;
 
-    public float magnetTime = 5f;
+    public AudioSource strawberrySound, powerupSound, crashSound, watermelonSound, backgroundMusic;
+
     public float elevationDist = 5f;
 
     private GameManager gameManager;
@@ -28,9 +29,6 @@ public class PlayerManager : MonoBehaviour
     private PowerupManager powerManager;
     private ShopManager shopManager;
     private Transform camDefaultPos;
-    public GameObject magnetRange;
-    public GameObject starRange;
-    public GameObject bananaObject;
 
     private float invulnerableTimeLeft;
 
@@ -47,9 +45,7 @@ public class PlayerManager : MonoBehaviour
         shopManager = managerObject.GetComponent<ShopManager>();
         //move = gameObject.GetComponent<PlayerMovement>();
         animator = gameObject.GetComponent<Animator>();
-        camDefaultPos = mainCamera.transform;
-        bananaObject.SetActive(false);
-        
+        camDefaultPos = mainCamera.transform;        
     }
     void Start()
     {
@@ -78,13 +74,14 @@ public class PlayerManager : MonoBehaviour
             {
                 watermelond = false;
                 explosionFX.SetActive(true);
-                //shield.SetActive(false);
-                //other.gameObject.SetActive(false);
                 StartCoroutine(ShieldOff(other.gameObject));
+                watermelonSound.Play();
             }
             else
             {
                 Death();
+                crashSound.Play();
+                backgroundMusic.Pause();
             }
             
         }
@@ -101,39 +98,47 @@ public class PlayerManager : MonoBehaviour
                 case Collectible.CollectibleType.strawberry:
                     scoreManager.getStrawb();
                     shopManager.AddStrawberry();
+                    strawberrySound.Play();
                     Destroy(other.gameObject);
                     break;
                 case Collectible.CollectibleType.cherry:
                     scoreManager.cherry = true;
                     other.gameObject.SetActive(false);
                     uiManager.igUIcherry.GetComponent<Image>().color = Color.white;
+                    powerupSound.Play();
                     break;
                 case Collectible.CollectibleType.pear:
                     scoreManager.banana = true;
                     other.gameObject.SetActive(false);
                     uiManager.igUIbanana.GetComponent<Image>().color = Color.white;
+                    powerupSound.Play();
                     break;
                 case Collectible.CollectibleType.orange:
                     scoreManager.orange = true;
                     other.gameObject.SetActive(false);
-                    uiManager.igUIorange.GetComponent<Image>().color = Color.white;                    
+                    uiManager.igUIorange.GetComponent<Image>().color = Color.white;
+                    powerupSound.Play();
                     break;
                 case Collectible.CollectibleType.watermelon:
                     watermelond = true;
                     other.gameObject.SetActive(false);
                     shield.SetActive(true);
+                    powerupSound.Play();
                     break;
                 case Collectible.CollectibleType.star:
                     powerManager.StarCollected();
                     Destroy(other.gameObject);
+                    powerupSound.Play();
                     break;
                 case Collectible.CollectibleType.magnet:
                     powerManager.MagnetCollected();
                     Destroy(other.gameObject);
+                    powerupSound.Play();
                     break;
                 case Collectible.CollectibleType.banana:                    
                     powerManager.BananaCollected();
                     Destroy(other.gameObject);
+                    powerupSound.Play();
                     break;
             }
             

@@ -16,6 +16,8 @@ public class PowerupManager : MonoBehaviour
     public bool starActive;
 
     public GameObject ghostFox;
+    public AudioSource tickingSound;
+    private bool tickingPlaying = false;
     private PlayerManager playerManager;
 
     [Header("Banana Head Start")]
@@ -51,6 +53,7 @@ public class PowerupManager : MonoBehaviour
         playerMovement = mainFox.GetComponent<PlayerMovement>();
         starScript = starObject.GetComponent<Star>();
         ghostFox.SetActive(false);
+        bananaObject.SetActive(false);
         ResetIcons();
     }
 
@@ -96,48 +99,62 @@ public class PowerupManager : MonoBehaviour
                     break;
             }
         }
-        //subtract times after iterating through list
-        for (int i = activePowerups.Count - 1; i >=0  ; i--)
+        if(Time.timeScale > 0)
         {
-            //check if still active and subtract time
-            Collectible.CollectibleType activePowerup = activePowerups[i];
-            GameObject powerIcon = powerIcons[i];
-
-            switch (activePowerup)
+            //subtract times after iterating through list
+            for (int i = activePowerups.Count - 1; i >= 0; i--)
             {
-                case Collectible.CollectibleType.banana:
-                    if (bananaTimeLeft < 0)
-                    {
-                        powerIcon.SetActive(false);
-                        activePowerups.RemoveAt(i);
-                        ResetIcons();
-                        BananaEnd();
-                    }
-                    bananaTimeLeft -= Time.unscaledDeltaTime;
-                    break;
-                case Collectible.CollectibleType.magnet:
-                    if(magnetTimeLeft<0)
-                    {
-                        powerIcon.SetActive(false);
-                        activePowerups.RemoveAt(i);
-                        ResetIcons();
-                        MagnetEnd();
-                    }
-                    magnetTimeLeft -= Time.unscaledDeltaTime;
-                    break;
-                case Collectible.CollectibleType.star:
-                    if(starTimeLeft<0)
-                    {
-                        powerIcon.SetActive(false);
-                        activePowerups.RemoveAt(i);
-                        ResetIcons();
-                        StarEnd();
-                    }
-                    starTimeLeft -= Time.unscaledDeltaTime;
-                    break;
+                //check if still active and subtract time
+                Collectible.CollectibleType activePowerup = activePowerups[i];
+                GameObject powerIcon = powerIcons[i];
+
+                switch (activePowerup)
+                {
+                    case Collectible.CollectibleType.banana:                        
+                        if (bananaTimeLeft < 0)
+                        {
+                            powerIcon.SetActive(false);
+                            activePowerups.RemoveAt(i);
+                            ResetIcons();
+                            BananaEnd();
+                        }
+                        else if(bananaTimeLeft < 1)
+                        {
+                            PlayTicking();
+                        }
+                        bananaTimeLeft -= Time.unscaledDeltaTime;
+                        break;
+                    case Collectible.CollectibleType.magnet:
+                        if (magnetTimeLeft < 0)
+                        {
+                            powerIcon.SetActive(false);
+                            activePowerups.RemoveAt(i);
+                            ResetIcons();
+                            MagnetEnd();
+                        }
+                        else if (magnetTimeLeft < 1)
+                        {
+                            PlayTicking();
+                        }
+                        magnetTimeLeft -= Time.unscaledDeltaTime;
+                        break;
+                    case Collectible.CollectibleType.star:
+                        if (starTimeLeft < 0)
+                        {
+                            powerIcon.SetActive(false);
+                            activePowerups.RemoveAt(i);
+                            ResetIcons();
+                            StarEnd();
+                        }
+                        else if (starTimeLeft < 1)
+                        {
+                            PlayTicking();
+                        }
+                        starTimeLeft -= Time.unscaledDeltaTime;
+                        break;
+                }
             }
         }
-
     }
 
     public void BananaCollected()
@@ -148,7 +165,7 @@ public class PowerupManager : MonoBehaviour
         {
             bananaObject.SetActive(true);
             foxRenderer.SetActive(false);
-            Time.timeScale = 2.5f;
+            Time.timeScale = 2f;
             playerManager.bananaOn = true;
             activePowerups.Add(Collectible.CollectibleType.banana);
         }
@@ -221,4 +238,20 @@ public class PowerupManager : MonoBehaviour
         }
     }    
 
+    private void PlayTicking()
+    {
+        if(!tickingPlaying)
+        {
+            tickingSound.Play();
+            tickingPlaying = true;
+            StartCoroutine(StopTicking());
+        }
+        
+    }
+
+    IEnumerator StopTicking()
+    {
+        yield return new WaitForSecondsRealtime(1f);
+        tickingPlaying = false;
+    }
 }

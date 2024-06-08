@@ -40,6 +40,7 @@ public class UIManager : MonoBehaviour
 
     public GameObject igUIcherry, igUIbanana, igUIorange;
     public GameObject newHighscoreText;
+    public AudioSource buttonSound,strawberrySound;
 
     [Header("Other Functions")]
     public GameObject mainCamera;
@@ -312,12 +313,18 @@ public class UIManager : MonoBehaviour
         //multiplierText.gameObject.SetActive(false);
     }
 
+    public void ButtonSound()
+    {
+        buttonSound.Play();
+    }
+
     IEnumerator EatFruit()
     {
         yield return new WaitForSeconds(0.40f);
         for (int i = 0; i< fruitsToEat.Length; i++)
         {
             fruitsToEat[i].SetActive(false);
+            strawberrySound.Play();
             yield return new WaitForSeconds(0.40f);
         }
         

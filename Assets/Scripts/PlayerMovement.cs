@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject playerGroup;
     public GameManager gameManager;
     public GameObject all;
+    public AudioSource jumpSound;
     [Header("Editor Params")]
     public float speed = 5;
     [SerializeField] float side = 3;    
@@ -81,6 +82,7 @@ public class PlayerMovement : MonoBehaviour
             }
             if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && !jumping)
             {
+                jumpSound.Play();
                 animator.SetTrigger("Jump");
                 jumping = true;
                 //Vector3 currentpos = new Vector3(transform.position);
@@ -132,6 +134,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if(!jumping && !gameManager.gameInactive)
         {
+            jumpSound.Play();
             animator.SetTrigger("Jump");
             jumping = true;
             //Vector3 currentpos = new Vector3(transform.position);
