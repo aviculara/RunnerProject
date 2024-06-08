@@ -87,7 +87,7 @@ public class UIManager : MonoBehaviour
         //Time.timeScale = 0; //animasyonlar da duruyor
         gameManager.gameInactive = true;
         //pScript.animator.SetBool("Idle", true);
-        scoreText.text = 0.ToString("00000");
+        scoreText.text = 0.ToString("0000");
         strawbsText.text = 0.ToString("000");
         SoundIcon();
         MusicIcon();
@@ -316,7 +316,7 @@ public class UIManager : MonoBehaviour
 
     public void WriteHighscore(int score)
     {
-        highscoreText.text = score.ToString("00000");
+        highscoreText.text = score.ToString("0000");
         //NewHighscore();
     }
 

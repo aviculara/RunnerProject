@@ -19,10 +19,11 @@ public class ScoreManager : MonoBehaviour
     public bool orange = false;
     private GameManager gameManager;
     private ShopManager shopManager;
-
+    private bool halved = false;
     //private int speed;
     public PlayerMovement move;
     public PlayerManager playerManager;
+    public EndlessManager endlessManager;
     
     //int multipliersCollected = 0;
     // Start is called before the first frame update
@@ -51,7 +52,12 @@ public class ScoreManager : MonoBehaviour
     {
         yield return new WaitForSeconds(timeSpeed);
         levelScore += increaseScoreAmount;
-        uiManager.scoreText.text = levelScore.ToString("00000");
+        if(!halved && levelScore > 600)
+        {
+            endlessManager.powerupPercent /= 2;
+            halved = true;
+        }
+        uiManager.scoreText.text = levelScore.ToString("0000");
         uiManager.finalScoreText.text = "Score: " + levelScore.ToString();
         if(levelScore > highscore)
         {

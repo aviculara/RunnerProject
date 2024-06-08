@@ -38,7 +38,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2146,9 +2145,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 79180f511d89441b9aa23ccae1992fe0, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 10ca9a5b64fd9284abc6d4487085c44e, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.25
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -4141,90 +4140,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4804750538525168941, guid: c8e0001d3d8526c4899e0829cbba0842, type: 3}
   m_PrefabInstance: {fileID: 471528243376830166}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &486353940
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 486353942}
-  - component: {fileID: 486353941}
-  m_Layer: 0
-  m_Name: Default_cartoonish_forest_skybox_for_unity_0
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!212 &486353941
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 486353940}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 09dd318a9ad8e03478dd0070a3af8981, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 9.12, y: 5.12}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
---- !u!4 &486353942
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 486353940}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0.24188481, y: 0.46590042, z: -0.13407893, w: 0.8405067}
-  m_LocalPosition: {x: 208.9253, y: 144.35497, z: -849.8181}
-  m_LocalScale: {x: 41.695198, y: 41.6952, z: 41.695198}
-  m_ConstrainProportionsScale: 1
-  m_Children: []
-  m_Father: {fileID: 1155494908}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &490731571
 GameObject:
   m_ObjectHideFlags: 0
@@ -9896,7 +9811,7 @@ MonoBehaviour:
   cherry: {fileID: 9111162133792433945}
   pear: {fileID: 6573417987737368096}
   orange: {fileID: 8228728315519993458}
-  powerupPercent: 9
+  powerupPercent: 6
   strawbPercent: 60
   magnetPercent: 15
   starPercent: 15
@@ -10199,7 +10114,6 @@ RectTransform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 530174879}
-  - {fileID: 486353942}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -12851,7 +12765,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1411073544
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13706,6 +13620,7 @@ MonoBehaviour:
   orange: 0
   move: {fileID: 0}
   playerManager: {fileID: 0}
+  endlessManager: {fileID: 1119959510}
 --- !u!114 &1498104317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13788,7 +13703,7 @@ MonoBehaviour:
   - 5
   - 6
   - 7
-  prices: 1e000000320000009600000090010000
+  prices: 960000002c010000f4010000e8030000
   powerupUpgradeSound: {fileID: 66287144}
 --- !u!1001 &1507723488
 PrefabInstance:

@@ -21,7 +21,6 @@ public class EndlessManager : MonoBehaviour
     public int bananaPercent;
     public int watermelonPercent;
 
-
     // Start is called before the first frame update
     void Start()
     {

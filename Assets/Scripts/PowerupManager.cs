@@ -221,7 +221,7 @@ public class PowerupManager : MonoBehaviour
         starActive = false;
         starScript.StarEnd();
         starObject.SetActive(false);
-        playerManager.StartInvulnerableFor(1.5f);
+        //playerManager.StartInvulnerableFor(1.5f);
     }
 
     private void ResetIcons()

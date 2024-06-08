@@ -133,12 +133,12 @@ public class Star : MonoBehaviour
 
         if(obs.CompareTag("Obstacle"))
         {
-            Vector3 v3 = new Vector3(obs.transform.position.x, 1.4f,
+            Vector3 v3 = new Vector3(Mathf.Clamp(obs.transform.position.x,-3,3), 1.4f,
                 obs.transform.position.z);
             obs.SetActive(false);
-            inactiveObstacles.Add(obs);
+            //inactiveObstacles.Add(obs);
             GameObject newStrawb = Instantiate(sampleStrawb, v3, sampleStrawb.transform.rotation, allParent);
-            createdStrawbs.Add(newStrawb);
+            //createdStrawbs.Add(newStrawb);
         }
     }
 
@@ -163,24 +163,24 @@ public class Star : MonoBehaviour
 
     public void StarEnd()
     {
-        //destroy the strawbs in the lists and clear list
-        foreach (GameObject strawb in createdStrawbs)
-        {
-            if (strawb != null)
-            {
-                Destroy(strawb);
-            }
-        }
+        ////destroy the strawbs in the lists and clear list
+        //foreach (GameObject strawb in createdStrawbs)
+        //{
+        //    if (strawb != null)
+        //    {
+        //        Destroy(strawb);
+        //    }
+        //}
         createdStrawbs.Clear();
         //set the obstacles back to active and clear list
-        foreach (GameObject obs in inactiveObstacles)
-        {
-            if (obs != null)
-            {
-                obs.SetActive(true);
-            }
+        //foreach (GameObject obs in inactiveObstacles)
+        //{
+        //    if (obs != null)
+        //    {
+        //        obs.SetActive(true);
+        //    }
 
-        }
+        //}
         inactiveObstacles.Clear();
         //inactivated by powerup manager
     }
