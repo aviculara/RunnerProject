@@ -119,7 +119,6 @@ public class PlayerMovement : MonoBehaviour
     {
         gameManager.StartGame();
         StartCoroutine(increaseSpeed());
-        print("started");
     }
 
     IEnumerator increaseSpeed()

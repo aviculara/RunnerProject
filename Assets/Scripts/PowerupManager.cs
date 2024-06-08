@@ -159,7 +159,6 @@ public class PowerupManager : MonoBehaviour
 
     public void BananaCollected()
     {
-        print("banana start");
         bananaTimeLeft = bananaDuration;
         if (!bananaActive)
         {
@@ -183,14 +182,12 @@ public class PowerupManager : MonoBehaviour
         //mainFox.transform.Translate(mainFox.transform.position.x,            mainFox.transform.position.y + 4f, mainFox.transform.position.z);
         foxRB = mainFox.GetComponent<Rigidbody>();
         foxRB.AddForce(Vector3.up * 5, ForceMode.Impulse);
-        print("banana end");
         bananaObject.SetActive(false);
         playerManager.StartInvulnerableFor(1.5f);
     }
 
     public void MagnetCollected()
     {
-        print("magnet collected");
         magnetTimeLeft = magnetDuration;
         if (!magnetActive)
         {
@@ -207,12 +204,10 @@ public class PowerupManager : MonoBehaviour
     {
         magnetObject.SetActive(false);
         magnetActive = false;
-        print("magnet end");
     }
 
     public void StarCollected()
     {
-        print("star collected");
         starTimeLeft = starDuration;
         if(!starActive)
         {
@@ -226,7 +221,6 @@ public class PowerupManager : MonoBehaviour
         starActive = false;
         starScript.StarEnd();
         starObject.SetActive(false);
-        print("star end");
         playerManager.StartInvulnerableFor(1.5f);
     }
 

@@ -235,15 +235,7 @@ public class UIManager : MonoBehaviour
 
     public void ToggleSound()
     {
-        if (gameManager.sound == 0)
-        {
-            gameManager.sound = 1;
-        }
-        else
-        {
-            gameManager.sound = 0;
-        }
-        PlayerPrefs.SetInt("Sound", gameManager.sound);
+        gameManager.ToggleSound();
         SoundIcon();
     }
 
@@ -267,15 +259,7 @@ public class UIManager : MonoBehaviour
 
     public void ToggleMusic()
     {
-        if (gameManager.music == 0)
-        {
-            gameManager.music = 1;
-        }
-        else
-        {
-            gameManager.music = 0;
-        }
-        PlayerPrefs.SetInt("Music", gameManager.music);
+        gameManager.ToggleMusic();
         MusicIcon();
     }
 

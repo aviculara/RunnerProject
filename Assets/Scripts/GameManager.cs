@@ -7,6 +7,9 @@ public class GameManager : MonoBehaviour
     public bool gameInactive = false;
     private ScoreManager scoreManager;
 
+    [SerializeField] AudioSource[] musics;
+    [SerializeField] AudioSource[] sounds; 
+
     [Header("PlayerPrefs")]
     public int playerStrawberries;
     public int sound;
@@ -17,6 +20,14 @@ public class GameManager : MonoBehaviour
         playerStrawberries = PlayerPrefs.GetInt("Strawberries", 0);
         sound = PlayerPrefs.GetInt("Sound", 1);
         music = PlayerPrefs.GetInt("Music", 1);
+        foreach (AudioSource musicSource in musics)
+        {
+            musicSource.mute = (music == 0);
+        }
+        foreach (AudioSource soundSource in sounds)
+        {
+            soundSource.mute = (sound == 0);
+        }
         scoreManager = gameObject.GetComponent<ScoreManager>();
     }
 
@@ -55,9 +66,37 @@ public class GameManager : MonoBehaviour
     //    PlayerPrefs.SetInt("Strawberries", playerStrawberries);
     //}
 
-    public void SetSound(int value)
+    public void ToggleMusic()
     {
-        sound = value;
-        
+        if (music == 0)
+        {
+            music = 1;
+        }
+        else
+        {
+            music = 0;
+        }
+        foreach(AudioSource musicSource in musics)
+        {
+            musicSource.mute = (music == 0);
+        }
+        PlayerPrefs.SetInt("Music", music);
+    }
+
+    public void ToggleSound()
+    {
+        if(sound == 0)
+        {
+            sound = 1;
+        }
+        else
+        {
+            sound = 0;
+        }
+        foreach(AudioSource soundSource in sounds)
+        {
+            soundSource.mute = (sound == 0);
+        }
+        PlayerPrefs.SetInt("Sound", sound);
     }
 }
