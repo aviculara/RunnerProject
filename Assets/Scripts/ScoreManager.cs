@@ -52,10 +52,11 @@ public class ScoreManager : MonoBehaviour
     {
         yield return new WaitForSeconds(timeSpeed);
         levelScore += increaseScoreAmount;
-        if(!halved && levelScore > 600)
+        if(!halved && levelScore > 450)
         {
             //endlessManager.powerupPercent /= 2;
             endlessManager.maxPowerupFrequency *= 2;
+            endlessManager.minPowerupFrequency *=2 ;
             halved = true;
         }
         uiManager.scoreText.text = levelScore.ToString("0000");

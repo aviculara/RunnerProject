@@ -141,17 +141,14 @@ public class EndlessManager : MonoBehaviour
                 if (rand <= magnetWeight)
                 {
                     Instantiate(magnet, childTransform.position, magnet.transform.rotation, newParent);
-                    print("magnet placed");
                 }
                 else if (rand <= magnetWeight + starWeight)
                 {
                     Instantiate(star, childTransform.position, star.transform.rotation, newParent);
-                    print("star placed");
                 }
                 else if (rand <= magnetWeight + starWeight + bananaWeight)
                 {
                     Instantiate(banana, childTransform.position, banana.transform.rotation, newParent);
-                    print("banana placed");
                 }
                 //else if (rand <= magnetWeight + starWeight + bananaWeight + tempWatermelonWeight)
                 //{
@@ -160,7 +157,6 @@ public class EndlessManager : MonoBehaviour
                 else
                 {
                     Instantiate(watermelon, childTransform.position, watermelon.transform.rotation, newParent);
-                    print("watermelon placed");
                 }
                 randomFrequency = Random.Range(minPowerupFrequency, maxPowerupFrequency);
                 collectibleCount = 0;
@@ -172,7 +168,6 @@ public class EndlessManager : MonoBehaviour
                 {
                     Instantiate(strawb, childTransform.position, strawb.transform.rotation, newParent);
                     collectibleCount += 1;
-                    print("strawb placed");
                 }
                 
             }
