@@ -7,6 +7,7 @@ public class EndlessManager : MonoBehaviour
     //public GameObject piece;
     public GameObject parent;
     public ScoreManager scoreManager;
+    [SerializeField] PlayerManager player;
 
     [SerializeField] GameObject[] pieces;
     [SerializeField] List<GameObject> collectibles = new List<GameObject>();
@@ -14,18 +15,27 @@ public class EndlessManager : MonoBehaviour
     public GameObject star, magnet, watermelon, banana, cherry, pear, orange;
 
     [Header("Chances")]
+    public int minPowerupFrequency;
+    public int maxPowerupFrequency;
     public int powerupPercent;
-    public int strawbPercent;
-    public int magnetPercent;
-    public int starPercent;
-    public int bananaPercent;
-    public int watermelonPercent;
+    public int strawbWeight;
+    public int nothingWeight;
+    public int magnetWeight;
+    public int starWeight;
+    public int bananaWeight;
+    public int watermelonWeight;
+
+    private int randomFrequency;
+    private int collectibleCount = 0;
+    //private float randomFrequency;
 
     // Start is called before the first frame update
     void Start()
     {
         scoreManager = GameObject.Find("GameManager").GetComponent<ScoreManager>();
+        randomFrequency = Random.Range(minPowerupFrequency, maxPowerupFrequency);
         FirstPlacement();
+        //PrefabTest();
     }
 
     // Update is called once per frame
@@ -67,7 +77,7 @@ public class EndlessManager : MonoBehaviour
 
             if (posParent != null)
             {
-                PlaceCollectibles(posParent,newParent);
+                PseudoRandomCollectibles(posParent,newParent);
             }
             
             
@@ -84,19 +94,19 @@ public class EndlessManager : MonoBehaviour
             if(powerChance <= powerupPercent)
             {
                 int rand = Random.Range(1, 101);
-                if (rand <= magnetPercent)
+                if (rand <= magnetWeight)
                 {
                     Instantiate(magnet, childTransform.position, magnet.transform.rotation, newParent);
                 }
-                else if (rand <= magnetPercent + starPercent)
+                else if (rand <= magnetWeight + starWeight)
                 {
                     Instantiate(star, childTransform.position, star.transform.rotation, newParent);
                 }
-                else if (rand <= magnetPercent + starPercent + bananaPercent)
+                else if (rand <= magnetWeight + starWeight + bananaWeight)
                 {
                     Instantiate(banana, childTransform.position, banana.transform.rotation, newParent);
                 }
-                else if (rand <= magnetPercent + starPercent + bananaPercent + watermelonPercent)
+                else if (rand <= magnetWeight + starWeight + bananaWeight + watermelonWeight)
                 {
                     Instantiate(watermelon, childTransform.position, watermelon.transform.rotation, newParent);
                 }
@@ -105,7 +115,7 @@ public class EndlessManager : MonoBehaviour
 
                 }
             }
-            else if(powerChance < strawbPercent + powerupPercent)
+            else if(powerChance < strawbWeight + powerupPercent)
             {
                 Instantiate(strawb, childTransform.position, strawb.transform.rotation, newParent);
             }
@@ -113,9 +123,61 @@ public class EndlessManager : MonoBehaviour
         }
     }
 
-    private void RandomPiece()
+    private void PseudoRandomCollectibles(Transform posParent, Transform newParent)
     {
+        foreach (Transform childTransform in posParent)
+        {
 
+            if (randomFrequency <= collectibleCount)
+            {
+                int tempWatermelonWeight = watermelonWeight;
+                if(player.watermelond)
+                {
+                    tempWatermelonWeight = 1;
+                }
+
+                int rand = Random.Range(1, magnetWeight + starWeight + bananaWeight + tempWatermelonWeight);
+
+                if (rand <= magnetWeight)
+                {
+                    Instantiate(magnet, childTransform.position, magnet.transform.rotation, newParent);
+                    print("magnet placed");
+                }
+                else if (rand <= magnetWeight + starWeight)
+                {
+                    Instantiate(star, childTransform.position, star.transform.rotation, newParent);
+                    print("star placed");
+                }
+                else if (rand <= magnetWeight + starWeight + bananaWeight)
+                {
+                    Instantiate(banana, childTransform.position, banana.transform.rotation, newParent);
+                    print("banana placed");
+                }
+                //else if (rand <= magnetWeight + starWeight + bananaWeight + tempWatermelonWeight)
+                //{
+                //    Instantiate(watermelon, childTransform.position, watermelon.transform.rotation, newParent);
+                //}
+                else
+                {
+                    Instantiate(watermelon, childTransform.position, watermelon.transform.rotation, newParent);
+                    print("watermelon placed");
+                }
+                randomFrequency = Random.Range(minPowerupFrequency, maxPowerupFrequency);
+                collectibleCount = 0;
+            }
+            else
+            {
+                int rand = Random.Range(1, strawbWeight + nothingWeight);
+                if(rand <= strawbWeight)
+                {
+                    Instantiate(strawb, childTransform.position, strawb.transform.rotation, newParent);
+                    collectibleCount += 1;
+                    print("strawb placed");
+                }
+                
+            }
+
+        }
     }
 
     private void FirstPlacement()
@@ -138,77 +200,47 @@ public class EndlessManager : MonoBehaviour
 
             if (posParent != null)
             {
-                PlaceCollectibles(posParent, newParent);
+                PseudoRandomCollectibles(posParent, newParent);
             }
         }
     }
 
-    private void OldPlaceCollectibles(Transform posParent, Transform newParent)
+    private void PrefabTest()
     {
-        foreach (Transform childTransform in posParent)
+        int i = 1;
+        foreach(GameObject piece in pieces)
         {
-            
-                int rand = Random.Range(1, 101);
-                if (rand <= 80)
-                {
+            Vector3 newpos = new Vector3(0, 0, 0 + (i * 40));
+            i += 1;
+            Quaternion newRotation = Quaternion.Euler(0, 0, 0);
+            GameObject newpiece = Instantiate(piece, newpos, newRotation, parent.transform);
+            //Transform newParent = newpiece.transform.Find("Collectibles");
+            //Transform posParent = newpiece.transform.Find("CollectiblePos");
+            //collectibles: index 0
+            //collectiblespos: index 1
+            Transform newParent = newpiece.transform.GetChild(0);
+            Transform posParent = newpiece.transform.GetChild(1);
 
-                }
-                else if (rand <= 93)
-                {
-                    Instantiate(strawb, childTransform.position, strawb.transform.rotation, newParent);
-                }
+            if (posParent != null)
+            {
+                PseudoRandomCollectibles(posParent, newParent);
+            }
 
-                //else if (rand <= 75)
-                //{
-                //    if (scoreManager.cherry)
-                //    {
-                //        Instantiate(strawb, childTransform.position, strawb.transform.rotation, newParent);
-                //    }
-                //    else
-                //    {
-                //        Instantiate(cherry, childTransform.position, cherry.transform.rotation, newParent);
-                //    }
-                //}
-                //else if (rand <= 80)
-                //{
-                //    if (scoreManager.banana)
-                //    {
-                //        Instantiate(strawb, childTransform.position, strawb.transform.rotation, newParent);
-                //    }
-                //    else
-                //    {
-                //        Instantiate(banana, childTransform.position, banana.transform.rotation, newParent);
-                //    }
-                //}
-                //else if (rand <= 85)
-                //{
-                //    if (scoreManager.orange)
-                //    {
-                //        Instantiate(strawb, childTransform.position, strawb.transform.rotation, newParent);
-                //    }
-                //    else
-                //    {
-                //        Instantiate(orange, childTransform.position, orange.transform.rotation, newParent);
-                //    }
-                //}
-                else if (rand <= 94)
-                {
-                    Instantiate(star, childTransform.position, star.transform.rotation, newParent);
-                }
-                else if (rand <= 96)
-                {
-                    Instantiate(magnet, childTransform.position, magnet.transform.rotation, newParent);
-                }
-                else if (rand <= 98)
-                {
-                    Instantiate(banana, childTransform.position, banana.transform.rotation, newParent);
-                }
-                else
-                {
-                    Instantiate(watermelon, childTransform.position, watermelon.transform.rotation, newParent);
-                }
-            
-            
+            newpos = new Vector3(0, 0, 0 + (i * 40));
+            i += 1;
+            newRotation = Quaternion.Euler(0, 180, 0);
+            newpiece = Instantiate(piece, newpos, newRotation, parent.transform);
+            //Transform newParent = newpiece.transform.Find("Collectibles");
+            //Transform posParent = newpiece.transform.Find("CollectiblePos");
+            //collectibles: index 0
+            //collectiblespos: index 1
+            newParent = newpiece.transform.GetChild(0);
+            posParent = newpiece.transform.GetChild(1);
+
+            if (posParent != null)
+            {
+                PseudoRandomCollectibles(posParent, newParent);
+            }
         }
     }
     

@@ -9797,6 +9797,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parent: {fileID: 365407044}
   scoreManager: {fileID: 0}
+  player: {fileID: 932183973}
   pieces:
   - {fileID: 7936968033321871444, guid: 83c9bcd089f819d43bdbe96e49ab2709, type: 3}
   - {fileID: 7154021344548530318, guid: 886a56fff3eb1e44abf0c9974e027a12, type: 3}
@@ -9811,12 +9812,15 @@ MonoBehaviour:
   cherry: {fileID: 9111162133792433945}
   pear: {fileID: 6573417987737368096}
   orange: {fileID: 8228728315519993458}
+  minPowerupFrequency: 3
+  maxPowerupFrequency: 25
   powerupPercent: 6
-  strawbPercent: 60
-  magnetPercent: 15
-  starPercent: 15
-  bananaPercent: 15
-  watermelonPercent: 20
+  strawbWeight: 4
+  nothingWeight: 1
+  magnetWeight: 4
+  starWeight: 2
+  bananaWeight: 3
+  watermelonWeight: 4
 --- !u!65 &1119959511
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20682,6 +20686,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pickups
       objectReference: {fileID: 0}
+    - target: {fileID: 7526848748880234146, guid: 04fda335f258c134389339a0479450d4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8294367758972245116, guid: 04fda335f258c134389339a0479450d4, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -24533,7 +24541,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2755992516243043097, guid: 58d906a8c99c0b545bf0d5337539b695, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.97
+      value: 9.9
       objectReference: {fileID: 0}
     - target: {fileID: 2755992516243043097, guid: 58d906a8c99c0b545bf0d5337539b695, type: 3}
       propertyPath: m_LocalRotation.w
