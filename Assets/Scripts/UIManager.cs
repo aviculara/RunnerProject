@@ -17,6 +17,7 @@ public class UIManager : MonoBehaviour
     public GameObject settingsPanel;
     public GameObject shopPanel;
     public GameObject deleteWarningPanel;
+    public GameObject outfitsPanel;
 
     [Header("Score Texts")]
     public TextMeshProUGUI scoreText;
@@ -193,6 +194,7 @@ public class UIManager : MonoBehaviour
     public void ShopOpen()
     {
         OpenPanel(shopPanel);
+        outfitsPanel.SetActive(false);
     }
 
     public void DeleteWarning()
@@ -210,6 +212,16 @@ public class UIManager : MonoBehaviour
     public void DeleteNo()
     {
         deleteWarningPanel.SetActive(false);
+    }
+
+    public void OutfitsButton()
+    {
+        outfitsPanel.SetActive(true);
+    }
+
+    public void UpgradesButton()
+    {
+        outfitsPanel.SetActive(false);
     }
 
     #endregion

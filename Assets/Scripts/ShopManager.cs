@@ -29,6 +29,9 @@ public class ShopManager : MonoBehaviour
 
     PowerupManager powerupManager;
 
+    [Header("Costumes")]
+    public CostumeScriptable batwings;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -44,6 +47,11 @@ public class ShopManager : MonoBehaviour
         ShowBars();
         WritePrices();
         WriteSeconds();
+
+        if(batwings.FindCostume())
+        {
+            batwings.costumeObject.SetActive(false);
+        }
 
     }
 
