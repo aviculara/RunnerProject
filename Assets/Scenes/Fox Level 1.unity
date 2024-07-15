@@ -2632,7 +2632,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 286338874}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 479285785}
+        m_TargetAssemblyTypeName: CostumeManager, Assembly-CSharp
+        m_MethodName: HeadUnequipButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &286338874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2757,7 +2769,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1498104318}
         m_TargetAssemblyTypeName: ShopManager, Assembly-CSharp
-        m_MethodName: PurchaseBanana
+        m_MethodName: PowerupUpgradeSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2767,9 +2779,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1498104318}
-        m_TargetAssemblyTypeName: ShopManager, Assembly-CSharp
-        m_MethodName: PowerupUpgradeSound
+      - m_Target: {fileID: 479285785}
+        m_TargetAssemblyTypeName: CostumeManager, Assembly-CSharp
+        m_MethodName: HeadPurchaseButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4889,6 +4901,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2d3759410a64594ba36127126d618a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shopManager: {fileID: 0}
   headCostumes:
   - {fileID: 8815056942729696441}
   - {fileID: 6143184144222902678}
@@ -4900,15 +4913,17 @@ MonoBehaviour:
   headImageRight: {fileID: 779403024}
   headRightButton: {fileID: 1206739427}
   headLeftButton: {fileID: 1058524070}
+  headEquipButton: {fileID: 1295123853}
   headPrice: {fileID: 733248369}
   bodyImageLeft: {fileID: 0}
   bodyImageCenter: {fileID: 0}
   bodyImageRight: {fileID: 0}
   bodyRightButton: {fileID: 0}
   bodyLeftButton: {fileID: 0}
+  bodyEquipButton: {fileID: 0}
   bodyPrice: {fileID: 0}
-  activeHeadCostume: -1
-  activeBodyCostume: -1
+  equippedHeadCostume: -1
+  equippedBodyCostume: -1
 --- !u!1 &490731571
 GameObject:
   m_ObjectHideFlags: 0
@@ -14070,7 +14085,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1295123856}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 479285785}
+        m_TargetAssemblyTypeName: CostumeManager, Assembly-CSharp
+        m_MethodName: HeadEquipButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1295123856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29727,7 +29754,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &6143184144222902678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29745,6 +29772,7 @@ MonoBehaviour:
   shopName: Pirate Hat
   price: 1000
   isEquipped: 0
+  bought: 0
 --- !u!4 &6157016967174607976
 Transform:
   m_ObjectHideFlags: 0
@@ -31302,6 +31330,7 @@ MonoBehaviour:
   shopName: Santa Hat
   price: 1000
   isEquipped: 0
+  bought: 0
 --- !u!1 &7357526284448953765
 GameObject:
   m_ObjectHideFlags: 0
@@ -32358,6 +32387,7 @@ MonoBehaviour:
   shopName: Chef's Hat
   price: 1000
   isEquipped: 0
+  bought: 0
 --- !u!1001 &8683288834173614528
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32545,6 +32575,7 @@ MonoBehaviour:
   shopName: Bat Wings
   price: 1000
   isEquipped: 0
+  bought: 0
 --- !u!1 &8844319644707058011
 GameObject:
   m_ObjectHideFlags: 0

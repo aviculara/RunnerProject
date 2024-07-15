@@ -16,15 +16,25 @@ public class CostumeManager : MonoBehaviour
     [SerializeField] Image bodyImageLeft, bodyImageCenter, bodyImageRight;
     [SerializeField] GameObject bodyRightButton, bodyLeftButton, bodyEquipButton;
     [SerializeField] TextMeshProUGUI bodyPrice;
-    [SerializeField] int activeHeadCostume = -1;
-    [SerializeField] int activeBodyCostume = -1;
+    [SerializeField] int equippedHeadCostume = -1;
+    [SerializeField] int equippedBodyCostume = -1;
     private int headShopIndex = 0;
     private int bodyShopIndex = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        equippedHeadCostume = PlayerPrefs.GetInt("EquippedHead", -1);
+        equippedBodyCostume = PlayerPrefs.GetInt("EquippedBody", -1);
+
+        if(equippedHeadCostume >=0 && equippedHeadCostume <= headCostumes.Length)
+        {
+            headCostumes[equippedHeadCostume].Equip();
+        }
+        if (equippedBodyCostume >= 0 && equippedBodyCostume <= bodyCostumes.Length)
+        {
+            bodyCostumes[equippedBodyCostume].Equip();
+        }
     }
 
     // Update is called once per frame
@@ -34,24 +44,30 @@ public class CostumeManager : MonoBehaviour
     }
     private void OnEnable()
     {
-        if(activeHeadCostume<0)
+        if(equippedHeadCostume<0)
         {
             headShopIndex = 0;
         }
         else
         {
-            headShopIndex = activeHeadCostume;
+            headShopIndex = equippedHeadCostume;
         }
-        if(activeBodyCostume < 0)
+        if(equippedBodyCostume < 0)
         {
             bodyShopIndex = 0;
         }
         else
         {
-            bodyShopIndex = activeBodyCostume;
+            bodyShopIndex = equippedBodyCostume;
         }
         ShowCostumeShop(CostumeType.head);
         //ShowCostumeShop(CostumeType.body);
+    }
+
+    private void OnDisable()
+    {
+        headShopIndex = 0;
+        bodyShopIndex = 0;
     }
 
     private enum CostumeType
@@ -66,7 +82,7 @@ public class CostumeManager : MonoBehaviour
         Image centerImage;
         Image leftImage;
         Image rightImage;
-        int shownIndex;
+        int shownIndex; //problem
         int equippedIndex;
         GameObject rightButton, leftButton, equipButton;
         TextMeshProUGUI priceText;
@@ -79,7 +95,7 @@ public class CostumeManager : MonoBehaviour
             leftImage = headImageLeft;
             rightImage = headImageRight;
             shownIndex = headShopIndex;
-            equippedIndex = activeHeadCostume;
+            equippedIndex = equippedHeadCostume;
             rightButton = headRightButton;
             leftButton = headLeftButton;
             equipButton = headEquipButton;
@@ -92,7 +108,7 @@ public class CostumeManager : MonoBehaviour
             leftImage = bodyImageLeft;
             rightImage = bodyImageRight;
             shownIndex = bodyShopIndex;
-            equippedIndex = activeBodyCostume;
+            equippedIndex = equippedBodyCostume;
             rightButton = bodyRightButton;
             leftButton = bodyLeftButton;
             equipButton = bodyEquipButton;
@@ -132,11 +148,8 @@ public class CostumeManager : MonoBehaviour
             }
             else
             {
-                if (shownIndex == 1)
-                {
-                    leftImage.transform.parent.gameObject.SetActive(true);
-                    leftButton.SetActive(true);
-                }
+                leftImage.transform.parent.gameObject.SetActive(true);
+                leftButton.SetActive(true);
                 leftImage.sprite = costumes[shownIndex - 1].shopImage;
             }
 
@@ -147,11 +160,8 @@ public class CostumeManager : MonoBehaviour
             }
             else
             {
-                if (shownIndex == costumes.Length - 2)
-                {
-                    rightImage.transform.parent.gameObject.SetActive(true);
-                    rightButton.SetActive(true);
-                }
+                rightImage.transform.parent.gameObject.SetActive(true);
+                rightButton.SetActive(true);
                 rightImage.sprite = costumes[shownIndex + 1].shopImage;
             }
 
@@ -180,9 +190,45 @@ public class CostumeManager : MonoBehaviour
     public void HeadPurchaseButton()
     {
         Costume currentCostume = headCostumes[headShopIndex];
-        //shopManager.SubtractStrawberry(currentCostume.price);
+#if UNITY_EDITOR
         print("pretend bought " + currentCostume.shopName);
+#else
+        headEquipButton.SetActive(false);
+#endif
         currentCostume.Purchase();
         headPrice.transform.parent.gameObject.SetActive(false);
     }
+
+    public void HeadEquipButton()
+    {
+        print("inside headequip button");
+        if(equippedHeadCostume >= 0 && equippedHeadCostume < headCostumes.Length)
+        {
+            headCostumes[equippedHeadCostume].Unequip();
+        }
+        equippedHeadCostume = headShopIndex;
+        headCostumes[equippedHeadCostume].Equip();
+        PlayerPrefs.SetInt("EquippedHead", equippedHeadCostume);
+        headEquipButton.SetActive(false);
+    }
+
+    public void HeadUnequipButton()
+    {
+        headCostumes[headShopIndex].Unequip();
+        equippedHeadCostume = -1;
+        PlayerPrefs.SetInt("EquippedHead", equippedHeadCostume);
+        headEquipButton.SetActive(true);
+    }
+
+    public void BodyEquipButton()
+    {
+        if (equippedBodyCostume >= 0 && equippedBodyCostume < bodyCostumes.Length)
+        {
+            bodyCostumes[equippedBodyCostume].Unequip();
+        }
+        equippedBodyCostume = -1;
+        PlayerPrefs.SetInt("EquippedBody", equippedBodyCostume);
+        bodyEquipButton.SetActive(false);
+    }
+
 }
