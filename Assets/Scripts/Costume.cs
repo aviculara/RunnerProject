@@ -10,11 +10,14 @@ public class Costume : MonoBehaviour
     public string shopName;
     public int price;
     public bool isEquipped;
+    public bool bought = false;
 
     private void Awake()
     {
         gameObject.SetActive(false);
         isEquipped = false;
+        bought = (PlayerPrefs.GetInt(shopName, 0) > 0);
+
     }
     void Start()
     {
@@ -27,7 +30,7 @@ public class Costume : MonoBehaviour
         
     }
 
-    public void unEquip()
+    public void Unequip()
     {
         gameObject.SetActive(false);
         isEquipped = false;
@@ -37,5 +40,12 @@ public class Costume : MonoBehaviour
     {
         gameObject.SetActive(true);
         isEquipped = true;
+    }
+
+    public void Purchase()
+    {
+
+        bought = true;
+        PlayerPrefs.SetInt(shopName, 1);
     }
 }

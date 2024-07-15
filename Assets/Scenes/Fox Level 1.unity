@@ -2684,7 +2684,7 @@ GameObject:
   - component: {fileID: 292077328}
   - component: {fileID: 292077327}
   m_Layer: 5
-  m_Name: Costume Price
+  m_Name: Head Costume Price
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3639,8 +3639,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.0000076293945, y: 0}
-  m_SizeDelta: {x: 0.0000038147, y: 0}
+  m_AnchoredPosition: {x: -0.32999992, y: 0}
+  m_SizeDelta: {x: -2.67, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &346040247
 MonoBehaviour:
@@ -3692,9 +3692,9 @@ MonoBehaviour:
   m_fontSize: 11.49
   m_fontSizeBase: 11.49
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 5
+  m_fontSizeMax: 11.49
   m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -4898,9 +4898,15 @@ MonoBehaviour:
   headImageLeft: {fileID: 495867979}
   headImageCenter: {fileID: 1504120811}
   headImageRight: {fileID: 779403024}
+  headRightButton: {fileID: 1206739427}
+  headLeftButton: {fileID: 1058524070}
+  headPrice: {fileID: 733248369}
   bodyImageLeft: {fileID: 0}
   bodyImageCenter: {fileID: 0}
   bodyImageRight: {fileID: 0}
+  bodyRightButton: {fileID: 0}
+  bodyLeftButton: {fileID: 0}
+  bodyPrice: {fileID: 0}
   activeHeadCostume: -1
   activeBodyCostume: -1
 --- !u!1 &490731571
@@ -5944,7 +5950,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 586813721}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5952,8 +5958,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.0000076293945, y: 0}
-  m_SizeDelta: {x: 0.0000038147, y: 0}
+  m_AnchoredPosition: {x: -0.32999992, y: 0}
+  m_SizeDelta: {x: -2.67, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &586813723
 MonoBehaviour:
@@ -5975,7 +5981,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 400
+  m_text: 4000
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6002,12 +6008,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 11.49
+  m_fontSize: 10.45
   m_fontSizeBase: 11.49
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 5
+  m_fontSizeMax: 11.49
   m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -6809,7 +6815,7 @@ GameObject:
   - component: {fileID: 733248370}
   - component: {fileID: 733248369}
   m_Layer: 5
-  m_Name: Price Text
+  m_Name: Head Price Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6823,7 +6829,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 733248367}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.00007212574}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.3617008, y: 1.3617004, z: 1.361701}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6831,8 +6837,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00008773804, y: -0.000091552734}
-  m_SizeDelta: {x: -16.502075, y: -7.017456}
+  m_AnchoredPosition: {x: 0.30999947, y: 0}
+  m_SizeDelta: {x: -21.3, y: -7.02}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &733248369
 MonoBehaviour:
@@ -6881,12 +6887,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 11.49
+  m_fontSize: 12.75
   m_fontSizeBase: 11.49
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 5
+  m_fontSizeMax: 18
   m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -12811,8 +12817,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.0000076293945, y: 0}
-  m_SizeDelta: {x: 0.0000038147, y: 0}
+  m_AnchoredPosition: {x: -0.32999992, y: 0}
+  m_SizeDelta: {x: -2.67, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1191438935
 MonoBehaviour:
@@ -12864,9 +12870,9 @@ MonoBehaviour:
   m_fontSize: 11.49
   m_fontSizeBase: 11.49
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 5
+  m_fontSizeMax: 11.49
   m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
