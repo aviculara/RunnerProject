@@ -9,15 +9,12 @@ public class Costume : MonoBehaviour
     [SerializeField] private GameObject costumeObject; //gerek olmayabilir bu kendisi
     public string shopName;
     public int price;
-    public bool isEquipped;
+    public bool isEquipped = false;
     public bool bought = false;
 
     private void Awake()
     {
-        gameObject.SetActive(false);
-        print("set " + shopName + " inactive");
-        isEquipped = false;
-        bought = (PlayerPrefs.GetInt(shopName, 0) > 0);
+        
 
     }
     void Start()
@@ -50,5 +47,13 @@ public class Costume : MonoBehaviour
 
         bought = true;
         PlayerPrefs.SetInt(shopName, 1);
+    }
+
+    public void Initialize()
+    {
+        isEquipped = false;
+        bought = (PlayerPrefs.GetInt(shopName, 0) > 0);
+        print("set " + shopName + " inactive");
+        gameObject.SetActive(false);        
     }
 }

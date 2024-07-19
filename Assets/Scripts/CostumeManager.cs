@@ -22,6 +22,19 @@ public class CostumeManager : MonoBehaviour
     private int bodyShopIndex = 0;
 
     // Start is called before the first frame update
+
+    private void Awake()
+    {
+        foreach (Costume costume in headCostumes)
+        {
+            costume.Initialize();
+        }
+        foreach(Costume costume in bodyCostumes)
+        {
+            costume.Initialize();
+        }
+    }
+
     void Start()
     {
         equippedHeadCostume = PlayerPrefs.GetInt("EquippedHead", -1);
