@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 5;
     [SerializeField] float side = 3;    
     [SerializeField] float jumpPower=2.2f;
-    [SerializeField] float acceleration;
+    public float acceleration;
 
     //public float jumpDur=0.9f;
     private bool moving = false;
@@ -118,14 +118,14 @@ public class PlayerMovement : MonoBehaviour
     public void StartGame()
     {
         gameManager.StartGame();
-        StartCoroutine(increaseSpeed());
+        StartCoroutine(IncreaseSpeed());
     }
 
-    IEnumerator increaseSpeed()
+    IEnumerator IncreaseSpeed()
     {
         yield return new WaitForSeconds(1f);
         speed += acceleration;
-        StartCoroutine(increaseSpeed());
+        StartCoroutine(IncreaseSpeed());
     }
 
     #region Swipe Functions

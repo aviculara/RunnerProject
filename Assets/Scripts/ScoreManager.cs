@@ -58,6 +58,7 @@ public class ScoreManager : MonoBehaviour
             endlessManager.maxPowerupFrequency *= 2;
             endlessManager.minPowerupFrequency *=2 ;
             halved = true;
+            move.acceleration /= 2; 
         }
         uiManager.scoreText.text = levelScore.ToString("0000");
         uiManager.finalScoreText.text = "Score: " + levelScore.ToString();
