@@ -25,6 +25,9 @@ public class CostumeManager : MonoBehaviour
 
     private void Awake()
     {
+#if UNITY_EDITOR
+        EditorPrices();
+#endif
         foreach (Costume costume in headCostumes)
         {
             costume.Initialize();
@@ -74,7 +77,7 @@ public class CostumeManager : MonoBehaviour
             bodyShopIndex = equippedBodyCostume;
         }
         ShowCostumeShop(CostumeType.head);
-        //ShowCostumeShop(CostumeType.body);
+        ShowCostumeShop(CostumeType.body);
     }
 
     private void OnDisable()
@@ -83,7 +86,7 @@ public class CostumeManager : MonoBehaviour
         bodyShopIndex = 0;
     }
 
-    private enum CostumeType
+    public enum CostumeType
     {
         head,
         body
@@ -99,6 +102,7 @@ public class CostumeManager : MonoBehaviour
         int equippedIndex;
         GameObject rightButton, leftButton, equipButton;
         TextMeshProUGUI priceText;
+        Button priceButton;
 
         if (costumeType == CostumeType.head)
         {
@@ -127,6 +131,7 @@ public class CostumeManager : MonoBehaviour
             equipButton = bodyEquipButton;
             priceText = bodyPrice;
         }
+        priceButton = priceText.transform.parent.GetComponent<Button>();
         //print(shownIndex);
         
         if (shownIndex > costumes.Length - 1 || shownIndex < 0 )
@@ -138,7 +143,7 @@ public class CostumeManager : MonoBehaviour
             centerImage.sprite = costumes[shownIndex].shopImage;
             if(costumes[shownIndex].bought)
             {
-                priceText.transform.parent.gameObject.SetActive(false);
+                priceButton.gameObject.SetActive(false);
                 if(shownIndex == equippedIndex)
                 {
                     equipButton.SetActive(false);
@@ -150,8 +155,16 @@ public class CostumeManager : MonoBehaviour
             }
             else
             {
-                priceText.transform.parent.gameObject.SetActive(true);
+                priceButton.gameObject.SetActive(true);
                 priceText.text = costumes[shownIndex].price.ToString();
+                if(shopManager.totalStrawberries < costumes[shownIndex].price)
+                {
+                    priceButton.interactable = false;
+                }
+                else
+                {
+                    priceButton.interactable = true;
+                }
             }
 
             if (shownIndex <= 0)
@@ -182,6 +195,19 @@ public class CostumeManager : MonoBehaviour
 
     }
 
+    private void EditorPrices()
+    {
+        foreach(Costume costume in headCostumes)
+        {
+            costume.price = 1;
+        }
+        foreach(Costume costume in bodyCostumes)
+        {
+            costume.price = 2;
+        }
+        print("prices reduced for editor");
+    }
+
     public void HeadButtonRight()
     {
         if(headShopIndex<headCostumes.Length -1)
@@ -203,18 +229,15 @@ public class CostumeManager : MonoBehaviour
     public void HeadPurchaseButton()
     {
         Costume currentCostume = headCostumes[headShopIndex];
-#if UNITY_EDITOR
-        print("pretend bought " + currentCostume.shopName);
-#else
-        headEquipButton.SetActive(false);
-#endif
+
+        shopManager.SubtractStrawberry(currentCostume.price);
+        //headEquipButton.SetActive(false);
         currentCostume.Purchase();
         headPrice.transform.parent.gameObject.SetActive(false);
     }
 
     public void HeadEquipButton()
     {
-        print("inside headequip button");
         if(equippedHeadCostume >= 0 && equippedHeadCostume < headCostumes.Length)
         {
             headCostumes[equippedHeadCostume].Unequip();
@@ -233,15 +256,59 @@ public class CostumeManager : MonoBehaviour
         headEquipButton.SetActive(true);
     }
 
+    public void BodyButtonRight()
+    {
+        if (bodyShopIndex < bodyCostumes.Length - 1)
+        {
+            bodyShopIndex++;
+            ShowCostumeShop(CostumeType.body);
+        }
+    }
+
+    public void BodyButtonLeft()
+    {
+        if (bodyShopIndex > 0)
+        {
+            bodyShopIndex--;
+            ShowCostumeShop(CostumeType.body);
+        }
+    }
+
+    public void BodyPurchaseButton()
+    {
+        Costume currentCostume = bodyCostumes[bodyShopIndex];
+
+        shopManager.SubtractStrawberry(currentCostume.price);
+        //headEquipButton.SetActive(false);
+        currentCostume.Purchase();
+        bodyPrice.transform.parent.gameObject.SetActive(false);
+    }
+
     public void BodyEquipButton()
     {
         if (equippedBodyCostume >= 0 && equippedBodyCostume < bodyCostumes.Length)
         {
             bodyCostumes[equippedBodyCostume].Unequip();
         }
-        equippedBodyCostume = -1;
+        equippedBodyCostume = bodyShopIndex;
+        bodyCostumes[equippedBodyCostume].Equip();
         PlayerPrefs.SetInt("EquippedBody", equippedBodyCostume);
         bodyEquipButton.SetActive(false);
+    }
+    public void BodyUnequipButton()
+    {
+        bodyCostumes[bodyShopIndex].Unequip();
+        equippedBodyCostume = -1;
+        PlayerPrefs.SetInt("EquippedBody", equippedBodyCostume);
+        bodyEquipButton.SetActive(true);
+    }
+
+    public void UniversalRight(string costumeType)
+    {
+        if(costumeType == "head")
+        {
+            HeadButtonRight();
+        }
     }
 
 }

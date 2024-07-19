@@ -30,7 +30,7 @@ public class Costume : MonoBehaviour
 
     public void Unequip()
     {
-        print("unequipped " + shopName);
+        //print("unequipped " + shopName);
         gameObject.SetActive(false);
         isEquipped = false;
     }
@@ -39,7 +39,7 @@ public class Costume : MonoBehaviour
     {
         gameObject.SetActive(true);
         isEquipped = true;
-        print("equipped " + shopName);
+        //print("equipped " + shopName);
     }
 
     public void Purchase()
@@ -53,7 +53,7 @@ public class Costume : MonoBehaviour
     {
         isEquipped = false;
         bought = (PlayerPrefs.GetInt(shopName, 0) > 0);
-        print("set " + shopName + " inactive");
+        //print("set " + shopName + " inactive");
         gameObject.SetActive(false);        
     }
 }
