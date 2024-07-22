@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Costume : MonoBehaviour
 {
     public Sprite shopImage;
-    [SerializeField] private GameObject costumeObject; //gerek olmayabilir bu kendisi
+    [SerializeField] private GameObject otherInstances;
     public string shopName;
     public int price;
     public bool isEquipped = false;
@@ -32,12 +32,14 @@ public class Costume : MonoBehaviour
     {
         //print("unequipped " + shopName);
         gameObject.SetActive(false);
+        otherInstances.SetActive(false);
         isEquipped = false;
     }
     
     public void Equip()
     {
         gameObject.SetActive(true);
+        otherInstances.SetActive(true);
         isEquipped = true;
         //print("equipped " + shopName);
     }
@@ -54,6 +56,8 @@ public class Costume : MonoBehaviour
         isEquipped = false;
         bought = (PlayerPrefs.GetInt(shopName, 0) > 0);
         //print("set " + shopName + " inactive");
-        gameObject.SetActive(false);        
+        otherInstances.SetActive(false);
+        gameObject.SetActive(false);
+        
     }
 }
