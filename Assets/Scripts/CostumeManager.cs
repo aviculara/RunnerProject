@@ -16,6 +16,7 @@ public class CostumeManager : MonoBehaviour
     [SerializeField] Image bodyImageLeft, bodyImageCenter, bodyImageRight;
     [SerializeField] GameObject bodyRightButton, bodyLeftButton, bodyEquipButton;
     [SerializeField] TextMeshProUGUI bodyPrice;
+    [SerializeField] TextMeshProUGUI headText, bodyText;
     [SerializeField] int equippedHeadCostume = -1;
     [SerializeField] int equippedBodyCostume = -1;
     private int headShopIndex = 0;
@@ -102,6 +103,7 @@ public class CostumeManager : MonoBehaviour
         int equippedIndex;
         GameObject rightButton, leftButton, equipButton;
         TextMeshProUGUI priceText;
+        TextMeshProUGUI costumeName;
         Button priceButton;
 
         if (costumeType == CostumeType.head)
@@ -117,6 +119,7 @@ public class CostumeManager : MonoBehaviour
             leftButton = headLeftButton;
             equipButton = headEquipButton;
             priceText = headPrice;
+            costumeName = headText;
         }
         else
         {
@@ -130,6 +133,7 @@ public class CostumeManager : MonoBehaviour
             leftButton = bodyLeftButton;
             equipButton = bodyEquipButton;
             priceText = bodyPrice;
+            costumeName = bodyText;
         }
         priceButton = priceText.transform.parent.GetComponent<Button>();
         //print(shownIndex);
@@ -141,7 +145,8 @@ public class CostumeManager : MonoBehaviour
         else
         {
             centerImage.sprite = costumes[shownIndex].shopImage;
-            if(costumes[shownIndex].bought)
+            costumeName.text = costumes[shownIndex].shopName;
+            if (costumes[shownIndex].bought)
             {
                 priceButton.gameObject.SetActive(false);
                 if(shownIndex == equippedIndex)
