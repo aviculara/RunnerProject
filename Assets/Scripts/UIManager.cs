@@ -18,6 +18,7 @@ public class UIManager : MonoBehaviour
     public GameObject shopPanel;
     public GameObject deleteWarningPanel;
     public GameObject outfitsPanel;
+    public GameObject headstartPanel;
 
     [Header("Score Texts")]
     public TextMeshProUGUI scoreText;
@@ -48,16 +49,27 @@ public class UIManager : MonoBehaviour
     public GameObject[] fruitsToEat;
 
     private GameManager gameManager;
-    private ScoreManager scoreManager;
+    
     private float multiplierBonus=0.5f;
 
     private bool firstStart = false;
     public bool getNewHighscore = false;
 
+    private PowerupManager powerupManager;
+    public int headstartPrice = 500;
+    public float headstartTimer = 9f;
+    private float headstartTimeLeft = 9f;
+    [SerializeField] Image headstartImage;
+    private bool headstartTimerOn = false;
+    public TextMeshProUGUI headstartPriceText;
+
     GameObject player;
     PlayerMovement move;
     PlayerManager pScript;
+    private ScoreManager scoreManager;
+    ShopManager shopManager;
     Animator camAnimator;
+
 
     // Start is called before the first frame update
     private void Awake()
@@ -68,7 +80,8 @@ public class UIManager : MonoBehaviour
         pScript = player.GetComponent<PlayerManager>();
         gameManager = gameObject.GetComponent<GameManager>();
         scoreManager = gameObject.GetComponent<ScoreManager>();
-
+        powerupManager = gameManager.GetComponent<PowerupManager>();
+        shopManager = gameObject.GetComponent<ShopManager>();
         camAnimator = mainCamera.GetComponent<Animator>();
 
         //igUIcherry.GetComponent<Image>().color = Color.black; 
@@ -85,11 +98,14 @@ public class UIManager : MonoBehaviour
         warningPanel.SetActive(false);
         getNewHighscore = false;
         newHighscoreText.SetActive(false);
+        headstartPanel.SetActive(false);
         //Time.timeScale = 0; //animasyonlar da duruyor
         gameManager.gameInactive = true;
         //pScript.animator.SetBool("Idle", true);
         scoreText.text = 0.ToString("0000");
         strawbsText.text = 0.ToString("000");
+        headstartPriceText.text = headstartPrice.ToString();
+        headstartImage.fillAmount = 1;
         SoundIcon();
         MusicIcon();
         firstStart = true;
@@ -122,6 +138,18 @@ public class UIManager : MonoBehaviour
         {
             inGamePanel.SetActive(true);
             firstStart = false;
+            OpenHeadstart();
+        }
+
+        if(headstartTimerOn)
+        {
+            headstartTimeLeft -= Time.unscaledDeltaTime;
+            headstartImage.fillAmount = headstartTimeLeft / headstartTimer;
+            if(headstartTimeLeft<=0)
+            {
+                headstartPanel.SetActive(false);
+                headstartTimerOn = false;
+            }
         }
     }
 
@@ -136,7 +164,6 @@ public class UIManager : MonoBehaviour
         StartCoroutine(EatFruit());
         pScript.animator.SetBool("GameStart", true);
         camAnimator.SetBool("Start", true);
-        
     }
 
     public void Restart()
@@ -222,6 +249,19 @@ public class UIManager : MonoBehaviour
     public void UpgradesButton()
     {
         outfitsPanel.SetActive(false);
+    }
+
+    public void HeadstartNo()
+    {
+        headstartPanel.SetActive(false);
+    }
+
+    public void HeadstartPurchase()
+    {
+        shopManager.SubtractStrawberry(headstartPrice);
+        powerupManager.BananaCollected();
+        headstartTimeLeft = 0;
+        headstartPanel.SetActive(false);
     }
 
     #endregion
@@ -330,6 +370,18 @@ public class UIManager : MonoBehaviour
     {
         highscoreText.text = score.ToString("0000");
         //NewHighscore();
+    }
+
+    private void OpenHeadstart()
+    {
+        int currentStrawberries = PlayerPrefs.GetInt("TotalStrawberries",0);
+        if(currentStrawberries >= headstartPrice)
+        {
+            headstartTimerOn = true;
+            headstartTimeLeft = headstartTimer;
+            headstartPanel.SetActive(true);
+        }
+
     }
 
     IEnumerator WriteFruitBonus()
