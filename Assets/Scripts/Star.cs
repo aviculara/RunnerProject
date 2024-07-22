@@ -136,9 +136,9 @@ public class Star : MonoBehaviour
             Vector3 v3 = new Vector3(Mathf.Clamp(obs.transform.position.x,-3,3), 1.4f,
                 obs.transform.position.z);
             obs.SetActive(false);
-            //inactiveObstacles.Add(obs);
+            inactiveObstacles.Add(obs);
             GameObject newStrawb = Instantiate(sampleStrawb, v3, sampleStrawb.transform.rotation, allParent);
-            //createdStrawbs.Add(newStrawb);
+            createdStrawbs.Add(newStrawb);
         }
     }
 
@@ -148,18 +148,18 @@ public class Star : MonoBehaviour
         //powerup sure gostergeleri degisecek
     }
 
-    public void StarCollected()
-    {
-        print("im active");
-        starIcon.SetActive(true);
-        print(starIcon.activeSelf);
-        print(starIcon.name);
-        remainingDuration = powerDuration;
-        StartCoroutine(StarFlash());
-        StartCoroutine(LaterDestroyList());
-        StartCoroutine(LaterActivateList());
-        StartCoroutine(LaterInactivateSelf());
-    }
+    //public void StarCollected()
+    //{
+    //    print("im active");
+    //    starIcon.SetActive(true);
+    //    print(starIcon.activeSelf);
+    //    print(starIcon.name);
+    //    remainingDuration = powerDuration;
+    //    StartCoroutine(StarFlash());
+    //    StartCoroutine(LaterDestroyList());
+    //    StartCoroutine(LaterActivateList());
+    //    StartCoroutine(LaterInactivateSelf());
+    //}
 
     public void StarEnd()
     {
@@ -171,6 +171,20 @@ public class Star : MonoBehaviour
         //        Destroy(strawb);
         //    }
         //}
+        int obstaclesCount = inactiveObstacles.Count - 1;
+        for (int i = obstaclesCount; i > obstaclesCount - 10 / 2; i--)
+        {
+            GameObject strawb = createdStrawbs[i];
+            if(strawb != null)
+            {
+                Destroy(strawb);
+            }
+            GameObject obs = inactiveObstacles[i];
+            if(obs != null)
+            {
+                obs.SetActive(true);
+            }
+        }
         createdStrawbs.Clear();
         //set the obstacles back to active and clear list
         //foreach (GameObject obs in inactiveObstacles)

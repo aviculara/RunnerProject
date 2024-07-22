@@ -171,7 +171,6 @@ public class PowerupManager : MonoBehaviour
             activePowerups.Add(Collectible.CollectibleType.banana);
         }
         bananaActive = true;
-        //StartCoroutine(BananaTimer());
     }
 
     private void BananaEnd()
@@ -200,7 +199,6 @@ public class PowerupManager : MonoBehaviour
         }
         magnetScript.coinSpeed = playerMovement.speed + 10f;
         magnetActive = true;
-        //StartCoroutine(MagnetTimer());
     }
 
     private void MagnetEnd()
@@ -224,7 +222,6 @@ public class PowerupManager : MonoBehaviour
         starActive = false;
         starScript.StarEnd();
         starObject.SetActive(false);
-        //playerManager.StartInvulnerableFor(1.5f);
     }
 
     private void ResetIcons()

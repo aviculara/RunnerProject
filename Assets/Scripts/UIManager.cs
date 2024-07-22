@@ -261,6 +261,7 @@ public class UIManager : MonoBehaviour
         shopManager.SubtractStrawberry(headstartPrice);
         powerupManager.BananaCollected();
         headstartTimeLeft = 0;
+        pScript.powerupSound.Play();
         headstartPanel.SetActive(false);
     }
 
