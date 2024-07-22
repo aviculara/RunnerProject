@@ -5413,7 +5413,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6745098, g: 0.90588236, b: 1, a: 1}
+  m_Color: {r: 0.7830189, g: 0.9372584, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -5454,9 +5454,14 @@ MonoBehaviour:
   headCostumes:
   - {fileID: 6143184144222902678}
   - {fileID: 7264006750949795605}
+  - {fileID: 5440968605256821757}
   - {fileID: 8503241501586459730}
+  - {fileID: 9206652905930995207}
+  - {fileID: 8361084842444061820}
+  - {fileID: 5489850493273786902}
   bodyCostumes:
   - {fileID: 8815056942729696441}
+  - {fileID: 8257214615052408046}
   headImageLeft: {fileID: 495867979}
   headImageCenter: {fileID: 1504120811}
   headImageRight: {fileID: 779403024}
@@ -10183,7 +10188,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.58431375, g: 0.84313726, b: 0.8784314, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -10587,7 +10592,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.58431375, g: 0.84313726, b: 0.8784314, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -12743,7 +12748,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.58431375, g: 0.84313726, b: 0.8784314, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -12919,7 +12924,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.58431375, g: 0.84313726, b: 0.8784314, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -15480,7 +15485,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.58431375, g: 0.84313726, b: 0.8784314, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -22017,13 +22022,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1765133844}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.3580584, y: 0, z: 0, w: 0.93369925}
-  m_LocalPosition: {x: 0.038339123, y: 3.97, z: -6.200158}
+  m_LocalRotation: {x: -0.07608522, y: -0.91237545, z: 0.34988284, w: -0.19840391}
+  m_LocalPosition: {x: 0.059109546, y: 3.97, z: -5.9392266}
   m_LocalScale: {x: 158.00002, y: 250.62065, z: 158}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 41.962, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 41.962, y: -204.537, z: 0}
 --- !u!4 &1768848249 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -6207193090530259524, guid: a26118b5aa25c2a43942a41c84d7a967, type: 3}
@@ -22883,7 +22888,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.58431375, g: 0.84313726, b: 0.8784314, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -32021,7 +32026,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24850373aa845da408b50c9ccd60696b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shopImage: {fileID: 0}
+  shopImage: {fileID: 394949249, guid: 2a308d38673d61645a57b1eeccd36cad, type: 3}
   costumeObject: {fileID: 0}
   shopName: Wizzard Hat
   price: 800
@@ -32123,7 +32128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24850373aa845da408b50c9ccd60696b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shopImage: {fileID: 0}
+  shopImage: {fileID: 80255558, guid: 2a308d38673d61645a57b1eeccd36cad, type: 3}
   costumeObject: {fileID: 0}
   shopName: Antlers
   price: 1000
@@ -32657,7 +32662,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24850373aa845da408b50c9ccd60696b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shopImage: {fileID: 21300000, guid: 5f91d3f0d9120b44282b154b472f9d73, type: 3}
+  shopImage: {fileID: 1210539906, guid: 2a308d38673d61645a57b1eeccd36cad, type: 3}
   costumeObject: {fileID: 0}
   shopName: Pirate Hat
   price: 1000
@@ -34216,7 +34221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24850373aa845da408b50c9ccd60696b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shopImage: {fileID: 21300000, guid: 6637b3e2c996bf641801763a9f467f37, type: 3}
+  shopImage: {fileID: 1280815197, guid: 2a308d38673d61645a57b1eeccd36cad, type: 3}
   costumeObject: {fileID: 0}
   shopName: Santa Hat
   price: 1000
@@ -35162,7 +35167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24850373aa845da408b50c9ccd60696b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shopImage: {fileID: 0}
+  shopImage: {fileID: 537039551, guid: 2a308d38673d61645a57b1eeccd36cad, type: 3}
   costumeObject: {fileID: 0}
   shopName: Angel Wings
   price: 1500
@@ -35238,7 +35243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24850373aa845da408b50c9ccd60696b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shopImage: {fileID: 0}
+  shopImage: {fileID: 2125787533, guid: 3ebf33d7b99162f48884b6bec8a9f186, type: 3}
   costumeObject: {fileID: 0}
   shopName: Winged Helmet
   price: 1500
@@ -35311,7 +35316,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24850373aa845da408b50c9ccd60696b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shopImage: {fileID: 21300000, guid: 390d2877c2c5316498ef453348f30283, type: 3}
+  shopImage: {fileID: -364495730, guid: 2a308d38673d61645a57b1eeccd36cad, type: 3}
   costumeObject: {fileID: 0}
   shopName: Chef's Hat
   price: 1000
@@ -35499,7 +35504,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24850373aa845da408b50c9ccd60696b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shopImage: {fileID: 21300000, guid: 4a01bf4cad56f93499a77b6134ed333a, type: 3}
+  shopImage: {fileID: -508963617, guid: 3ebf33d7b99162f48884b6bec8a9f186, type: 3}
   costumeObject: {fileID: 0}
   shopName: Bat Wings
   price: 1000
@@ -35763,7 +35768,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24850373aa845da408b50c9ccd60696b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shopImage: {fileID: 0}
+  shopImage: {fileID: 894305398, guid: 3ebf33d7b99162f48884b6bec8a9f186, type: 3}
   costumeObject: {fileID: 0}
   shopName: Horns
   price: 666

@@ -26,7 +26,7 @@ public class CostumeManager : MonoBehaviour
     private void Awake()
     {
 #if UNITY_EDITOR
-        EditorPrices();
+        //EditorPrices();
 #endif
         foreach (Costume costume in headCostumes)
         {
