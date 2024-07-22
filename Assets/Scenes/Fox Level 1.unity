@@ -1337,7 +1337,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -79.15633}
+  m_AnchoredPosition: {x: 0, y: -216}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &97877864
@@ -2845,6 +2845,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 265625565}
   m_CullTransparentMesh: 1
+--- !u!1 &272224525 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -3196511607817033700, guid: a26118b5aa25c2a43942a41c84d7a967, type: 3}
+  m_PrefabInstance: {fileID: 2056531479}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &272937544
 GameObject:
   m_ObjectHideFlags: 0
@@ -2882,7 +2887,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -216.15636}
+  m_AnchoredPosition: {x: 0, y: -79}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &272937546
@@ -16122,7 +16127,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1315620606
 RectTransform:
   m_ObjectHideFlags: 0
@@ -18256,6 +18261,7 @@ MonoBehaviour:
   ghostFox: {fileID: 1511844756}
   tickingSound: {fileID: 1397134306}
   foxRenderer: {fileID: 857860761}
+  foxCostumes: {fileID: 272224525}
   mainFox: {fileID: 932183967}
   bananaObject: {fileID: 919132148156587280}
   magnetObject: {fileID: 635658686}
@@ -28023,7 +28029,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &919132148156587281
 MonoBehaviour:
   m_ObjectHideFlags: 0

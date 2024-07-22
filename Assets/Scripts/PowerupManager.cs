@@ -22,6 +22,7 @@ public class PowerupManager : MonoBehaviour
 
     [Header("Banana Head Start")]
     public GameObject foxRenderer;
+    public GameObject foxCostumes;
     public GameObject mainFox;
     public GameObject bananaObject;
     private Rigidbody foxRB;
@@ -164,6 +165,7 @@ public class PowerupManager : MonoBehaviour
         {
             bananaObject.SetActive(true);
             foxRenderer.SetActive(false);
+            foxCostumes.SetActive(false);
             Time.timeScale = 2f;
             playerManager.bananaOn = true;
             activePowerups.Add(Collectible.CollectibleType.banana);
@@ -175,6 +177,7 @@ public class PowerupManager : MonoBehaviour
     private void BananaEnd()
     {
         foxRenderer.SetActive(true);
+        foxCostumes.SetActive(true);
         bananaActive = false;
         playerManager.bananaOn = false;
         bananaActive = false;
