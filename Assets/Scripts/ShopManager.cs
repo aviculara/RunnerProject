@@ -23,6 +23,10 @@ public class ShopManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI bananaPriceText, magnetPriceText, starPriceText;
 
     public float[] seconds = { 3f, 4f, 5f, 6f, 7f };
+    public float[] bananaSeconds = { 3f, 4f, 5f, 6f, 7f };
+    public float[] magnetSeconds = { 3f, 4f, 5f, 6f, 7f };
+    public float[] starSeconds = { 3f, 4f, 5f, 6f, 7f };
+
     public int[] prices = { 30, 50, 150, 400 };
 
     public AudioSource powerupUpgradeSound;
@@ -34,11 +38,11 @@ public class ShopManager : MonoBehaviour
     {
         powerupManager = gameObject.GetComponent<PowerupManager>();
         bananaLevel = PlayerPrefs.GetInt("BananaLevel", 0);
-        powerupManager.bananaDuration = seconds[bananaLevel];
+        powerupManager.bananaDuration = bananaSeconds[bananaLevel];
         magnetLevel = PlayerPrefs.GetInt("MagnetLevel", 0);
-        powerupManager.magnetDuration = seconds[magnetLevel];
+        powerupManager.magnetDuration = magnetSeconds[magnetLevel];
         starLevel = PlayerPrefs.GetInt("StarLevel", 0);
-        powerupManager.magnetDuration = seconds[starLevel];
+        powerupManager.starDuration = starSeconds[starLevel];
         totalStrawberries = PlayerPrefs.GetInt("TotalStrawberries", 0);
         strawberriesText.text = totalStrawberries.ToString();
         ShowBars();
@@ -132,15 +136,15 @@ public class ShopManager : MonoBehaviour
         }
     }
 
-    private void WriteSeconds(TextMeshProUGUI secondsText = null, int level = -1)
+    private void WriteSeconds(TextMeshProUGUI secondsText = null, float[] secondsArray = null, int level = -1)
     {
         if ( level < 0)
         {
-            WriteSeconds(starSecondsText, starLevel);
-            WriteSeconds(magnetSecondsText, magnetLevel);
-            WriteSeconds(bananaSecondsText, bananaLevel);
+            WriteSeconds(starSecondsText, starSeconds, starLevel);
+            WriteSeconds(magnetSecondsText, magnetSeconds, magnetLevel);
+            WriteSeconds(bananaSecondsText, bananaSeconds, bananaLevel);
         }
-        else if(secondsText == null)
+        else if(secondsText == null || secondsArray == null)
         {
 #if UNITY_EDITOR
             print("null object reference");
@@ -148,7 +152,7 @@ public class ShopManager : MonoBehaviour
         }
         else
         {
-            secondsText.text = seconds[level].ToString("0.0") + " s";
+            secondsText.text = secondsArray[level].ToString("0.0") + " s";
         }
     }
 
@@ -171,10 +175,10 @@ public class ShopManager : MonoBehaviour
         SubtractStrawberry(prices[bananaLevel]);
         bananaLevel++;
         PlayerPrefs.SetInt("BananaLevel", bananaLevel);
-        powerupManager.bananaDuration = seconds[bananaLevel];
+        powerupManager.bananaDuration = bananaSeconds[bananaLevel];
         ShowBars(bananaBars, bananaLevel);
         WritePrices(bananaPriceText, bananaButton, bananaLevel);
-        WriteSeconds(bananaSecondsText, bananaLevel);
+        WriteSeconds(bananaSecondsText, bananaSeconds, bananaLevel);
         ShowButtons();
     }
     public void PurchaseMagnet()
@@ -182,10 +186,10 @@ public class ShopManager : MonoBehaviour
         SubtractStrawberry(prices[magnetLevel]);
         magnetLevel++;
         PlayerPrefs.SetInt("MagnetLevel", magnetLevel);
-        powerupManager.magnetDuration = seconds[magnetLevel];
+        powerupManager.magnetDuration = magnetSeconds[magnetLevel];
         ShowBars(magnetBars, magnetLevel);
         WritePrices(magnetPriceText, magnetButton, magnetLevel);
-        WriteSeconds(magnetSecondsText, magnetLevel);
+        WriteSeconds(magnetSecondsText, magnetSeconds, magnetLevel);
         ShowButtons();
     }
     public void PurchaseStar()
@@ -193,10 +197,10 @@ public class ShopManager : MonoBehaviour
         SubtractStrawberry(prices[starLevel]);
         starLevel++;
         PlayerPrefs.SetInt("StarLevel", starLevel);
-        powerupManager.starDuration = seconds[starLevel];
+        powerupManager.starDuration = starSeconds[starLevel];
         ShowBars(starBars, starLevel);
         WritePrices(starPriceText, starButton, starLevel);
-        WriteSeconds(starSecondsText, starLevel);
+        WriteSeconds(starSecondsText, starSeconds, starLevel);
         ShowButtons();
     }
 

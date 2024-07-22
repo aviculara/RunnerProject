@@ -23443,6 +23443,24 @@ MonoBehaviour:
   - 5
   - 6
   - 7
+  bananaSeconds:
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  magnetSeconds:
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  starSeconds:
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
   prices: 960000002c010000f4010000e8030000
   powerupUpgradeSound: {fileID: 66287144}
 --- !u!1 &1504120809
