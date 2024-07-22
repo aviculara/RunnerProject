@@ -18422,7 +18422,6 @@ MonoBehaviour:
   - {fileID: 4316046866441297342, guid: 63b5e0840ffe3a2438f523e14081d907, type: 3}
   - {fileID: 965553035661173081, guid: b083a5df13782dc4fb940223b60d549d, type: 3}
   - {fileID: 7936968033321871444, guid: de80f4d30c2857f44abab939f704b53e, type: 3}
-  - {fileID: 7936968033321871444, guid: 02be5d23050e8a74cbc1d8d2f6de2abd, type: 3}
   collectibles: []
   strawb: {fileID: 5986095555794780789}
   star: {fileID: 1887675351634706975}
