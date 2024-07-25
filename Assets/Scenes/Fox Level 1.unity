@@ -18435,15 +18435,15 @@ MonoBehaviour:
   cherry: {fileID: 9111162133792433945}
   pear: {fileID: 6573417987737368096}
   orange: {fileID: 8228728315519993458}
-  minPowerupFrequency: 3
-  maxPowerupFrequency: 25
-  strawbWeight: 2
+  minPowerupFrequency: 5
+  maxPowerupFrequency: 30
+  strawbWeight: 3
   nothingWeight: 1
   magnetWeight: 4
   starWeight: 2
   bananaWeight: 3
   watermelonWeight: 4
-  prefabTest: 1
+  prefabTest: 0
 --- !u!65 &1119959511
 BoxCollider:
   m_ObjectHideFlags: 0

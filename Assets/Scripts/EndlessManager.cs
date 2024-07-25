@@ -144,7 +144,7 @@ public class EndlessManager : MonoBehaviour
 
             if (randomFrequency <= collectibleCount)
             {
-                print("placed powerup after " + randomFrequency + "strawberries");
+                print("placed powerup after " + randomFrequency + " strawberries");
                 int tempWatermelonWeight = watermelonWeight;
                 if(player.watermelond)
                 {
@@ -179,7 +179,6 @@ public class EndlessManager : MonoBehaviour
             else
             {
                 int rand = Random.Range(1, strawbWeight + nothingWeight +1);
-                print(rand + " " + (strawbWeight + nothingWeight));
                 if(rand <= strawbWeight)
                 {
                     Instantiate(strawb, childTransform.position, strawb.transform.rotation, newParent);
