@@ -28,6 +28,7 @@ public class EndlessManager : MonoBehaviour
     private int randomFrequency;
     private int collectibleCount = 0;
     //private float randomFrequency;
+    private int randomStrawberry;
 
     [Header("Developer")]
     [SerializeField] bool prefabTest = false;
@@ -88,9 +89,10 @@ public class EndlessManager : MonoBehaviour
             //collectiblespos: index 1
             Transform newParent = newpiece.transform.GetChild(0);
             Transform posParent = newpiece.transform.GetChild(1);
-
+            
             if (posParent != null)
             {
+                randomStrawberry = Random.Range(1, strawbWeight + nothingWeight + 1);
                 PseudoRandomCollectibles(posParent,newParent);
             }
             
@@ -141,10 +143,10 @@ public class EndlessManager : MonoBehaviour
     {
         foreach (Transform childTransform in posParent)
         {
-
+            
             if (randomFrequency <= collectibleCount)
             {
-                print("placed powerup after " + randomFrequency + " strawberries");
+                 //print("placed powerup after " + randomFrequency + " collectibles");
                 int tempWatermelonWeight = watermelonWeight;
                 if(player.watermelond)
                 {
@@ -176,20 +178,27 @@ public class EndlessManager : MonoBehaviour
                 randomFrequency = Random.Range(minPowerupFrequency, maxPowerupFrequency);
                 collectibleCount = 0;
             }
-            else
+            else 
             {
-                int rand = Random.Range(1, strawbWeight + nothingWeight +1);
-                if(rand <= strawbWeight)
+                collectibleCount++;
+                if (randomStrawberry <= strawbWeight)
                 {
                     Instantiate(strawb, childTransform.position, strawb.transform.rotation, newParent);
-                    print("placed strawberry");
-                    collectibleCount += 1;
                 }
-                else
-                {
-                    print("skipped strawberry");
-                }
-                
+                //else { print("skipped strawberry"); }
+                    
+                //int rand = Random.Range(1, strawbWeight + nothingWeight +1);
+                //if(rand <= strawbWeight)
+                //{
+                //    Instantiate(strawb, childTransform.position, strawb.transform.rotation, newParent);
+                //    print("placed strawberry");
+                //    collectibleCount += 1;
+                //}
+                //else
+                //{
+                //    print("skipped strawberry");
+                //}
+
             }
 
         }
@@ -215,6 +224,7 @@ public class EndlessManager : MonoBehaviour
 
             if (posParent != null)
             {
+                randomStrawberry = Random.Range(1, strawbWeight + nothingWeight + 1);
                 PseudoRandomCollectibles(posParent, newParent);
             }
         }

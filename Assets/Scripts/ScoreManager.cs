@@ -52,7 +52,7 @@ public class ScoreManager : MonoBehaviour
     {
         yield return new WaitForSeconds(timeSpeed);
         levelScore += increaseScoreAmount;
-        if(!halved && levelScore > 420)
+        if(!halved && levelScore > 380)
         {
             //endlessManager.powerupPercent /= 2;
             endlessManager.maxPowerupFrequency *= 2;

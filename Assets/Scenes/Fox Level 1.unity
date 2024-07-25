@@ -18435,10 +18435,10 @@ MonoBehaviour:
   cherry: {fileID: 9111162133792433945}
   pear: {fileID: 6573417987737368096}
   orange: {fileID: 8228728315519993458}
-  minPowerupFrequency: 5
+  minPowerupFrequency: 7
   maxPowerupFrequency: 30
-  strawbWeight: 3
-  nothingWeight: 1
+  strawbWeight: 5
+  nothingWeight: 2
   magnetWeight: 4
   starWeight: 2
   bananaWeight: 3
