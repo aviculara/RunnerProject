@@ -17,7 +17,7 @@ public class EndlessManager : MonoBehaviour
     [Header("Chances")]
     public int minPowerupFrequency;
     public int maxPowerupFrequency;
-    public int powerupPercent;
+    private int powerupPercent; //old
     public int strawbWeight;
     public int nothingWeight;
     public int magnetWeight;
@@ -29,13 +29,27 @@ public class EndlessManager : MonoBehaviour
     private int collectibleCount = 0;
     //private float randomFrequency;
 
+    [Header("Developer")]
+    [SerializeField] bool prefabTest = false;
+
     // Start is called before the first frame update
     void Start()
     {
         scoreManager = GameObject.Find("GameManager").GetComponent<ScoreManager>();
         randomFrequency = Random.Range(minPowerupFrequency, maxPowerupFrequency);
+#if UNITY_EDITOR
+        if(prefabTest)
+        {
+            PrefabTest();
+        }
+        else
+        {
+            FirstPlacement();
+        }
+#else
         FirstPlacement();
-        //PrefabTest();
+#endif
+
     }
 
     // Update is called once per frame
@@ -59,7 +73,7 @@ public class EndlessManager : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //print(other.gameObject.name);
-        if(other.CompareTag("Piece"))
+        if(other.CompareTag("Piece") && !prefabTest)
         {
             int randomint = Random.Range(0, pieces.Length);
             int randomRotation = Random.Range(0, 2);
@@ -130,13 +144,14 @@ public class EndlessManager : MonoBehaviour
 
             if (randomFrequency <= collectibleCount)
             {
+                print("placed powerup after " + randomFrequency + "strawberries");
                 int tempWatermelonWeight = watermelonWeight;
                 if(player.watermelond)
                 {
                     tempWatermelonWeight = 1;
                 }
 
-                int rand = Random.Range(1, magnetWeight + starWeight + bananaWeight + tempWatermelonWeight);
+                int rand = Random.Range(1, magnetWeight + starWeight + bananaWeight + tempWatermelonWeight + 1);
 
                 if (rand <= magnetWeight)
                 {
@@ -163,11 +178,17 @@ public class EndlessManager : MonoBehaviour
             }
             else
             {
-                int rand = Random.Range(1, strawbWeight + nothingWeight);
+                int rand = Random.Range(1, strawbWeight + nothingWeight +1);
+                print(rand + " " + (strawbWeight + nothingWeight));
                 if(rand <= strawbWeight)
                 {
                     Instantiate(strawb, childTransform.position, strawb.transform.rotation, newParent);
+                    print("placed strawberry");
                     collectibleCount += 1;
+                }
+                else
+                {
+                    print("skipped strawberry");
                 }
                 
             }

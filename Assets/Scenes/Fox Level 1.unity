@@ -18417,11 +18417,15 @@ MonoBehaviour:
   scoreManager: {fileID: 0}
   player: {fileID: 932183973}
   pieces:
+  - {fileID: 7936968033321871444, guid: de80f4d30c2857f44abab939f704b53e, type: 3}
   - {fileID: 7936968033321871444, guid: 83c9bcd089f819d43bdbe96e49ab2709, type: 3}
-  - {fileID: 7154021344548530318, guid: 886a56fff3eb1e44abf0c9974e027a12, type: 3}
   - {fileID: 4316046866441297342, guid: 63b5e0840ffe3a2438f523e14081d907, type: 3}
   - {fileID: 965553035661173081, guid: b083a5df13782dc4fb940223b60d549d, type: 3}
-  - {fileID: 7936968033321871444, guid: de80f4d30c2857f44abab939f704b53e, type: 3}
+  - {fileID: 7154021344548530318, guid: 886a56fff3eb1e44abf0c9974e027a12, type: 3}
+  - {fileID: 7936968033321871444, guid: 02be5d23050e8a74cbc1d8d2f6de2abd, type: 3}
+  - {fileID: 4316046866441297342, guid: 6c228bdb97723db4f8fcdcbe522ea344, type: 3}
+  - {fileID: 7154021344548530318, guid: da89ef8e8924af8458a1c3ee4b4720a9, type: 3}
+  - {fileID: 4316046866441297342, guid: dec2379502c91f94087c9c52da9561db, type: 3}
   collectibles: []
   strawb: {fileID: 5986095555794780789}
   star: {fileID: 1887675351634706975}
@@ -18433,13 +18437,13 @@ MonoBehaviour:
   orange: {fileID: 8228728315519993458}
   minPowerupFrequency: 3
   maxPowerupFrequency: 25
-  powerupPercent: 6
   strawbWeight: 2
   nothingWeight: 1
   magnetWeight: 4
   starWeight: 2
   bananaWeight: 3
   watermelonWeight: 4
+  prefabTest: 1
 --- !u!65 &1119959511
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -39420,7 +39424,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2651522690164226983, guid: 6b4d2aba0a6fb4f448d7c37f6991653e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2
+      value: 1.12
       objectReference: {fileID: 0}
     - target: {fileID: 2651522690164226983, guid: 6b4d2aba0a6fb4f448d7c37f6991653e, type: 3}
       propertyPath: m_LocalPosition.z
