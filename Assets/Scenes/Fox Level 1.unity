@@ -1100,7 +1100,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 479285785}
+      - m_Target: {fileID: 1498104319}
         m_TargetAssemblyTypeName: CostumeManager, Assembly-CSharp
         m_MethodName: BodyPurchaseButton
         m_Mode: 1
@@ -1233,7 +1233,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 479285785}
+      - m_Target: {fileID: 1498104319}
         m_TargetAssemblyTypeName: CostumeManager, Assembly-CSharp
         m_MethodName: BodyEquipButton
         m_Mode: 1
@@ -3049,7 +3049,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 479285785}
+      - m_Target: {fileID: 1498104319}
         m_TargetAssemblyTypeName: CostumeManager, Assembly-CSharp
         m_MethodName: HeadUnequipButton
         m_Mode: 1
@@ -3207,7 +3207,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 479285785}
+      - m_Target: {fileID: 1498104319}
         m_TargetAssemblyTypeName: CostumeManager, Assembly-CSharp
         m_MethodName: HeadPurchaseButton
         m_Mode: 1
@@ -5297,7 +5297,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 479285782}
-  - component: {fileID: 479285785}
   - component: {fileID: 479285784}
   - component: {fileID: 479285783}
   m_Layer: 5
@@ -5306,7 +5305,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &479285782
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5366,48 +5365,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 479285781}
   m_CullTransparentMesh: 1
---- !u!114 &479285785
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 479285781}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2d3759410a64594ba36127126d618a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shopManager: {fileID: 1498104318}
-  headCostumes:
-  - {fileID: 6143184144222902678}
-  - {fileID: 7264006750949795605}
-  - {fileID: 5440968605256821757}
-  - {fileID: 8503241501586459730}
-  - {fileID: 9206652905930995207}
-  - {fileID: 8361084842444061820}
-  - {fileID: 5489850493273786902}
-  bodyCostumes:
-  - {fileID: 8815056942729696441}
-  - {fileID: 8257214615052408046}
-  headImageLeft: {fileID: 495867979}
-  headImageCenter: {fileID: 1504120811}
-  headImageRight: {fileID: 779403024}
-  headRightButton: {fileID: 1206739427}
-  headLeftButton: {fileID: 1058524070}
-  headEquipButton: {fileID: 1295123853}
-  headPrice: {fileID: 733248369}
-  bodyImageLeft: {fileID: 45302263}
-  bodyImageCenter: {fileID: 749444768}
-  bodyImageRight: {fileID: 1830976904}
-  bodyRightButton: {fileID: 579482913}
-  bodyLeftButton: {fileID: 2114856847}
-  bodyEquipButton: {fileID: 86685719}
-  bodyPrice: {fileID: 748437114}
-  headText: {fileID: 1205996189}
-  bodyText: {fileID: 1146909955}
-  equippedHeadCostume: -1
-  equippedBodyCostume: -1
 --- !u!1 &490731571
 GameObject:
   m_ObjectHideFlags: 0
@@ -6907,7 +6864,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 479285785}
+      - m_Target: {fileID: 1498104319}
         m_TargetAssemblyTypeName: CostumeManager, Assembly-CSharp
         m_MethodName: BodyButtonRight
         m_Mode: 1
@@ -7261,7 +7218,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 479285785}
+      - m_Target: {fileID: 1498104319}
         m_TargetAssemblyTypeName: CostumeManager, Assembly-CSharp
         m_MethodName: BodyUnequipButton
         m_Mode: 1
@@ -16928,7 +16885,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 479285785}
+      - m_Target: {fileID: 1498104319}
         m_TargetAssemblyTypeName: CostumeManager, Assembly-CSharp
         m_MethodName: HeadButtonLeft
         m_Mode: 1
@@ -20163,7 +20120,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 479285785}
+      - m_Target: {fileID: 1498104319}
         m_TargetAssemblyTypeName: CostumeManager, Assembly-CSharp
         m_MethodName: HeadButtonRight
         m_Mode: 1
@@ -21030,7 +20987,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 479285785}
+      - m_Target: {fileID: 1498104319}
         m_TargetAssemblyTypeName: CostumeManager, Assembly-CSharp
         m_MethodName: HeadEquipButton
         m_Mode: 1
@@ -23233,6 +23190,7 @@ GameObject:
   - component: {fileID: 1498104316}
   - component: {fileID: 1498104317}
   - component: {fileID: 1498104318}
+  - component: {fileID: 1498104319}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -23468,6 +23426,47 @@ MonoBehaviour:
   - 7
   prices: 960000002c010000f4010000e8030000
   powerupUpgradeSound: {fileID: 66287144}
+--- !u!114 &1498104319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1498104312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2d3759410a64594ba36127126d618a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  headCostumes:
+  - {fileID: 6143184144222902678}
+  - {fileID: 7264006750949795605}
+  - {fileID: 5440968605256821757}
+  - {fileID: 8503241501586459730}
+  - {fileID: 9206652905930995207}
+  - {fileID: 8361084842444061820}
+  - {fileID: 5489850493273786902}
+  bodyCostumes:
+  - {fileID: 8815056942729696441}
+  - {fileID: 8257214615052408046}
+  headImageLeft: {fileID: 495867979}
+  headImageCenter: {fileID: 1504120811}
+  headImageRight: {fileID: 779403024}
+  headRightButton: {fileID: 1206739427}
+  headLeftButton: {fileID: 1058524070}
+  headEquipButton: {fileID: 1295123853}
+  headPrice: {fileID: 733248369}
+  bodyImageLeft: {fileID: 45302263}
+  bodyImageCenter: {fileID: 749444768}
+  bodyImageRight: {fileID: 1830976904}
+  bodyRightButton: {fileID: 579482913}
+  bodyLeftButton: {fileID: 2114856847}
+  bodyEquipButton: {fileID: 86685719}
+  bodyPrice: {fileID: 748437114}
+  headText: {fileID: 1205996189}
+  bodyText: {fileID: 1146909955}
+  equippedHeadCostume: -1
+  equippedBodyCostume: -1
 --- !u!1 &1504120809
 GameObject:
   m_ObjectHideFlags: 0
@@ -24945,6 +24944,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1498104313}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: OutfitsButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1498104319}
+        m_TargetAssemblyTypeName: CostumeManager, Assembly-CSharp
+        m_MethodName: InitialiseShop
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -30870,7 +30881,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 479285785}
+      - m_Target: {fileID: 1498104319}
         m_TargetAssemblyTypeName: CostumeManager, Assembly-CSharp
         m_MethodName: BodyButtonLeft
         m_Mode: 1

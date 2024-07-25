@@ -6,7 +6,7 @@ using TMPro;
 
 public class CostumeManager : MonoBehaviour
 {
-    [SerializeField] ShopManager shopManager;
+    private ShopManager shopManager;
 
     [SerializeField] Costume[] headCostumes;
     [SerializeField] Costume[] bodyCostumes;
@@ -26,8 +26,9 @@ public class CostumeManager : MonoBehaviour
 
     private void Awake()
     {
+        shopManager = GetComponent<ShopManager>();
 #if UNITY_EDITOR
-        //EditorPrices();
+        EditorPrices();
 #endif
         foreach (Costume costume in headCostumes)
         {
@@ -43,7 +44,6 @@ public class CostumeManager : MonoBehaviour
     {
         equippedHeadCostume = PlayerPrefs.GetInt("EquippedHead", -1);
         equippedBodyCostume = PlayerPrefs.GetInt("EquippedBody", -1);
-
         if(equippedHeadCostume >=0 && equippedHeadCostume <= headCostumes.Length)
         {
             headCostumes[equippedHeadCostume].Equip();
@@ -59,33 +59,33 @@ public class CostumeManager : MonoBehaviour
     {
         
     }
-    private void OnEnable()
-    {
-        if(equippedHeadCostume<0)
-        {
-            headShopIndex = 0;
-        }
-        else
-        {
-            headShopIndex = equippedHeadCostume;
-        }
-        if(equippedBodyCostume < 0)
-        {
-            bodyShopIndex = 0;
-        }
-        else
-        {
-            bodyShopIndex = equippedBodyCostume;
-        }
-        ShowCostumeShop(CostumeType.head);
-        ShowCostumeShop(CostumeType.body);
-    }
+    //private void OnEnable()
+    //{
+    //    if(equippedHeadCostume<0)
+    //    {
+    //        headShopIndex = 0;
+    //    }
+    //    else
+    //    {
+    //        headShopIndex = equippedHeadCostume;
+    //    }
+    //    if(equippedBodyCostume < 0)
+    //    {
+    //        bodyShopIndex = 0;
+    //    }
+    //    else
+    //    {
+    //        bodyShopIndex = equippedBodyCostume;
+    //    }
+    //    ShowCostumeShop(CostumeType.head);
+    //    ShowCostumeShop(CostumeType.body);
+    //}
 
-    private void OnDisable()
-    {
-        headShopIndex = 0;
-        bodyShopIndex = 0;
-    }
+    //private void OnDisable()
+    //{
+    //    headShopIndex = 0;
+    //    bodyShopIndex = 0;
+    //}
 
     public enum CostumeType
     {
@@ -238,7 +238,8 @@ public class CostumeManager : MonoBehaviour
         shopManager.SubtractStrawberry(currentCostume.price);
         //headEquipButton.SetActive(false);
         currentCostume.Purchase();
-        headPrice.transform.parent.gameObject.SetActive(false);
+        //headPrice.transform.parent.gameObject.SetActive(false);
+        ShowCostumeShop(CostumeType.head);
     }
 
     public void HeadEquipButton()
@@ -286,7 +287,8 @@ public class CostumeManager : MonoBehaviour
         shopManager.SubtractStrawberry(currentCostume.price);
         //headEquipButton.SetActive(false);
         currentCostume.Purchase();
-        bodyPrice.transform.parent.gameObject.SetActive(false);
+        //bodyPrice.transform.parent.gameObject.SetActive(false);
+        ShowCostumeShop(CostumeType.head);
     }
 
     public void BodyEquipButton()
@@ -308,12 +310,27 @@ public class CostumeManager : MonoBehaviour
         bodyEquipButton.SetActive(true);
     }
 
-    public void UniversalRight(string costumeType)
+    public void InitialiseShop()
     {
-        if(costumeType == "head")
+        if (equippedHeadCostume < 0)
         {
-            HeadButtonRight();
+            headShopIndex = 0;
         }
+        else
+        {
+            headShopIndex = equippedHeadCostume;
+        }
+        if (equippedBodyCostume < 0)
+        {
+            bodyShopIndex = 0;
+        }
+        else
+        {
+            bodyShopIndex = equippedBodyCostume;
+        }
+        ShowCostumeShop(CostumeType.head);
+        ShowCostumeShop(CostumeType.body);
     }
+
 
 }
