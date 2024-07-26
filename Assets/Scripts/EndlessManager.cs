@@ -153,7 +153,13 @@ public class EndlessManager : MonoBehaviour
                     tempWatermelonWeight = 1;
                 }
 
-                int rand = Random.Range(1, magnetWeight + starWeight + bananaWeight + tempWatermelonWeight + 1);
+                int tempBananaWeight = bananaWeight;
+                if(player.bananaOn)
+                {
+                    tempBananaWeight = 1;
+                }
+
+                int rand = Random.Range(1, magnetWeight + starWeight + tempBananaWeight + tempWatermelonWeight + 1);
 
                 if (rand <= magnetWeight)
                 {

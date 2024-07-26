@@ -28,7 +28,7 @@ public class CostumeManager : MonoBehaviour
     {
         shopManager = GetComponent<ShopManager>();
 #if UNITY_EDITOR
-        EditorPrices();
+        //EditorPrices();
 #endif
         foreach (Costume costume in headCostumes)
         {
@@ -59,33 +59,6 @@ public class CostumeManager : MonoBehaviour
     {
         
     }
-    //private void OnEnable()
-    //{
-    //    if(equippedHeadCostume<0)
-    //    {
-    //        headShopIndex = 0;
-    //    }
-    //    else
-    //    {
-    //        headShopIndex = equippedHeadCostume;
-    //    }
-    //    if(equippedBodyCostume < 0)
-    //    {
-    //        bodyShopIndex = 0;
-    //    }
-    //    else
-    //    {
-    //        bodyShopIndex = equippedBodyCostume;
-    //    }
-    //    ShowCostumeShop(CostumeType.head);
-    //    ShowCostumeShop(CostumeType.body);
-    //}
-
-    //private void OnDisable()
-    //{
-    //    headShopIndex = 0;
-    //    bodyShopIndex = 0;
-    //}
 
     public enum CostumeType
     {
@@ -288,7 +261,7 @@ public class CostumeManager : MonoBehaviour
         //headEquipButton.SetActive(false);
         currentCostume.Purchase();
         //bodyPrice.transform.parent.gameObject.SetActive(false);
-        ShowCostumeShop(CostumeType.head);
+        ShowCostumeShop(CostumeType.body);
     }
 
     public void BodyEquipButton()

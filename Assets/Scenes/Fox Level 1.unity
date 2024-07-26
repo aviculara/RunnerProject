@@ -15536,7 +15536,7 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   all: {fileID: 365407044}
   jumpSound: {fileID: 1591342201}
-  speed: 6
+  speed: 6.5
   side: 3
   jumpPower: 2.5
   acceleration: 0.1
@@ -18392,8 +18392,8 @@ MonoBehaviour:
   cherry: {fileID: 9111162133792433945}
   pear: {fileID: 6573417987737368096}
   orange: {fileID: 8228728315519993458}
-  minPowerupFrequency: 7
-  maxPowerupFrequency: 30
+  minPowerupFrequency: 22
+  maxPowerupFrequency: 42
   strawbWeight: 5
   nothingWeight: 2
   magnetWeight: 4
@@ -23407,11 +23407,11 @@ MonoBehaviour:
   - 6
   - 7
   bananaSeconds:
+  - 3.5
   - 4
   - 5
   - 6
-  - 7
-  - 8
+  - 6.5
   magnetSeconds:
   - 5
   - 6
@@ -23419,11 +23419,11 @@ MonoBehaviour:
   - 8
   - 9
   starSeconds:
-  - 3
-  - 4
+  - 2
+  - 2.5
+  - 3.5
+  - 4.5
   - 5
-  - 6
-  - 7
   prices: 960000002c010000f4010000e8030000
   powerupUpgradeSound: {fileID: 66287144}
 --- !u!114 &1498104319
@@ -38184,6 +38184,7 @@ Transform:
   - {fileID: 34242624}
   - {fileID: 727496952}
   - {fileID: 392505464}
+  - {fileID: 1853509628}
   m_Father: {fileID: 6243170221845621923}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!108 &1370251674353882865
@@ -39070,7 +39071,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1797802722}
-  - {fileID: 1853509628}
   - {fileID: 1317073669}
   - {fileID: 1612359269}
   - {fileID: 2100240155}
@@ -51232,7 +51232,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &5131368977253252418
 GameObject:
   m_ObjectHideFlags: 0
@@ -51535,7 +51535,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 2318494842382906768}
+    m_TransformParent: {fileID: 1350282441547559334}
     m_Modifications:
     - target: {fileID: 2755992516243043097, guid: 58d906a8c99c0b545bf0d5337539b695, type: 3}
       propertyPath: m_LocalScale.x
@@ -51599,7 +51599,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3275401416058694051, guid: 58d906a8c99c0b545bf0d5337539b695, type: 3}
       propertyPath: m_TagString
-      value: Obstacle
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 7189311169336095852, guid: 58d906a8c99c0b545bf0d5337539b695, type: 3}
       propertyPath: m_IsTrigger

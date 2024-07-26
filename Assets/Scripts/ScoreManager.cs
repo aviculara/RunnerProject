@@ -19,7 +19,8 @@ public class ScoreManager : MonoBehaviour
     public bool orange = false;
     private GameManager gameManager;
     private ShopManager shopManager;
-    private bool halved = false;
+    private bool accHalved = false;
+    private bool powerupsHalved = false;
     //private int speed;
     public PlayerMovement move;
     public PlayerManager playerManager;
@@ -52,13 +53,17 @@ public class ScoreManager : MonoBehaviour
     {
         yield return new WaitForSeconds(timeSpeed);
         levelScore += increaseScoreAmount;
-        if(!halved && levelScore > 380)
+        if(!powerupsHalved && levelScore > 380)
         {
             //endlessManager.powerupPercent /= 2;
-            endlessManager.maxPowerupFrequency *= 2;
-            endlessManager.minPowerupFrequency *=2 ;
-            halved = true;
-            move.acceleration /= 2; 
+            endlessManager.maxPowerupFrequency *= 3;
+            endlessManager.minPowerupFrequency *=3 ;
+            powerupsHalved = true;
+        }
+        if(!accHalved && levelScore > 480)
+        {
+            move.acceleration /= 2;
+            accHalved = true;
         }
         uiManager.scoreText.text = levelScore.ToString("0000");
         uiManager.finalScoreText.text = "Score: " + levelScore.ToString();

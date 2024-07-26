@@ -29,6 +29,8 @@ public class ShopManager : MonoBehaviour
 
     public int[] prices = { 30, 50, 150, 400 };
 
+    private int[] editorPrices = { 1, 2, 3, 4 };
+
     public AudioSource powerupUpgradeSound;
 
     PowerupManager powerupManager;
@@ -45,6 +47,10 @@ public class ShopManager : MonoBehaviour
         powerupManager.starDuration = starSeconds[starLevel];
         totalStrawberries = PlayerPrefs.GetInt("TotalStrawberries", 0);
         strawberriesText.text = totalStrawberries.ToString();
+#if UNITY_EDITOR
+        //prices = editorPrices;
+        //print("prices reduced for editor");
+#endif
         ShowBars();
         WritePrices();
         WriteSeconds();

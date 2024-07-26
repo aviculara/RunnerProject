@@ -3037,7 +3037,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2755992516243043097, guid: 58d906a8c99c0b545bf0d5337539b695, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.2000175
+      value: 4.72
       objectReference: {fileID: 0}
     - target: {fileID: 2755992516243043097, guid: 58d906a8c99c0b545bf0d5337539b695, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3085,7 +3085,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3275401416058694051, guid: 58d906a8c99c0b545bf0d5337539b695, type: 3}
       propertyPath: m_TagString
-      value: Obstacle
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 7189311169336095852, guid: 58d906a8c99c0b545bf0d5337539b695, type: 3}
       propertyPath: m_IsTrigger
